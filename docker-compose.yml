@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: seongsu_postgres
+    environment:
+      POSTGRES_DB: seongsu_forecast
+      POSTGRES_USER: forecast_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --lc-collate=C --lc-ctype=C"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U forecast_user -d seongsu_forecast"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: seongsu_agent
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      POSTGRES_DSN: postgresql+psycopg2://forecast_user:${POSTGRES_PASSWORD:-changeme}@postgres:5432/seongsu_forecast
+      YOUTUBE_API_KEY: ${YOUTUBE_API_KEY}
+      NAVER_CLIENT_ID: ${NAVER_CLIENT_ID}
+      NAVER_CLIENT_SECRET: ${NAVER_CLIENT_SECRET}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      TZ: Asia/Seoul
+    volumes:
+      - ./config.yaml:/app/config.yaml:ro
+      - ./logs:/app/logs
+    restart: unless-stopped
+    command: ["python", "agent.py", "config.yaml"]
+
+  cron:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: seongsu_cron
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      POSTGRES_DSN: postgresql+psycopg2://forecast_user:${POSTGRES_PASSWORD:-changeme}@postgres:5432/seongsu_forecast
+      YOUTUBE_API_KEY: ${YOUTUBE_API_KEY}
+      NAVER_CLIENT_ID: ${NAVER_CLIENT_ID}
+      NAVER_CLIENT_SECRET: ${NAVER_CLIENT_SECRET}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      TZ: Asia/Seoul
+    volumes:
+      - ./config.yaml:/app/config.yaml:ro
+      - ./logs:/app/logs
+      - ./crontab:/etc/cron.d/forecast:ro
+    restart: unless-stopped
+    command: ["crond", "-f", "-l", "2"]
+
+volumes:
+  postgres_data:

@@ -1,0 +1,7 @@
+# Seongsu Coffee Forecast Agent Cron Schedule
+# Run every hour at 15 minutes past the hour
+
+15 * * * * forecast cd /app && python agent.py config.yaml >> /app/logs/cron.log 2>&1
+
+# Optional: Daily cleanup of old data (at 3:30 AM)
+30 3 * * * forecast cd /app && python cleanup.py >> /app/logs/cleanup.log 2>&1

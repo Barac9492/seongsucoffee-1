@@ -1,0 +1,203 @@
+# Seongsu Coffee & Bakery Forecast Configuration
+
+area:
+  id: SEONGSU
+  name: "성수동"
+  lat: 37.544
+  lon: 127.055
+  radius_km: 3
+
+# Keywords to track (attention signals)
+keywords:
+  general:
+    - "성수 카페"
+    - "성수 빵집"
+    - "성수동 맛집"
+    - "성수 브런치"
+  
+  items:
+    - "말차"
+    - "크로플"
+    - "아인슈페너"
+    - "티라미수"
+    - "에그타르트"
+    - "바스크치즈케이크"
+    - "플랫화이트"
+    
+  trends:
+    - "성수 핫플"
+    - "성수 데이트"
+    - "성수 카공"
+    - "성수 줄서는"
+
+# Top venues to monitor
+venues:
+  # Cafes
+  - venue_id: onion_seongsu
+    name: "어니언 성수"
+    name_en: "Onion Seongsu"
+    place_id: "ChIJN1t_tDeuEmsRUsoyG83frY4"
+    maps_url: "https://maps.google.com/?cid=18052003704602011244"
+    naver_id: "1370802520"
+    naver_url: "https://pcmap.place.naver.com/restaurant/1370802520"
+    category: cafe
+    
+  - venue_id: layered_seongsu
+    name: "레이어드 성수"
+    name_en: "Layered Seongsu"
+    place_id: "ChIJN1t_tDeuEmsRUsoyG83frY5"
+    naver_id: "1496253878"
+    category: bakery
+    
+  - venue_id: daelim_changgo
+    name: "대림창고"
+    name_en: "Daelim Changgo"
+    place_id: "ChIJN1t_tDeuEmsRUsoyG83frY6"
+    naver_id: "16194266719"
+    category: cafe
+    
+  - venue_id: fritz_seongsu
+    name: "프릳츠 성수"
+    name_en: "Fritz Coffee Seongsu"
+    place_id: "ChIJN1t_tDeuEmsRUsoyG83frY7"
+    naver_id: "1234567890"
+    category: cafe
+    
+  - venue_id: knotted_seongsu
+    name: "나티드 성수"
+    name_en: "Knotted Seongsu"
+    place_id: "ChIJN1t_tDeuEmsRUsoyG83frY8"
+    naver_id: "1234567891"
+    category: bakery
+    
+  - venue_id: lowkey_seongsu
+    name: "로우키 성수"
+    name_en: "Lowkey Seongsu"
+    place_id: "ChIJN1t_tDeuEmsRUsoyG83frY9"
+    naver_id: "1234567892"
+    category: cafe
+    
+  - venue_id: millac_seongsu
+    name: "밀락더마켓 성수"
+    name_en: "Millac the Market"
+    place_id: "ChIJN1t_tDeuEmsRUsoyG83frY0"
+    naver_id: "1234567893"
+    category: bakery
+    
+  - venue_id: center_coffee
+    name: "센터커피"
+    name_en: "Center Coffee"
+    place_id: "ChIJN1t_tDeuEmsRUsoyG83frY1"
+    naver_id: "1234567894"
+    category: cafe
+    
+  - venue_id: nudake_seongsu
+    name: "누데이크 성수"
+    name_en: "Nudake Seongsu"
+    place_id: "ChIJN1t_tDeuEmsRUsoyG83frY2"
+    naver_id: "1234567895"
+    category: bakery
+    
+  - venue_id: anthracite_seongsu
+    name: "앤트러사이트 성수"
+    name_en: "Anthracite Seongsu"
+    place_id: "ChIJN1t_tDeuEmsRUsoyG83frY3"
+    naver_id: "1234567896"
+    category: cafe
+
+  # Add more venues as needed
+  - venue_id: blue_bottle_seongsu
+    name: "블루보틀 성수"
+    name_en: "Blue Bottle Seongsu"
+    place_id: "ChIJN1t_tDeuEmsRUsoyG83frY4"
+    naver_id: "1234567897"
+    category: cafe
+    
+  - venue_id: london_bagel_seongsu
+    name: "런던베이글뮤지엄 성수"
+    name_en: "London Bagel Museum"
+    place_id: "ChIJN1t_tDeuEmsRUsoyG83frZ1"
+    naver_id: "1234567898"
+    category: bakery
+
+# Data collection settings
+collection:
+  google_trends:
+    enabled: true
+    geo: "KR-11"  # Seoul
+    timeframe: "now 7-d"
+    batch_size: 4
+    
+  youtube:
+    enabled: true
+    max_results: 25
+    published_after_hours: 48
+    
+  naver_datalab:
+    enabled: false  # Enable when API keys available
+    timeunit: "date"
+    period_days: 7
+    
+  google_maps:
+    enabled: true
+    scrape_method: "playwright"  # or "selenium"
+    headless: true
+    timeout_seconds: 30
+    
+  instagram:
+    enabled: false  # Enable with caution
+    hashtags:
+      - "#성수카페"
+      - "#성수빵집"
+      - "#성수맛집"
+      
+  reviews:
+    enabled: true
+    sources: ["google", "naver"]
+    queue_keywords: ["웨이팅", "줄", "대기", "기다", "붐비"]
+    lookback_hours: 24
+
+# Signal processing
+signals:
+  normalization:
+    method: "zscore"  # or "minmax", "percentile"
+    window_days: 30
+    
+  indices:
+    dopamine:  # Novelty velocity
+      weight_trends: 0.4
+      weight_youtube: 0.3
+      weight_instagram: 0.3
+      
+    oxytocin:  # Social density
+      weight_busyness: 0.5
+      weight_queue: 0.3
+      weight_reservations: 0.2
+      
+    cortisol:  # Urgency
+      weight_night: 0.3
+      weight_weekend: 0.3
+      weight_limited: 0.4
+      
+    serotonin:  # Satisfaction
+      weight_reviews: 0.5
+      weight_photos: 0.3
+      weight_repeat: 0.2
+
+# Database settings
+database:
+  schema: "public"
+  tables:
+    raw: "signals_raw"
+    features: "features_daily"
+    labels: "labels"
+    runs: "runs_log"
+  
+  retention_days: 90
+  vacuum_enabled: true
+
+# Alerting thresholds
+alerts:
+  surge_threshold: 0.8  # 80th percentile
+  trend_spike_multiplier: 2.0
+  min_data_points: 7
