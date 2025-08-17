@@ -298,7 +298,7 @@ class YouTubeGeoCollector:
                         "video_id": video_id,
                         "title": item["snippet"]["title"],
                         "channel_id": item["snippet"]["channelId"],
-                        "published_at": item["snippet"]["publishedAt"],
+                        "timestamp": item["snippet"]["publishedAt"],
                         "query": query
                     })
                 
@@ -316,7 +316,7 @@ class YouTubeGeoCollector:
                     
                     for video in videos:
                         stats = stats_map.get(video["video_id"], {})
-                        video["views"] = int(stats.get("viewCount", 0))
+                        video["value"] = int(stats.get("viewCount", 0))
                         video["likes"] = int(stats.get("likeCount", 0))
                         video["comments"] = int(stats.get("commentCount", 0))
                         
@@ -664,37 +664,41 @@ class ForecastAgent:
         
     def _format_signals(self, df: pd.DataFrame, source: str) -> pd.DataFrame:
         """Format signals for database storage"""
-        formatted = pd.DataFrame()
+        if df.empty:
+            return pd.DataFrame()
+            
+        formatted = pd.DataFrame(index=df.index)
         
         if source in ["google_trends", "google_trends_web", "google_trends_youtube"]:
-            formatted["source"] = df.get("source", source)
+            formatted["source"] = df["source"] if "source" in df.columns else source
             formatted["entity_type"] = "keyword"
             formatted["entity_id"] = df["keyword"]
             formatted["timestamp"] = pd.to_datetime(df["date"])
-            formatted["metric"] = df.get("metric", "search_index")
+            formatted["metric"] = "search_index"
             formatted["value"] = df["value"].astype(float)
+            formatted["metadata"] = None
             
         elif source == "youtube":
             formatted["source"] = "youtube_geo"
-            formatted["entity_type"] = "area"
+            formatted["entity_type"] = "area"  
             formatted["entity_id"] = self.config["area"]["id"]
-            formatted["timestamp"] = pd.to_datetime(df["published_at"])
+            formatted["timestamp"] = pd.to_datetime(df["timestamp"])
             formatted["metric"] = "video_views"
-            formatted["value"] = df["views"].astype(float)
+            formatted["value"] = df["value"].astype(float)
             formatted["metadata"] = df.apply(
                 lambda x: json.dumps({
-                    "video_id": x.get("video_id"),
-                    "title": x.get("title", ""),
-                    "query": x.get("query", "")
+                    "video_id": str(x.get("video_id", "")),
+                    "title": str(x.get("title", ""))[:200],  # Truncate long titles
+                    "query": str(x.get("query", ""))
                 }), axis=1
             )
             
         elif source == "gmaps_busyness":
-            formatted["source"] = df.get("source", "gmaps_live")
+            formatted["source"] = df["source"] if "source" in df.columns else "gmaps_live"
             formatted["entity_type"] = "venue"
             formatted["entity_id"] = df["venue_id"]
             formatted["timestamp"] = pd.to_datetime(df["timestamp"])
-            formatted["metric"] = df.get("metric", "live_busyness")
+            formatted["metric"] = df["metric"] if "metric" in df.columns else "live_busyness"
             formatted["value"] = df["value"].astype(float)
             formatted["metadata"] = df.apply(
                 lambda x: json.dumps({
