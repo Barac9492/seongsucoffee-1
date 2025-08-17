@@ -1,7 +1,4 @@
-import { createClient } from '@supabase/supabase-js'
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+import { sql } from '@vercel/postgres'
 
 interface Signal {
   entity_id: string
@@ -11,38 +8,21 @@ interface Signal {
   metric: string
 }
 
-function getSupabase() {
-  if (!supabaseUrl || !supabaseKey) {
-    console.log('No Supabase config found')
-    return null
-  }
-  return createClient(supabaseUrl, supabaseKey)
-}
-
-async function getSupabaseData(): Promise<{
+async function getRailwayData(): Promise<{
   signals: Signal[]
   stats: any
 }> {
-  const supabase = getSupabase()
-  if (!supabase) {
-    return { signals: [], stats: { total_signals: 0, sources: [] } }
-  }
-
   try {
     // Get recent signals (last 24 hours)
     const dayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString()
     
-    const { data: signals, error } = await supabase
-      .from('signals_raw')
-      .select('*')
-      .gte('timestamp', dayAgo)
-      .order('timestamp', { ascending: false })
-      .limit(1000)
-
-    if (error) {
-      console.error('Supabase error:', error)
-      return { signals: [], stats: { total_signals: 0, sources: [] } }
-    }
+    const { rows: signals } = await sql`
+      SELECT entity_id, value, timestamp, source, 'search_index' as metric
+      FROM signals_raw 
+      WHERE timestamp > ${dayAgo}
+      ORDER BY timestamp DESC 
+      LIMIT 1000
+    `
 
     // Calculate stats
     const totalCount = signals?.length || 0
@@ -58,7 +38,7 @@ async function getSupabaseData(): Promise<{
       }
     }
   } catch (error) {
-    console.error('Failed to fetch from Supabase:', error)
+    console.error('Failed to fetch from Railway PostgreSQL:', error)
     return {
       signals: [],
       stats: { total_signals: 0, sources: [] }
@@ -67,11 +47,11 @@ async function getSupabaseData(): Promise<{
 }
 
 export default async function Dashboard() {
-  const { signals, stats } = await getSupabaseData()
+  const { signals, stats } = await getRailwayData()
 
   // Process trending keywords
   const trendingKeywords = signals
-    .filter(s => s.metric === 'search_index')
+    .filter(s => s.value > 0)
     .reduce((acc, signal) => {
       acc[signal.entity_id] = (acc[signal.entity_id] || 0) + signal.value
       return acc
@@ -81,9 +61,9 @@ export default async function Dashboard() {
     .sort(([,a], [,b]) => b - a)
     .slice(0, 5)
 
-  // Get YouTube activity
-  const youtubeSignals = signals.filter(s => s.source === 'youtube_geo')
-  const totalViews = youtubeSignals.reduce((sum, s) => sum + s.value, 0)
+  // Get source activity
+  const googleTrendsSignals = signals.filter(s => s.source === 'google_trends' || s.source === 'google_trends_youtube')
+  const totalTrendValue = googleTrendsSignals.reduce((sum, s) => sum + s.value, 0)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50">
@@ -93,7 +73,7 @@ export default async function Dashboard() {
             ☕ Seongsu Coffee Intelligence
           </h1>
           <p className="text-amber-700">
-            Real-time trend analysis powered by Supabase
+            Real-time trend analysis powered by Railway PostgreSQL
           </p>
         </header>
 
@@ -113,36 +93,36 @@ export default async function Dashboard() {
           </div>
           <div className="bg-white rounded-lg shadow-md p-6 text-center">
             <div className="text-3xl font-bold text-blue-600 mb-2">
-              {youtubeSignals.length}
+              {googleTrendsSignals.length}
             </div>
-            <div className="text-gray-600">YouTube Videos</div>
+            <div className="text-gray-600">Google Trends</div>
           </div>
           <div className="bg-white rounded-lg shadow-md p-6 text-center">
             <div className="text-3xl font-bold text-purple-600 mb-2">
-              {Math.round(totalViews).toLocaleString()}
+              {Math.round(totalTrendValue).toLocaleString()}
             </div>
-            <div className="text-gray-600">Total Views</div>
+            <div className="text-gray-600">Total Trend Value</div>
           </div>
         </div>
 
         {/* Trending Keywords */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            🔥 Trending Keywords
+            🔥 Trending Keywords (성수 카페 지역)
           </h2>
           {topKeywords.length > 0 ? (
             <div className="space-y-3">
               {topKeywords.map(([keyword, value]) => (
                 <div key={keyword} className="flex justify-between items-center p-3 bg-gray-50 rounded">
-                  <span className="font-medium">{keyword}</span>
+                  <span className="font-medium text-lg">{keyword}</span>
                   <div className="flex items-center space-x-2">
-                    <div className="w-24 bg-gray-200 rounded-full h-2">
+                    <div className="w-32 bg-gray-200 rounded-full h-3">
                       <div 
-                        className="bg-amber-600 h-2 rounded-full" 
+                        className="bg-amber-600 h-3 rounded-full" 
                         style={{ width: `${Math.min((value / Math.max(...topKeywords.map(([,v]) => v))) * 100, 100)}%` }}
                       ></div>
                     </div>
-                    <span className="text-lg font-bold text-amber-600">{Math.round(value)}</span>
+                    <span className="text-xl font-bold text-amber-600">{Math.round(value)}</span>
                   </div>
                 </div>
               ))}
@@ -159,18 +139,18 @@ export default async function Dashboard() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h3 className="font-semibold text-gray-700 mb-2">Google Trends</h3>
+              <h3 className="font-semibold text-gray-700 mb-2">Google Trends (Korean)</h3>
               <div className="text-2xl font-bold text-blue-600">
-                {signals.filter(s => s.source === 'google_trends').length}
+                {googleTrendsSignals.length}
               </div>
-              <div className="text-sm text-gray-500">signals collected</div>
+              <div className="text-sm text-gray-500">signals collected (24h)</div>
             </div>
             <div>
-              <h3 className="font-semibold text-gray-700 mb-2">YouTube Content</h3>
+              <h3 className="font-semibold text-gray-700 mb-2">Trend Intensity</h3>
               <div className="text-2xl font-bold text-red-600">
-                {youtubeSignals.length}
+                {Math.round(totalTrendValue / Math.max(googleTrendsSignals.length, 1))}
               </div>
-              <div className="text-sm text-gray-500">videos analyzed</div>
+              <div className="text-sm text-gray-500">average trend value</div>
             </div>
           </div>
         </div>
@@ -195,7 +175,7 @@ export default async function Dashboard() {
         </div>
 
         <footer className="text-center mt-8 text-gray-500">
-          <p>Powered by Supabase • Real-time PostgreSQL</p>
+          <p>Powered by Railway PostgreSQL • Real-time Korean trend analysis</p>
           {stats.last_updated && (
             <p className="text-sm">Last updated: {new Date(stats.last_updated).toLocaleString()}</p>
           )}
