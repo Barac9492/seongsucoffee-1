@@ -46,7 +46,8 @@ async function getSupabaseData(): Promise<{
 
     // Calculate stats
     const totalCount = signals?.length || 0
-    const sources = [...new Set(signals?.map(s => s.source) || [])]
+    const sourceSet = new Set(signals?.map(s => s.source) || [])
+    const sources = Array.from(sourceSet)
     
     return {
       signals: signals || [],
