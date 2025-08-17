@@ -29,6 +29,12 @@ interface RunLog {
 }
 
 async function getRecentSignals(): Promise<Signal[]> {
+  // Skip database calls during build if no connection string
+  if (!process.env.POSTGRES_URL) {
+    console.log('No POSTGRES_URL found, returning mock data for build')
+    return []
+  }
+  
   try {
     const { rows } = await sql`
       SELECT 
@@ -51,6 +57,10 @@ async function getRecentSignals(): Promise<Signal[]> {
 }
 
 async function getVenueFeatures(): Promise<VenueFeature[]> {
+  if (!process.env.POSTGRES_URL) {
+    return []
+  }
+  
   try {
     const { rows } = await sql`
       SELECT 
@@ -73,6 +83,10 @@ async function getVenueFeatures(): Promise<VenueFeature[]> {
 }
 
 async function getRunStatus(): Promise<RunLog[]> {
+  if (!process.env.POSTGRES_URL) {
+    return []
+  }
+  
   try {
     const { rows } = await sql`
       SELECT 
@@ -102,9 +116,22 @@ export default async function Dashboard() {
   const isHealthy = lastRun?.status === 'success' && 
     lastRun.finished_at &&
     new Date(lastRun.finished_at) > new Date(Date.now() - 4 * 60 * 60 * 1000) // 4 hours
+  
+  // Show connection status
+  const hasDatabase = !!process.env.POSTGRES_URL
 
   return (
     <div className="space-y-8">
+      {/* Database Connection Alert */}
+      {!hasDatabase && (
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+          <div className="flex">
+            <div className="text-yellow-600 text-sm">
+              ⚠️ <strong>Database not connected</strong> - Add your POSTGRES_URL environment variable to see live data.
+            </div>
+          </div>
+        </div>
+      )}
       {/* Status Overview */}
       <div className="bg-white rounded-lg shadow p-6">
         <div className="flex items-center justify-between">
