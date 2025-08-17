@@ -1,0 +1,246 @@
+# K-Wave California Intelligence Platform Configuration
+
+area:
+  id: KWAVE_CA
+  name: "Korean Culture - California"
+  lat: 34.0522  # Los Angeles center
+  lon: -118.2437
+  radius_km: 50  # Cover LA metro area
+
+# Korean culture keywords to track (attention signals)
+keywords:
+  korean_food:
+    - "Korean BBQ"
+    - "Korean restaurant"
+    - "Koreatown LA"
+    - "Korean fried chicken"
+    - "Korean hot pot"
+    - "KBBQ"
+    - "galbi"
+    - "bulgogi"
+    - "bibimbap"
+    - "Korean corn dogs"
+    - "Korean tacos"
+    - "banchan"
+    - "soju"
+    - "makgeolli"
+    - "buldak ramen"
+    - "Korean dessert"
+    - "Korean bakery"
+    - "Korean coffee"
+    - "Korean ice cream"
+  
+  k_entertainment:
+    - "K-pop concert"
+    - "K-drama"
+    - "Korean movie"
+    - "BTS"
+    - "Blackpink"
+    - "Stray Kids"
+    - "NewJeans"
+    - "aespa"
+    - "Korean variety show"
+    - "Korean music"
+    - "K-pop merch"
+    - "Korean festival"
+    - "Korean cultural center"
+    - "Korean language class"
+    - "Hallyu"
+    
+  k_beauty_fashion:
+    - "Korean skincare"
+    - "K-beauty"
+    - "Korean makeup"
+    - "Korean fashion"
+    - "Korean hair salon"
+    - "Korean spa"
+    - "jjimjilbang"
+    - "Korean cosmetics"
+    - "Korean brands"
+    
+  cultural_events:
+    - "LA Korean Festival"
+    - "Korean New Year"
+    - "Chuseok"
+    - "Korean cultural event"
+    - "Korean market"
+    - "Korean grocery"
+    - "H Mart"
+    - "Korean church"
+    - "Korean community"
+
+# Top Korean venues/businesses to monitor in California
+venues:
+  # Korean BBQ Restaurants
+  - venue_id: kang_hodong_baekjeong
+    name: "Kang Ho Dong Baekjeong"
+    place_id: "ChIJKV-ziPHCwoAR4Lnb2b4iF2g"
+    category: korean_bbq
+    location: "Los Angeles"
+    
+  - venue_id: park_bbq
+    name: "Park's BBQ"
+    place_id: "ChIJDTkBk5G_woARe4wSXB8JRjU"
+    category: korean_bbq
+    location: "Los Angeles"
+    
+  - venue_id: quarters_korean_bbq
+    name: "Quarters Korean BBQ"
+    place_id: "ChIJBQT7ovHCwoAR5ZH2K1LF-UY"
+    category: korean_bbq
+    location: "Los Angeles"
+    
+  # Korean Fried Chicken
+  - venue_id: kyochon_chicken
+    name: "Kyochon Chicken"
+    place_id: "ChIJH_w7ofHCwoARYV8lB2qF0UQ"
+    category: korean_chicken
+    location: "Los Angeles"
+    
+  - venue_id: bbq_chicken
+    name: "BBQ Chicken"
+    place_id: "ChIJL_Y2ofHCwoARXV9lC3rG1VR"
+    category: korean_chicken
+    location: "Los Angeles"
+    
+  # Korean Markets
+  - venue_id: hmart_koreatown
+    name: "H Mart Koreatown"
+    place_id: "ChIJ0QT7ovHCwoAR6ZI3L2MG-VZ"
+    category: korean_market
+    location: "Los Angeles"
+    
+  # K-Pop Venues
+  - venue_id: sofi_stadium
+    name: "SoFi Stadium"
+    place_id: "ChIJa_hnAh653IAR5Dh4jAj7TUY"
+    category: concert_venue
+    location: "Los Angeles"
+    
+  - venue_id: crypto_arena
+    name: "Crypto.com Arena"
+    place_id: "ChIJp_N9N5G4woARcCV8eqfKo5w"
+    category: concert_venue
+    location: "Los Angeles"
+    
+  # Korean Cultural Centers
+  - venue_id: korean_cultural_center_la
+    name: "Korean Cultural Center Los Angeles"
+    place_id: "ChIJDdGhNJDAwoARBqtAiuoKW6M"
+    category: cultural_center
+    location: "Los Angeles"
+
+# Data collection settings
+collection:
+  google_trends:
+    enabled: true
+    geo: "US-CA"  # California
+    timeframe: "now 7-d"
+    batch_size: 4
+    
+  youtube:
+    enabled: true
+    max_results: 50
+    published_after_hours: 48
+    location_radius: "50km"  # Around LA
+    
+  google_maps:
+    enabled: true
+    scrape_method: "playwright"
+    headless: true
+    timeout_seconds: 30
+    
+  instagram:
+    enabled: true
+    hashtags:
+      - "#koreanfood"
+      - "#kbbq"
+      - "#koreatown"
+      - "#kpop"
+      - "#kdrama"
+      - "#kbeauty"
+      - "#koreanbbq"
+      - "#losangeles"
+      - "#californiakorean"
+      
+  reviews:
+    enabled: true
+    sources: ["google", "yelp"]
+    queue_keywords: ["wait", "line", "busy", "crowded", "packed", "reservation"]
+    lookback_hours: 24
+
+# Signal processing for Korean culture trends
+signals:
+  normalization:
+    method: "zscore"
+    window_days: 30
+    
+  indices:
+    cultural_velocity:  # How fast Korean trends are spreading
+      weight_trends: 0.4
+      weight_youtube: 0.3
+      weight_instagram: 0.3
+      
+    business_density:  # How busy Korean businesses are
+      weight_busyness: 0.5
+      weight_queue: 0.3
+      weight_reservations: 0.2
+      
+    event_urgency:  # Concert/event demand
+      weight_tickets: 0.4
+      weight_searches: 0.3
+      weight_social: 0.3
+      
+    satisfaction:  # Customer satisfaction
+      weight_reviews: 0.5
+      weight_photos: 0.3
+      weight_repeat: 0.2
+
+# Prediction targets for Korean businesses
+predictions:
+  restaurant_surge:
+    target_venues: ["korean_bbq", "korean_chicken", "korean_dessert"]
+    prediction_window_hours: 24
+    confidence_threshold: 0.7
+    
+  event_attendance:
+    target_venues: ["concert_venue", "cultural_center"]
+    prediction_window_days: 7
+    confidence_threshold: 0.8
+    
+  cultural_trend_virality:
+    categories: ["korean_food", "k_entertainment", "k_beauty_fashion"]
+    prediction_window_days: 14
+    confidence_threshold: 0.6
+
+# Database settings
+database:
+  schema: "public"
+  tables:
+    raw: "kwave_signals_raw"
+    features: "kwave_features_daily"
+    predictions: "kwave_predictions"
+    businesses: "kwave_businesses"
+    runs: "kwave_runs_log"
+  
+  retention_days: 180  # Keep more data for trend analysis
+  vacuum_enabled: true
+
+# Alerting thresholds for Korean businesses
+alerts:
+  surge_threshold: 0.75  # 75th percentile for restaurant surge
+  trend_spike_multiplier: 3.0  # K-culture can spike quickly
+  min_data_points: 5
+  
+  business_categories:
+    korean_restaurant:
+      surge_threshold: 0.8
+      advance_warning_hours: 2
+    
+    k_pop_event:
+      surge_threshold: 0.9
+      advance_warning_days: 3
+      
+    cultural_trend:
+      viral_threshold: 0.7
+      early_detection_days: 7
