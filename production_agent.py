@@ -85,28 +85,61 @@ class ProductionAgent:
                 import os
                 
                 dsn = os.getenv('DATABASE_URL') or os.getenv('POSTGRES_DSN')
+                if not dsn:
+                    return jsonify({'status': 'error', 'error': 'No database URL found'}), 500
+                    
                 engine = create_engine(dsn)
                 
                 with engine.connect() as conn:
                     # Test connection
                     conn.execute(text('SELECT 1'))
                     
+                    # Check if table exists
+                    table_check = conn.execute(text("""
+                        SELECT EXISTS (
+                            SELECT FROM information_schema.tables 
+                            WHERE table_name = 'signals_raw'
+                        )
+                    """))
+                    table_exists = table_check.scalar()
+                    
+                    if not table_exists:
+                        return jsonify({
+                            'status': 'connected',
+                            'message': 'Database connected but signals_raw table does not exist',
+                            'total_signals': 0,
+                            'recent_signals': []
+                        })
+                    
                     # Count signals
                     result = conn.execute(text('SELECT COUNT(*) FROM signals_raw'))
-                    count = result.scalar()
+                    count = result.scalar() or 0
                     
-                    # Get recent signals
-                    result = conn.execute(text('SELECT * FROM signals_raw ORDER BY timestamp DESC LIMIT 5'))
-                    recent = [dict(row) for row in result]
+                    # Get recent signals with specific columns
+                    result = conn.execute(text("""
+                        SELECT entity_id, value, source, timestamp 
+                        FROM signals_raw 
+                        ORDER BY timestamp DESC 
+                        LIMIT 5
+                    """))
+                    
+                    recent = []
+                    for row in result:
+                        recent.append({
+                            'entity_id': str(row.entity_id),
+                            'value': float(row.value) if row.value else 0,
+                            'source': str(row.source),
+                            'timestamp': str(row.timestamp)
+                        })
                     
                     return jsonify({
                         'status': 'connected',
                         'total_signals': count,
                         'recent_signals': recent,
-                        'database_url': dsn.split('@')[1] if '@' in dsn else 'hidden'
+                        'database_info': f"Railway PostgreSQL ({dsn.split('//')[-1].split('@')[1].split('/')[0] if '@' in dsn else 'connected'})"
                     })
             except Exception as e:
-                return jsonify({'status': 'error', 'error': str(e)}), 500
+                return jsonify({'status': 'error', 'error': str(e), 'type': type(e).__name__}), 500
                 
     def run_collection_cycle(self):
         """Run one complete collection cycle"""
