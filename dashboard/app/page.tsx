@@ -4,7 +4,31 @@ import VenueGrid from './components/VenueGrid'
 import TrendsChart from './components/TrendsChart'
 import StatsOverview from './components/StatsOverview'
 
-async function getRecentSignals() {
+interface Signal {
+  entity_id: string
+  metric: string
+  avg_value: number
+  count: number
+  latest: string
+}
+
+interface VenueFeature {
+  venue_id: string
+  date: string
+  d_index: number
+  o_index: number
+  c_index: number
+  s_index: number
+}
+
+interface RunLog {
+  status: string
+  started_at: string
+  finished_at: string
+  rows_inserted: number
+}
+
+async function getRecentSignals(): Promise<Signal[]> {
   try {
     const { rows } = await sql`
       SELECT 
@@ -19,14 +43,14 @@ async function getRecentSignals() {
       ORDER BY latest DESC
       LIMIT 100
     `
-    return rows
+    return rows as Signal[]
   } catch (error) {
     console.error('Database error:', error)
     return []
   }
 }
 
-async function getVenueFeatures() {
+async function getVenueFeatures(): Promise<VenueFeature[]> {
   try {
     const { rows } = await sql`
       SELECT 
@@ -41,14 +65,14 @@ async function getVenueFeatures() {
       ORDER BY date DESC, d_index DESC
       LIMIT 50
     `
-    return rows
+    return rows as VenueFeature[]
   } catch (error) {
     console.error('Database error:', error)
     return []
   }
 }
 
-async function getRunStatus() {
+async function getRunStatus(): Promise<RunLog[]> {
   try {
     const { rows } = await sql`
       SELECT 
@@ -60,7 +84,7 @@ async function getRunStatus() {
       ORDER BY started_at DESC 
       LIMIT 10
     `
-    return rows
+    return rows as RunLog[]
   } catch (error) {
     console.error('Database error:', error)
     return []
@@ -76,6 +100,7 @@ export default async function Dashboard() {
 
   const lastRun = runs[0]
   const isHealthy = lastRun?.status === 'success' && 
+    lastRun.finished_at &&
     new Date(lastRun.finished_at) > new Date(Date.now() - 4 * 60 * 60 * 1000) // 4 hours
 
   return (
