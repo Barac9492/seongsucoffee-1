@@ -1,3 +1,22 @@
 {
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "functions": {
+    "api/**/*.py": {
+      "runtime": "@vercel/python"
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/collect",
+      "schedule": "15 * * * *"
+    },
+    {
+      "path": "/api/analyze", 
+      "schedule": "0 */4 * * *"
+    },
+    {
+      "path": "/api/alerts",
+      "schedule": "*/30 * * * *"
+    }
+  ]
 }

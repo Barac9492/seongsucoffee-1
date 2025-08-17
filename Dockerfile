@@ -4,10 +4,9 @@ FROM python:3.11-slim
 RUN apt-get update && apt-get install -y \
     gcc \
     g++ \
-    postgresql-client \
-    cron \
     wget \
     gnupg \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Playwright dependencies
@@ -44,8 +43,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN playwright install chromium
 
 # Copy application code
-COPY agent.py .
-COPY scrapers/ ./scrapers/
+COPY . .
 
 # Create logs directory
 RUN mkdir -p /app/logs
@@ -54,10 +52,9 @@ RUN mkdir -p /app/logs
 ENV TZ=Asia/Seoul
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-# Create non-root user
-RUN useradd -m -s /bin/bash forecast && \
-    chown -R forecast:forecast /app
+# Health check
+HEALTHCHECK --interval=30m --timeout=30s --start-period=5s --retries=3 \
+  CMD python -c "import requests; requests.get('http://localhost:8080/health', timeout=10)" || exit 1
 
-USER forecast
-
-CMD ["python", "agent.py"]
+# Run agent on startup
+CMD ["python", "agent.py", "config.yaml"]
