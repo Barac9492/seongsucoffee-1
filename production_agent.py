@@ -115,13 +115,31 @@ class ProductionAgent:
                     result = conn.execute(text('SELECT COUNT(*) FROM signals_raw'))
                     count = result.scalar() or 0
                     
-                    # Get recent signals with specific columns
+                    # Get recent signals with specific columns and value analysis
                     result = conn.execute(text("""
                         SELECT entity_id, value, source, timestamp 
                         FROM signals_raw 
                         ORDER BY timestamp DESC 
+                        LIMIT 10
+                    """))
+                    
+                    # Also check for non-zero values
+                    nonzero_result = conn.execute(text("""
+                        SELECT COUNT(*) as nonzero_count, MAX(value) as max_value, AVG(value) as avg_value
+                        FROM signals_raw 
+                        WHERE value > 0
+                    """))
+                    value_stats = nonzero_result.fetchone()
+                    
+                    # Check value distribution
+                    dist_result = conn.execute(text("""
+                        SELECT value, COUNT(*) as count
+                        FROM signals_raw 
+                        GROUP BY value 
+                        ORDER BY count DESC 
                         LIMIT 5
                     """))
+                    value_distribution = [{'value': row.value, 'count': row.count} for row in dist_result]
                     
                     recent = []
                     for row in result:
@@ -136,6 +154,12 @@ class ProductionAgent:
                         'status': 'connected',
                         'total_signals': count,
                         'recent_signals': recent,
+                        'value_analysis': {
+                            'nonzero_count': value_stats.nonzero_count if value_stats else 0,
+                            'max_value': float(value_stats.max_value) if value_stats and value_stats.max_value else 0,
+                            'avg_value': float(value_stats.avg_value) if value_stats and value_stats.avg_value else 0
+                        },
+                        'value_distribution': value_distribution,
                         'database_info': f"Railway PostgreSQL ({dsn.split('//')[-1].split('@')[1].split('/')[0] if '@' in dsn else 'connected'})"
                     })
             except Exception as e:
