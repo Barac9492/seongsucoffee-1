@@ -1,222 +1,204 @@
-import { sql } from '@vercel/postgres'
-import { format } from 'date-fns'
-import VenueGrid from './components/VenueGrid'
-import TrendsChart from './components/TrendsChart'
-import StatsOverview from './components/StatsOverview'
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 interface Signal {
   entity_id: string
+  value: number
+  timestamp: string
+  source: string
   metric: string
-  avg_value: number
-  count: number
-  latest: string
 }
 
-interface VenueFeature {
-  venue_id: string
-  date: string
-  d_index: number
-  o_index: number
-  c_index: number
-  s_index: number
-}
-
-interface RunLog {
-  status: string
-  started_at: string
-  finished_at: string
-  rows_inserted: number
-}
-
-async function getRecentSignals(): Promise<Signal[]> {
-  // Skip database calls during build if no connection string
-  if (!process.env.POSTGRES_URL) {
-    console.log('No POSTGRES_URL found, returning mock data for build')
-    return []
+function getSupabase() {
+  if (!supabaseUrl || !supabaseKey) {
+    console.log('No Supabase config found')
+    return null
   }
-  
+  return createClient(supabaseUrl, supabaseKey)
+}
+
+async function getSupabaseData(): Promise<{
+  signals: Signal[]
+  stats: any
+}> {
+  const supabase = getSupabase()
+  if (!supabase) {
+    return { signals: [], stats: { total_signals: 0, sources: [] } }
+  }
+
   try {
-    const { rows } = await sql`
-      SELECT 
-        entity_id,
-        metric,
-        AVG(value) as avg_value,
-        COUNT(*) as count,
-        MAX(timestamp) as latest
-      FROM signals_raw 
-      WHERE timestamp > NOW() - INTERVAL '24 hours'
-      GROUP BY entity_id, metric
-      ORDER BY latest DESC
-      LIMIT 100
-    `
-    return rows as Signal[]
-  } catch (error) {
-    console.error('Database error:', error)
-    return []
-  }
-}
+    // Get recent signals (last 24 hours)
+    const dayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString()
+    
+    const { data: signals, error } = await supabase
+      .from('signals_raw')
+      .select('*')
+      .gte('timestamp', dayAgo)
+      .order('timestamp', { ascending: false })
+      .limit(1000)
 
-async function getVenueFeatures(): Promise<VenueFeature[]> {
-  if (!process.env.POSTGRES_URL) {
-    return []
-  }
-  
-  try {
-    const { rows } = await sql`
-      SELECT 
-        venue_id,
-        date,
-        d_index,
-        o_index,
-        c_index,
-        s_index
-      FROM features_daily 
-      WHERE date >= CURRENT_DATE - INTERVAL '7 days'
-      ORDER BY date DESC, d_index DESC
-      LIMIT 50
-    `
-    return rows as VenueFeature[]
-  } catch (error) {
-    console.error('Database error:', error)
-    return []
-  }
-}
+    if (error) {
+      console.error('Supabase error:', error)
+      return { signals: [], stats: { total_signals: 0, sources: [] } }
+    }
 
-async function getRunStatus(): Promise<RunLog[]> {
-  if (!process.env.POSTGRES_URL) {
-    return []
-  }
-  
-  try {
-    const { rows } = await sql`
-      SELECT 
-        status,
-        started_at,
-        finished_at,
-        rows_inserted
-      FROM runs_log 
-      ORDER BY started_at DESC 
-      LIMIT 10
-    `
-    return rows as RunLog[]
+    // Calculate stats
+    const totalCount = signals?.length || 0
+    const sources = [...new Set(signals?.map(s => s.source) || [])]
+    
+    return {
+      signals: signals || [],
+      stats: {
+        total_signals: totalCount,
+        sources: sources,
+        last_updated: signals?.[0]?.timestamp || null
+      }
+    }
   } catch (error) {
-    console.error('Database error:', error)
-    return []
+    console.error('Failed to fetch from Supabase:', error)
+    return {
+      signals: [],
+      stats: { total_signals: 0, sources: [] }
+    }
   }
 }
 
 export default async function Dashboard() {
-  const [signals, features, runs] = await Promise.all([
-    getRecentSignals(),
-    getVenueFeatures(),
-    getRunStatus()
-  ])
+  const { signals, stats } = await getSupabaseData()
 
-  const lastRun = runs[0]
-  const isHealthy = lastRun?.status === 'success' && 
-    lastRun.finished_at &&
-    new Date(lastRun.finished_at) > new Date(Date.now() - 4 * 60 * 60 * 1000) // 4 hours
-  
-  // Show connection status
-  const hasDatabase = !!process.env.POSTGRES_URL
+  // Process trending keywords
+  const trendingKeywords = signals
+    .filter(s => s.metric === 'search_index')
+    .reduce((acc, signal) => {
+      acc[signal.entity_id] = (acc[signal.entity_id] || 0) + signal.value
+      return acc
+    }, {} as Record<string, number>)
+
+  const topKeywords = Object.entries(trendingKeywords)
+    .sort(([,a], [,b]) => b - a)
+    .slice(0, 5)
+
+  // Get YouTube activity
+  const youtubeSignals = signals.filter(s => s.source === 'youtube_geo')
+  const totalViews = youtubeSignals.reduce((sum, s) => sum + s.value, 0)
 
   return (
-    <div className="space-y-8">
-      {/* Database Connection Alert */}
-      {!hasDatabase && (
-        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-          <div className="flex">
-            <div className="text-yellow-600 text-sm">
-              ⚠️ <strong>Database not connected</strong> - Add your POSTGRES_URL environment variable to see live data.
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50">
+      <div className="container mx-auto px-4 py-8">
+        <header className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-amber-900 mb-2">
+            ☕ Seongsu Coffee Intelligence
+          </h1>
+          <p className="text-amber-700">
+            Real-time trend analysis powered by Supabase
+          </p>
+        </header>
+
+        {/* Stats Overview */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div className="bg-white rounded-lg shadow-md p-6 text-center">
+            <div className="text-3xl font-bold text-amber-600 mb-2">
+              {stats.total_signals}
             </div>
+            <div className="text-gray-600">Signals (24h)</div>
+          </div>
+          <div className="bg-white rounded-lg shadow-md p-6 text-center">
+            <div className="text-3xl font-bold text-green-600 mb-2">
+              {topKeywords.length}
+            </div>
+            <div className="text-gray-600">Trending Keywords</div>
+          </div>
+          <div className="bg-white rounded-lg shadow-md p-6 text-center">
+            <div className="text-3xl font-bold text-blue-600 mb-2">
+              {youtubeSignals.length}
+            </div>
+            <div className="text-gray-600">YouTube Videos</div>
+          </div>
+          <div className="bg-white rounded-lg shadow-md p-6 text-center">
+            <div className="text-3xl font-bold text-purple-600 mb-2">
+              {Math.round(totalViews).toLocaleString()}
+            </div>
+            <div className="text-gray-600">Total Views</div>
           </div>
         </div>
-      )}
-      {/* Status Overview */}
-      <div className="bg-white rounded-lg shadow p-6">
-        <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-gray-900">System Status</h2>
-          <div className={`px-3 py-1 rounded-full text-sm font-medium ${
-            isHealthy 
-              ? 'bg-green-100 text-green-800' 
-              : 'bg-red-100 text-red-800'
-          }`}>
-            {isHealthy ? '✅ Healthy' : '⚠️ Issues Detected'}
-          </div>
-        </div>
-        
-        {lastRun && (
-          <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-            <div>
-              <div className="text-gray-500">Last Collection</div>
-              <div className="font-medium">
-                {format(new Date(lastRun.started_at), 'MMM dd, HH:mm')}
-              </div>
-            </div>
-            <div>
-              <div className="text-gray-500">Signals Collected</div>
-              <div className="font-medium">{lastRun.rows_inserted || 0}</div>
-            </div>
-            <div>
-              <div className="text-gray-500">Status</div>
-              <div className="font-medium capitalize">{lastRun.status}</div>
-            </div>
-          </div>
-        )}
-      </div>
 
-      {/* Stats Overview */}
-      <StatsOverview signals={signals} />
-
-      {/* Venue Grid */}
-      <div className="bg-white rounded-lg shadow">
-        <div className="p-6 border-b">
-          <h2 className="text-lg font-semibold text-gray-900">Venue Performance</h2>
-          <p className="text-gray-600">D/O/C/S indices for top Seongsu venues</p>
-        </div>
-        <VenueGrid features={features} />
-      </div>
-
-      {/* Trends Chart */}
-      <div className="bg-white rounded-lg shadow">
-        <div className="p-6 border-b">
-          <h2 className="text-lg font-semibold text-gray-900">Signal Trends</h2>
-          <p className="text-gray-600">Recent attention and demand patterns</p>
-        </div>
-        <TrendsChart signals={signals} />
-      </div>
-
-      {/* Recent Activity */}
-      <div className="bg-white rounded-lg shadow">
-        <div className="p-6 border-b">
-          <h2 className="text-lg font-semibold text-gray-900">Recent Collections</h2>
-        </div>
-        <div className="divide-y">
-          {runs.slice(0, 5).map((run, i) => (
-            <div key={i} className="p-4 flex items-center justify-between">
-              <div className="flex items-center space-x-3">
-                <div className={`w-2 h-2 rounded-full ${
-                  run.status === 'success' ? 'bg-green-400' : 'bg-red-400'
-                }`} />
-                <div>
-                  <div className="text-sm font-medium">
-                    {format(new Date(run.started_at), 'MMM dd, HH:mm')}
-                  </div>
-                  <div className="text-xs text-gray-500">
-                    {run.rows_inserted || 0} signals collected
+        {/* Trending Keywords */}
+        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            🔥 Trending Keywords
+          </h2>
+          {topKeywords.length > 0 ? (
+            <div className="space-y-3">
+              {topKeywords.map(([keyword, value]) => (
+                <div key={keyword} className="flex justify-between items-center p-3 bg-gray-50 rounded">
+                  <span className="font-medium">{keyword}</span>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-24 bg-gray-200 rounded-full h-2">
+                      <div 
+                        className="bg-amber-600 h-2 rounded-full" 
+                        style={{ width: `${Math.min((value / Math.max(...topKeywords.map(([,v]) => v))) * 100, 100)}%` }}
+                      ></div>
+                    </div>
+                    <span className="text-lg font-bold text-amber-600">{Math.round(value)}</span>
                   </div>
                 </div>
-              </div>
-              <div className={`text-xs px-2 py-1 rounded ${
-                run.status === 'success' 
-                  ? 'bg-green-100 text-green-800' 
-                  : 'bg-red-100 text-red-800'
-              }`}>
-                {run.status}
-              </div>
+              ))}
             </div>
-          ))}
+          ) : (
+            <p className="text-gray-500">No trending data available</p>
+          )}
         </div>
+
+        {/* Recent Activity */}
+        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            📊 Recent Activity
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 className="font-semibold text-gray-700 mb-2">Google Trends</h3>
+              <div className="text-2xl font-bold text-blue-600">
+                {signals.filter(s => s.source === 'google_trends').length}
+              </div>
+              <div className="text-sm text-gray-500">signals collected</div>
+            </div>
+            <div>
+              <h3 className="font-semibold text-gray-700 mb-2">YouTube Content</h3>
+              <div className="text-2xl font-bold text-red-600">
+                {youtubeSignals.length}
+              </div>
+              <div className="text-sm text-gray-500">videos analyzed</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Data Sources */}
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            📡 Data Sources
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {stats.sources?.map((source: string) => (
+              <div key={source} className="p-3 bg-green-50 rounded text-center">
+                <div className="font-medium text-green-800">{source}</div>
+                <div className="text-sm text-green-600">
+                  {signals.filter(s => s.source === source).length} signals
+                </div>
+              </div>
+            )) || (
+              <p className="text-gray-500 col-span-3">No active sources</p>
+            )}
+          </div>
+        </div>
+
+        <footer className="text-center mt-8 text-gray-500">
+          <p>Powered by Supabase • Real-time PostgreSQL</p>
+          {stats.last_updated && (
+            <p className="text-sm">Last updated: {new Date(stats.last_updated).toLocaleString()}</p>
+          )}
+        </footer>
       </div>
     </div>
   )

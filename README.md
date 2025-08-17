@@ -1,168 +1,50 @@
-# Seongsu Coffee & Bakery Forecast Agent
+# Seongsu Coffee Dashboard
 
-An MVP forecasting agent that collects attention signals and demand proxies for popular cafés and bakeries in Seoul's Seongsu district.
+Real-time web dashboard for the Seongsu Coffee Forecast Agent data.
 
-## Overview
+## Features
 
-This agent gathers predictive signals to model the relationship between online attention (Google Trends, YouTube, social media) and real-world demand (busyness, queues) at ~20 popular Seongsu venues.
+- 📊 Live signal monitoring (Google Trends, YouTube, Maps busyness)
+- 🏪 Venue performance tracking with D/O/C/S indices
+- 📈 Trending keywords and queue analysis
+- ✅ System health monitoring
 
-### Key Features
+## Quick Deploy to Vercel
 
-- **Google Trends**: Web and YouTube search indices for coffee/bakery keywords
-- **YouTube Geo API**: Videos posted near Seongsu with view counts
-- **Google Maps Scraper**: Live busyness and popular times (via Playwright)
-- **Signal Processing**: Normalized D/O/C/S indices for ML modeling
-- **PostgreSQL Storage**: Time-series data optimized for backtesting
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Barac9492/seongsucoffee-1/tree/main/dashboard)
 
-## Quick Start
+### Setup Steps
 
-### 1. Clone and Setup
+1. **Click Deploy button above**
+2. **Add environment variable**:
+   - `POSTGRES_URL`: Connection string to your forecast database
+3. **Deploy!**
+
+### Database Setup
+
+The dashboard reads from the same PostgreSQL database as the agent. Make sure your database is accessible from Vercel (use connection pooling).
+
+Example connection string:
+```
+POSTGRES_URL="postgres://user:pass@hostname:5432/seongsu_forecast"
+```
+
+### Local Development
 
 ```bash
-git clone <repo>
-cd seongsu-coffee-forecast
-cp .env.example .env
-# Edit .env with your API keys
+cd dashboard
+npm install
+npm run dev
 ```
 
-### 2. Local Development
+Open [http://localhost:3000](http://localhost:3000) to see the dashboard.
 
-```bash
-# Install dependencies
-python -m venv venv
-source venv/bin/activate  # or `venv\Scripts\activate` on Windows
-pip install -r requirements.txt
+## Architecture
 
-# Install Playwright browsers
-playwright install chromium
-
-# Setup PostgreSQL
-docker run -d \
-  --name seongsu_postgres \
-  -e POSTGRES_DB=seongsu_forecast \
-  -e POSTGRES_USER=forecast_user \
-  -e POSTGRES_PASSWORD=changeme \
-  -p 5432:5432 \
-  postgres:16-alpine
-
-# Run agent
-python agent.py config.yaml
+```
+Agent (Docker/Server) → PostgreSQL ← Dashboard (Vercel)
+     ↓                      ↑              ↓
+Data Collection         Database      Web Interface
 ```
 
-### 3. Docker Deployment
-
-```bash
-# Start all services
-docker-compose up -d
-
-# Check logs
-docker-compose logs -f agent
-
-# Run manually
-docker-compose exec agent python agent.py
-```
-
-## Configuration
-
-Edit `config.yaml` to customize:
-
-- **Keywords**: Terms to track in Google Trends
-- **Venues**: Cafés/bakeries to monitor (add place_id for better accuracy)
-- **Collection settings**: API limits, scraping parameters
-- **Signal processing**: Normalization methods, index weights
-
-## Data Schema
-
-### signals_raw
-- Raw time-series data from all sources
-- ~100-500 rows per hour depending on active sources
-
-### features_daily
-- Computed D/O/C/S indices per venue
-- One row per venue per day
-
-### labels
-- Ground truth surge events for model training
-- Populated from busyness percentiles
-
-## API Keys Required
-
-1. **YouTube Data API v3**
-   - Get from [Google Cloud Console](https://console.cloud.google.com)
-   - Enable YouTube Data API v3
-   - Create API key
-
-2. **Naver DataLab** (Optional)
-   - Register at [Naver Developers](https://developers.naver.com)
-   - Create application for Search Trends API
-
-## Signal Indices
-
-- **D-Index (Dopamine)**: Novelty velocity from search/video spikes
-- **O-Index (Oxytocin)**: Social density from busyness/queues
-- **C-Index (Cortisol)**: Urgency from time patterns/scarcity
-- **S-Index (Serotonin)**: Satisfaction from reviews/photos
-
-## Monitoring
-
-```sql
--- Check recent runs
-SELECT * FROM runs_log 
-ORDER BY started_at DESC 
-LIMIT 10;
-
--- View signal distribution
-SELECT source, COUNT(*) as cnt, MAX(timestamp) as latest
-FROM signals_raw
-GROUP BY source;
-
--- Check venue features
-SELECT venue_id, date, d_index, o_index, c_index, s_index
-FROM features_daily
-WHERE date >= CURRENT_DATE - INTERVAL '7 days'
-ORDER BY d_index DESC;
-```
-
-## Deployment
-
-### Cron Schedule
-
-The agent runs hourly by default. Adjust in `crontab`:
-
-```cron
-# Every hour at :15
-15 * * * * cd /app && python agent.py
-
-# Every 30 minutes (higher frequency)
-*/30 * * * * cd /app && python agent.py
-```
-
-### Production Checklist
-
-- [ ] Set strong PostgreSQL password
-- [ ] Configure log rotation
-- [ ] Set up monitoring alerts
-- [ ] Enable SSL for database
-- [ ] Implement retry logic for API failures
-- [ ] Add data validation checks
-- [ ] Set up backup schedule
-
-## Next Steps
-
-1. **Add Instagram/TikTok scrapers** (carefully, with rate limits)
-2. **Build IndexBuilder** to compute sophisticated D/O/C/S scores
-3. **Create Labeler** to generate surge labels from percentiles
-4. **Train Forecaster** with XGBoost/LightGBM + isotonic calibration
-5. **Deploy dashboard** for real-time signal monitoring
-
-## License
-
-MIT
-
-## Contributing
-
-Pull requests welcome! Please ensure:
-- Code follows PEP 8
-- Add tests for new collectors
-- Update config.yaml.example
-- Document new signals in README
+The dashboard is read-only and visualizes data collected by the main agent.
