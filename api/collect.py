@@ -1,6 +1,5 @@
 """
 Vercel Cron Function for data collection
-This runs the Seongsu Coffee agent on a schedule
 """
 
 import os
@@ -14,14 +13,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from agent import ForecastAgent
 
 def handler(request):
-    """Vercel function handler for scheduled data collection"""
-    
-    # Only allow POST requests (from cron)
-    if request.method != 'POST':
-        return {
-            'statusCode': 405,
-            'body': json.dumps({'error': 'Method not allowed'})
-        }
+    """Vercel function handler"""
     
     try:
         # Initialize and run the agent
@@ -36,7 +28,7 @@ def handler(request):
             'body': json.dumps({
                 'status': 'success',
                 'timestamp': datetime.now().isoformat(),
-                'result': result
+                'result': str(result)
             })
         }
         
