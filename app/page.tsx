@@ -16,7 +16,7 @@ async function getRailwayData(): Promise<{
     // Get recent signals (last 24 hours)
     const dayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString()
     
-    const { rows: signals } = await sql`
+    const { rows } = await sql`
       SELECT entity_id, value, timestamp, source, 'search_index' as metric
       FROM signals_raw 
       WHERE timestamp > ${dayAgo}
@@ -24,13 +24,22 @@ async function getRailwayData(): Promise<{
       LIMIT 1000
     `
 
+    // Convert to Signal type
+    const signals: Signal[] = rows.map(row => ({
+      entity_id: row.entity_id as string,
+      value: Number(row.value),
+      timestamp: row.timestamp as string,
+      source: row.source as string,
+      metric: row.metric as string
+    }))
+
     // Calculate stats
     const totalCount = signals?.length || 0
     const sourceSet = new Set(signals?.map(s => s.source) || [])
     const sources = Array.from(sourceSet)
     
     return {
-      signals: signals || [],
+      signals: signals,
       stats: {
         total_signals: totalCount,
         sources: sources,
