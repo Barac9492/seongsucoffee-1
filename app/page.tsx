@@ -13,15 +13,15 @@ async function getRailwayData(): Promise<{
   stats: any
 }> {
   try {
-    // Get recent signals (last 24 hours)
-    const dayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString()
+    // Get recent signals (last 7 days to get better data)
+    const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
     
     const { rows } = await sql`
       SELECT entity_id, value, timestamp, source, 'search_index' as metric
       FROM signals_raw 
-      WHERE timestamp > ${dayAgo}
+      WHERE timestamp > ${weekAgo}
       ORDER BY timestamp DESC 
-      LIMIT 1000
+      LIMIT 2000
     `
 
     // Convert to Signal type
@@ -58,11 +58,10 @@ async function getRailwayData(): Promise<{
 export default async function Dashboard() {
   const { signals, stats } = await getRailwayData()
 
-  // Process trending keywords
+  // Process trending keywords - count occurrences instead of values (since many are 0)
   const trendingKeywords = signals
-    .filter(s => s.value > 0)
     .reduce((acc, signal) => {
-      acc[signal.entity_id] = (acc[signal.entity_id] || 0) + signal.value
+      acc[signal.entity_id] = (acc[signal.entity_id] || 0) + 1
       return acc
     }, {} as Record<string, number>)
 
@@ -92,7 +91,7 @@ export default async function Dashboard() {
             <div className="text-3xl font-bold text-amber-600 mb-2">
               {stats.total_signals}
             </div>
-            <div className="text-gray-600">Signals (24h)</div>
+            <div className="text-gray-600">Signals (7 days)</div>
           </div>
           <div className="bg-white rounded-lg shadow-md p-6 text-center">
             <div className="text-3xl font-bold text-green-600 mb-2">
@@ -131,7 +130,7 @@ export default async function Dashboard() {
                         style={{ width: `${Math.min((value / Math.max(...topKeywords.map(([,v]) => v))) * 100, 100)}%` }}
                       ></div>
                     </div>
-                    <span className="text-xl font-bold text-amber-600">{Math.round(value)}</span>
+                    <span className="text-xl font-bold text-amber-600">{value} times</span>
                   </div>
                 </div>
               ))}
@@ -152,7 +151,7 @@ export default async function Dashboard() {
               <div className="text-2xl font-bold text-blue-600">
                 {googleTrendsSignals.length}
               </div>
-              <div className="text-sm text-gray-500">signals collected (24h)</div>
+              <div className="text-sm text-gray-500">signals collected (7 days)</div>
             </div>
             <div>
               <h3 className="font-semibold text-gray-700 mb-2">Trend Intensity</h3>
