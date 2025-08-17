@@ -2,7 +2,7 @@
   "framework": "nextjs",
   "crons": [
     {
-      "path": "/api/collect_lightweight",
+      "path": "/api/collect_minimal",
       "schedule": "15 * * * *"
     }
   ]

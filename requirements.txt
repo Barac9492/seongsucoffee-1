@@ -1,16 +1,2 @@
-# Minimal dependencies for Vercel Functions
-python-dotenv==1.0.1
-PyYAML==6.0.2
-SQLAlchemy==2.0.31
-psycopg2-binary==2.9.9
-pandas==2.2.2
-
-# Google APIs - lightweight
-pytrends==4.9.2
-
-# HTTP requests
+# Ultra-minimal dependencies for Vercel Functions
 requests==2.32.3
-
-# Data processing
-pytz==2024.1
-python-dateutil==2.9.0
