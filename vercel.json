@@ -2,16 +2,8 @@
   "framework": "nextjs",
   "crons": [
     {
-      "path": "/api/collect",
+      "path": "/api/collect_lightweight",
       "schedule": "15 * * * *"
-    },
-    {
-      "path": "/api/analyze", 
-      "schedule": "0 */4 * * *"
-    },
-    {
-      "path": "/api/alerts",
-      "schedule": "*/30 * * * *"
     }
   ]
 }
