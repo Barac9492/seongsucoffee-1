@@ -72,8 +72,39 @@ class ProductionAgent:
         def force_run():
             """Manually trigger a collection run"""
             try:
-                self.run_collection_cycle()
-                return jsonify({'status': 'success', 'message': 'Collection triggered'})
+                result = self.run_collection_cycle()
+                return jsonify({'status': 'success', 'message': 'Collection triggered', 'result': str(result)})
+            except Exception as e:
+                return jsonify({'status': 'error', 'error': str(e)}), 500
+                
+        @self.app.route('/test-db')
+        def test_db():
+            """Test database connection and data"""
+            try:
+                from sqlalchemy import create_engine, text
+                import os
+                
+                dsn = os.getenv('DATABASE_URL') or os.getenv('POSTGRES_DSN')
+                engine = create_engine(dsn)
+                
+                with engine.connect() as conn:
+                    # Test connection
+                    conn.execute(text('SELECT 1'))
+                    
+                    # Count signals
+                    result = conn.execute(text('SELECT COUNT(*) FROM signals_raw'))
+                    count = result.scalar()
+                    
+                    # Get recent signals
+                    result = conn.execute(text('SELECT * FROM signals_raw ORDER BY timestamp DESC LIMIT 5'))
+                    recent = [dict(row) for row in result]
+                    
+                    return jsonify({
+                        'status': 'connected',
+                        'total_signals': count,
+                        'recent_signals': recent,
+                        'database_url': dsn.split('@')[1] if '@' in dsn else 'hidden'
+                    })
             except Exception as e:
                 return jsonify({'status': 'error', 'error': str(e)}), 500
                 

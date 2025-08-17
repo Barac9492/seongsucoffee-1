@@ -66,7 +66,7 @@ class Config:
     @classmethod
     def from_env(cls) -> 'Config':
         return cls(
-            postgres_dsn=os.getenv("POSTGRES_DSN", ""),
+            postgres_dsn=os.getenv("DATABASE_URL") or os.getenv("POSTGRES_DSN", ""),
             youtube_api_key=os.getenv("YOUTUBE_API_KEY"),
             naver_client_id=os.getenv("NAVER_CLIENT_ID"),
             naver_client_secret=os.getenv("NAVER_CLIENT_SECRET"),
