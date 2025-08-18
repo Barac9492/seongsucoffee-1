@@ -172,9 +172,9 @@ export default async function Home() {
               <span className="text-xl font-bold text-gray-900">K-Wave Intelligence</span>
             </div>
             <div className="hidden md:flex items-center gap-8">
-              <a href="/trends" className="text-gray-600 hover:text-gray-900 font-medium">Trends</a>
-              <a href="/kwave" className="text-gray-600 hover:text-gray-900 font-medium">Restaurants</a>
-              <a href="#" className="text-gray-600 hover:text-gray-900 font-medium">API</a>
+              <a href="/trends" className="text-gray-600 hover:text-gray-900 font-medium">All Trends</a>
+              <a href="/k-beauty" className="text-gray-600 hover:text-gray-900 font-medium">K-Beauty Intel</a>
+              <a href="/k-restaurant" className="text-gray-600 hover:text-gray-900 font-medium">Restaurant Intel</a>
               <a href="/trends" className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full font-medium hover:opacity-90 transition-opacity">
                 Get Started
               </a>
@@ -451,45 +451,46 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Everything you need to stay ahead
+              Vertical Intelligence Portals
             </h2>
             <p className="text-xl text-gray-600">
-              Comprehensive Korean trend intelligence for smart decisions
+              Actionable intelligence for specific Korean market opportunities
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                </svg>
+            <a href="/k-beauty" className="group bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-8 shadow-sm border border-pink-200 hover:shadow-xl transition-all">
+              <div className="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <span className="text-2xl">💄</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Real-Time Trend Tracking</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-pink-600 transition-colors">K-Beauty Launch Radar</h3>
               <p className="text-gray-600 mb-6">
-                Monitor 847+ Korean culture trends across California with live growth metrics and search volumes.
+                Spot the next viral K-beauty ingredient, tool, or routine before it explodes. Actionable intelligence for beauty entrepreneurs.
               </p>
               <div className="space-y-2 text-sm text-gray-500">
                 <div className="flex items-center gap-2">
                   <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  Live data updates every hour
+                  Launch readiness scoring
                 </div>
                 <div className="flex items-center gap-2">
                   <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  Growth percentages & momentum
+                  Influencer mapping
                 </div>
                 <div className="flex items-center gap-2">
                   <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  Search volume analytics
+                  Retail opportunities
                 </div>
               </div>
-            </div>
+              <div className="mt-6 flex items-center text-pink-600 font-medium group-hover:translate-x-2 transition-transform">
+                Launch Intelligence →
+              </div>
+            </a>
 
             <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
