@@ -9,6 +9,7 @@ export default function SimpleLanding() {
             <div className="flex items-center gap-4">
               <a href="/coffee-trends" className="text-orange-600 font-medium">Coffee Trends</a>
               <a href="/predict" className="text-orange-600 font-medium">Live Predictions</a>
+              <a href="/admin" className="text-gray-600 font-medium text-sm">Admin</a>
               <a href="/operator" className="text-gray-600 font-medium text-sm">Operator</a>
               <a href="/fnb" className="text-orange-600 font-medium">Dashboard</a>
             </div>
