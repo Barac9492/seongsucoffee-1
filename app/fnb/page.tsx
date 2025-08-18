@@ -59,13 +59,13 @@ async function fetchDailyBrief(): Promise<DailyBriefFnB | null> {
         region: 'LA_Koreatown',
         timeframe: '7d vs 28d'
       },
-      so_what: 'Matcha latte trending strongly on both TikTok (+22.5%) and Google Trends (+20.0%). High consumer interest in LA Koreatown.',
+      so_what: 'Seoul cafes pivoted to premium matcha 3 weeks ago. California window: 2-3 weeks before mainstream adoption. First-mover advantage available in Orange County.',
       action_for_owner: {
-        action: 'Add matcha latte to menu or launch limited-time popup',
-        who: 'Cafe/Bakery Owner',
-        what: 'Develop and test 2-3 new matcha latte menu items',
-        when: 'Within 2 weeks',
-        confidence: 'High'
+        action: 'Launch dalgona matcha before Erewhon discovers it',
+        who: 'California K-Bridge Business',
+        what: 'Test in Irvine/Fullerton this weekend. Price 30% above regular matcha',
+        when: 'This weekend',
+        confidence: 'High - Seoul proven'
       },
       ad_copy_b2b: 'Matcha latte trending +22.5% on LA TikTok. Add to your menu now.',
       ad_copy_b2c: 'Authentic Japanese matcha latte, now available in LA.',
@@ -170,13 +170,13 @@ export default function SCIAFnBDashboard() {
                 <span className="text-white font-bold text-lg">F</span>
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Korean Trends Alerts</h1>
-                <p className="text-sm text-gray-600">Daily alerts for Korean businesses in California</p>
+                <h1 className="text-2xl font-bold text-gray-900">K-Bridge Intelligence</h1>
+                <p className="text-sm text-gray-600">Seoul → California trend pipeline</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
               <div className="text-sm text-gray-500">
-                Korean coffee shops & restaurants
+                SF Bay • LA • OC • San Diego
               </div>
               <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
               <span className="text-sm font-medium text-green-600">Live</span>

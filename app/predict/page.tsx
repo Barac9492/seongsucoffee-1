@@ -205,8 +205,8 @@ export default function Page() {
   return (
     <main className="mx-auto max-w-3xl p-6 space-y-8">
       <header className="space-y-2">
-        <h1 className="text-2xl font-semibold">Korean Trends Alerts</h1>
-        <p className="text-sm text-gray-600">Daily alerts for Korean coffee shops and restaurants in California.</p>
+        <h1 className="text-2xl font-semibold">K-Bridge California</h1>
+        <p className="text-sm text-gray-600">Your 3-week advantage: Seoul → SF/LA/OC/SD pipeline.</p>
       </header>
 
       {error && <div className="text-sm text-red-600">{error}</div>}
