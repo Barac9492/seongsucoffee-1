@@ -20,6 +20,23 @@ module.exports = {
           800: '#846358',
           900: '#43302b',
         }
+      },
+      animation: {
+        'fade-in-up': 'fadeInUp 1s ease-out',
+        'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'bounce': 'bounce 1s infinite'
+      },
+      keyframes: {
+        fadeInUp: {
+          '0%': { 
+            opacity: '0', 
+            transform: 'translateY(20px)' 
+          },
+          '100%': { 
+            opacity: '1', 
+            transform: 'translateY(0)' 
+          }
+        }
       }
     },
   },
