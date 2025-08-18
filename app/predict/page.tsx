@@ -205,8 +205,8 @@ export default function Page() {
   return (
     <main className="mx-auto max-w-3xl p-6 space-y-8">
       <header className="space-y-2">
-        <h1 className="text-2xl font-semibold">SCIA‑F&B: Seongsu‑style trend → Sales Prediction</h1>
-        <p className="text-sm text-gray-600">Fully automated collection and scoring · Human approval required before publishing.</p>
+        <h1 className="text-2xl font-semibold">Korean Trends Alerts</h1>
+        <p className="text-sm text-gray-600">Daily alerts for Korean coffee shops and restaurants in California.</p>
       </header>
 
       {error && <div className="text-sm text-red-600">{error}</div>}
@@ -215,7 +215,7 @@ export default function Page() {
         <section className="rounded-2xl border p-5 shadow-sm">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <div className="text-sm text-gray-500">Today&apos;s Signal (as of {today.as_of})</div>
+              <div className="text-sm text-gray-500">Today's Alert (as of {today.as_of})</div>
               <h2 className="text-xl font-bold">{today.signal} <span className="text-gray-500">({today.region})</span></h2>
               {today.approval_status === 'approved' && today.approved_by && (
                 <div className="text-xs text-green-600 mt-1">✓ Approved by {today.approved_by}</div>
@@ -235,9 +235,9 @@ export default function Page() {
             </div>
           </div>
           <div className="mt-4 rounded-lg bg-gray-50 p-4">
-            <div className="text-sm text-gray-600">30‑day outcome</div>
+            <div className="text-sm text-gray-600">What this means for your business</div>
             <div className="mt-1 text-lg">{today.outcome}</div>
-            <div className="mt-2 text-2xl font-semibold">{(today.prediction_prob_30d * 100).toFixed(0)}% <span className="text-gray-500 text-base">(±{(today.uncertainty_pm * 100).toFixed(0)}%)</span></div>
+            <div className="mt-2 text-2xl font-semibold">{(today.prediction_prob_30d * 100).toFixed(0)}% chance this trend grows</div>
             <div className="mt-1 text-xs text-gray-500">Next check: {today.next_check}</div>
             {today.approval_status === 'pending' && !approved && (
               <div className="mt-3 flex gap-2">
@@ -290,8 +290,8 @@ export default function Page() {
       )}
 
       <section className="rounded-2xl border p-5 text-center">
-        <h3 className="text-lg font-semibold">Get one free signal + prediction % in your inbox daily</h3>
-        <p className="mt-1 text-sm text-gray-600">Pilot stage · Unsubscribe anytime</p>
+        <h3 className="text-lg font-semibold">Get daily Korean trends alerts</h3>
+        <p className="mt-1 text-sm text-gray-600">Free for Korean businesses in California</p>
         <form className="mx-auto mt-4 flex max-w-md items-center gap-2" action="#" method="post">
           <input
             required
@@ -307,7 +307,7 @@ export default function Page() {
       </section>
 
       <footer className="pb-10 text-center text-xs text-gray-500">
-        Signals automatically generated from TikTok/Google Trends. Human approval required before release.
+        Korean trends tracked from TikTok and Google. Alerts reviewed before sending.
       </footer>
     </main>
   );

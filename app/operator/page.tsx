@@ -154,14 +154,14 @@ export default function OperatorDashboard() {
   return (
     <main className="mx-auto max-w-5xl p-6 space-y-8">
       <header className="space-y-2">
-        <h1 className="text-2xl font-semibold">SCIA-F&B Operator Dashboard</h1>
+        <h1 className="text-2xl font-semibold">Korean Trends - Operator Dashboard</h1>
         <p className="text-sm text-gray-600">
-          Review and approve automatically generated trend predictions before publication.
+          Review and approve alerts before sending to Korean businesses.
         </p>
         <div className="flex items-center gap-4 text-sm">
           <span className="text-gray-600">Pending approvals:</span>
           <Badge tone={pendingSignals.length > 0 ? 'warn' : 'success'}>
-            {pendingSignals.length} signals
+            {pendingSignals.length} alerts
           </Badge>
         </div>
       </header>

@@ -170,13 +170,13 @@ export default function SCIAFnBDashboard() {
                 <span className="text-white font-bold text-lg">F</span>
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">SCIA-F&B Lite</h1>
-                <p className="text-sm text-gray-600">Early F&B trend detection + ad creative generation</p>
+                <h1 className="text-2xl font-bold text-gray-900">Korean Trends Alerts</h1>
+                <p className="text-sm text-gray-600">Daily alerts for Korean businesses in California</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
               <div className="text-sm text-gray-500">
-                Focus: Matcha·Seongsu cafe (LA)
+                Korean coffee shops & restaurants
               </div>
               <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
               <span className="text-sm font-medium text-green-600">Live</span>
@@ -197,7 +197,7 @@ export default function SCIAFnBDashboard() {
                   : 'text-gray-500 hover:text-gray-700'
               }`}
             >
-              📅 Daily Brief (Today's Trends)
+              📅 Today's Alert
             </button>
             <button
               onClick={() => setActiveTab('weekly')}
@@ -207,7 +207,7 @@ export default function SCIAFnBDashboard() {
                   : 'text-gray-500 hover:text-gray-700'
               }`}
             >
-              📊 Weekly One-Pager (Weekly Action Plan)
+              📊 Weekly Summary
             </button>
           </div>
         </div>
@@ -256,7 +256,7 @@ export default function SCIAFnBDashboard() {
 
             {/* Action for Owner */}
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">🎯 Owner Action (Actionable)</h3>
+              <h3 className="text-lg font-bold text-gray-900 mb-4">🎯 What to do</h3>
               
               <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
                 <div className="flex items-start justify-between mb-3">
@@ -286,18 +286,18 @@ export default function SCIAFnBDashboard() {
             {/* Ad Copy Section */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">📢 B2B Ad Copy</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-4">📢 Marketing Copy</h3>
                 <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
                   <p className="text-indigo-800 font-medium">{dailyBrief.ad_copy_b2b}</p>
-                  <p className="text-indigo-600 text-sm mt-2">→ Owner/Franchise Target</p>
+                  <p className="text-indigo-600 text-sm mt-2">→ For business promotion</p>
                 </div>
               </div>
               
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">🛍️ B2C Ad Copy</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-4">🛍️ Customer Copy</h3>
                 <div className="bg-pink-50 border border-pink-200 rounded-lg p-4">
                   <p className="text-pink-800 font-medium">{dailyBrief.ad_copy_b2c}</p>
-                  <p className="text-pink-600 text-sm mt-2">→ Consumer Target</p>
+                  <p className="text-pink-600 text-sm mt-2">→ For social media posts</p>
                 </div>
               </div>
             </div>
@@ -314,13 +314,13 @@ export default function SCIAFnBDashboard() {
           <div className="space-y-6">
             {/* Executive One-Liner */}
             <div className="bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-lg p-6">
-              <h2 className="text-xl font-bold mb-4">🎯 Executive One-Liner (45-60 day action window)</h2>
+              <h2 className="text-xl font-bold mb-4">🎯 This Week's Focus</h2>
               <p className="text-lg">{weeklyOnepager.executive_oneliner}</p>
             </div>
 
             {/* Signals Charts */}
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-6">📈 Signals (TikTok/Trends Charts)</h3>
+              <h3 className="text-lg font-bold text-gray-900 mb-6">📈 Trending Now</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {weeklyOnepager.signals.map((signal, index) => (
@@ -429,20 +429,20 @@ export default function SCIAFnBDashboard() {
 
         {/* Pilot CTA */}
         <div className="mt-12 text-center bg-gradient-to-r from-orange-600 to-red-600 rounded-2xl p-8 text-white">
-          <h2 className="text-2xl font-bold mb-4">4-Week Pilot Program</h2>
+          <h2 className="text-2xl font-bold mb-4">Free for Korean Businesses</h2>
           <p className="text-lg mb-6 opacity-90">
-            Recruiting 2-3 CA cafe/bakery owners • New menu/popup testing support • Case study development
+            Daily Korean trends alerts for coffee shops and restaurants in California
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-white text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-orange-50 transition-colors">
-              Apply for Pilot
+              Get Started
             </button>
             <button className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">
               Download Sample Report
             </button>
           </div>
           <p className="mt-4 text-sm opacity-75">
-            Free • 5x weekly Daily Brief • Weekly One-Pager • Ad copy included
+            Free daily alerts • Simple and practical • Made for Korean business owners
           </p>
         </div>
       </div>
