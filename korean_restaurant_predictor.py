@@ -10,6 +10,7 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Tuple, Optional
 import logging
 from dataclasses import dataclass
+from kpop_cultural_impact import KPopCulturalAnalyzer
 
 logger = logging.getLogger(__name__)
 
@@ -35,6 +36,9 @@ class KoreanRestaurantPredictor:
             "Korean BBQ", "Korean restaurant", "KBBQ", "galbi", "bulgogi",
             "Korean fried chicken", "Korean hot pot", "bibimbap", "Korean tacos"
         ]
+        
+        # Initialize K-pop cultural impact analyzer
+        self.cultural_analyzer = KPopCulturalAnalyzer()
         
         # Historical patterns for Korean restaurants
         self.base_patterns = {
@@ -139,6 +143,30 @@ class KoreanRestaurantPredictor:
         
         return factors
     
+    def calculate_cultural_factors(self, target_time: datetime, restaurant_type: str) -> Dict[str, float]:
+        """Calculate K-pop and Korean cultural impact factors"""
+        factors = {}
+        
+        # Get cultural surge multiplier from K-pop analyzer
+        cultural_multiplier = self.cultural_analyzer.get_cultural_surge_multiplier(
+            target_time, restaurant_type
+        )
+        factors["cultural_impact"] = cultural_multiplier
+        
+        # Get specific cultural impact factors
+        impact_factors = self.cultural_analyzer.calculate_cultural_impact_factor(target_time)
+        
+        # K-drama impact (drives Korean food interest)
+        factors["kdrama_influence"] = impact_factors.get("kdrama_impact", 1.0)
+        
+        # K-pop concert impact (local business boost)
+        factors["concert_influence"] = impact_factors.get("concert_impact", 1.0)
+        
+        # Viral content impact (social media trends)
+        factors["viral_content"] = impact_factors.get("viral_content_impact", 1.0)
+        
+        return factors
+    
     def calculate_event_factors(self, target_time: datetime, events: List[Dict] = None) -> Dict[str, float]:
         """Calculate special event factors"""
         factors = {}
@@ -169,7 +197,8 @@ class KoreanRestaurantPredictor:
         trend_data: Dict[str, float],
         weather_data: Optional[Dict] = None,
         events: List[Dict] = None,
-        historical_busy_score: float = 0.5  # 0-1 baseline busyness
+        historical_busy_score: float = 0.5,  # 0-1 baseline busyness
+        restaurant_type: str = "korean_bbq"  # Restaurant category for cultural analysis
     ) -> SurgePrediction:
         """Predict surge for a Korean restaurant at a specific time"""
         
@@ -177,10 +206,11 @@ class KoreanRestaurantPredictor:
         time_factors = self.calculate_time_factors(target_time)
         trend_factors = self.calculate_trend_factors(trend_data)
         weather_factors = self.calculate_weather_factors(weather_data)
+        cultural_factors = self.calculate_cultural_factors(target_time, restaurant_type)
         event_factors = self.calculate_event_factors(target_time, events)
         
         # Combine all factors
-        all_factors = {**time_factors, **trend_factors, **weather_factors, **event_factors}
+        all_factors = {**time_factors, **trend_factors, **weather_factors, **cultural_factors, **event_factors}
         
         # Calculate surge probability
         base_surge = historical_busy_score
