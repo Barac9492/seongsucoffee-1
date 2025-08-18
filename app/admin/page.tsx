@@ -57,6 +57,7 @@ export default function AdminPage() {
   const extractYouTubeId = (url: string): string | null => {
     const patterns = [
       /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
+      /(?:youtube\.com\/shorts\/)([^&\n?#]+)/, // YouTube Shorts support
       /^([a-zA-Z0-9_-]{11})$/ // Direct video ID
     ]
     
@@ -159,7 +160,7 @@ export default function AdminPage() {
           <h2 className="font-semibold text-blue-900 mb-2">How to Add YouTube Videos</h2>
           <div className="text-sm text-blue-800 space-y-1">
             <p>• Search YouTube for real Korean coffee content (e.g., &quot;크림치즈 커피&quot;, &quot;피스타치오 라떼&quot;)</p>
-            <p>• Copy the YouTube URL (e.g., https://www.youtube.com/watch?v=ABC123)</p>
+            <p>• Copy the YouTube URL or Shorts URL (e.g., https://www.youtube.com/watch?v=ABC123 or https://www.youtube.com/shorts/ABC123)</p>
             <p>• Paste it in the &quot;Add Video&quot; section below</p>
             <p>• The system will extract the video ID and add it to the trend</p>
           </div>
@@ -232,7 +233,7 @@ export default function AdminPage() {
                       setEditingTrend(trend.id)
                       setNewVideoUrl(e.target.value)
                     }}
-                    placeholder="Paste YouTube URL here..."
+                    placeholder="Paste YouTube URL or Shorts URL here..."
                     className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
                   />
                   <button
@@ -247,7 +248,7 @@ export default function AdminPage() {
                   </button>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">
-                  Supports: youtube.com/watch?v=ID, youtu.be/ID, or direct video ID
+                  Supports: youtube.com/watch?v=ID, youtube.com/shorts/ID, youtu.be/ID, or direct video ID
                 </p>
               </div>
             </div>
