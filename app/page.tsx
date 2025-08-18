@@ -172,11 +172,12 @@ export default async function Home() {
               <span className="text-xl font-bold text-gray-900">K-Wave Intelligence</span>
             </div>
             <div className="hidden md:flex items-center gap-8">
+              <a href="/scia" className="text-gray-600 hover:text-gray-900 font-medium">SCIA Intelligence</a>
+              <a href="/k-beauty" className="text-gray-600 hover:text-gray-900 font-medium">K-Beauty</a>
+              <a href="/k-restaurant" className="text-gray-600 hover:text-gray-900 font-medium">Restaurant</a>
               <a href="/trends" className="text-gray-600 hover:text-gray-900 font-medium">All Trends</a>
-              <a href="/k-beauty" className="text-gray-600 hover:text-gray-900 font-medium">K-Beauty Intel</a>
-              <a href="/k-restaurant" className="text-gray-600 hover:text-gray-900 font-medium">Restaurant Intel</a>
-              <a href="/trends" className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full font-medium hover:opacity-90 transition-opacity">
-                Get Started
+              <a href="/scia" className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full font-medium hover:opacity-90 transition-opacity">
+                Enterprise Demo
               </a>
             </div>
           </div>
