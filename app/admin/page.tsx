@@ -2,6 +2,23 @@
 
 import { useState, useEffect } from 'react'
 
+interface PendingSignal {
+  id: string
+  as_of: string
+  signal: string
+  region: string
+  tiktok_growth_pct_7v28: number
+  trends_growth_pct_14d: number
+  prediction_prob_30d: number
+  uncertainty_pm: number
+  evidence: string[]
+  status: 'Exploding' | 'Peaking' | 'Cooling'
+  auto_score: number
+  generated_at: string
+  confidence_level: 'high' | 'medium' | 'low'
+  risk_flags: string[]
+}
+
 interface VideoProof {
   youtubeId: string
   title: string
@@ -31,15 +48,18 @@ interface CoffeeTrend {
 }
 
 export default function AdminPage() {
+  const [activeTab, setActiveTab] = useState<'trends' | 'approvals'>('trends')
   const [trends, setTrends] = useState<CoffeeTrend[]>([])
+  const [pendingSignals, setPendingSignals] = useState<PendingSignal[]>([])
   const [loading, setLoading] = useState(true)
+  const [processingIds, setProcessingIds] = useState<Set<string>>(new Set())
   const [editingTrend, setEditingTrend] = useState<string | null>(null)
-  const [editingVideo, setEditingVideo] = useState<VideoProof | null>(null)
   const [newVideoUrl, setNewVideoUrl] = useState('')
   const [message, setMessage] = useState('')
 
   useEffect(() => {
     fetchTrends()
+    fetchPendingSignals()
   }, [])
 
   const fetchTrends = async () => {
@@ -134,7 +154,7 @@ export default function AdminPage() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-gray-900">Admin Panel</h1>
-              <p className="text-sm text-gray-600">Manage YouTube video links for Korean coffee trends</p>
+              <p className="text-sm text-gray-600">Manage YouTube video links and content for Korean coffee trends</p>
             </div>
             <div className="flex gap-4">
               <a href="/coffee-trends" className="text-orange-600 font-medium">View Trends</a>
