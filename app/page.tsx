@@ -161,7 +161,7 @@ export default function SimpleLanding() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             <div className="bg-white rounded-lg p-6 border border-gray-200">
               <p className="text-sm text-gray-500 mb-2">Irvine, CA</p>
-              <h3 className="font-bold text-gray-900 mb-3">Cafe Comma</h3>
+              <h3 className="font-bold text-gray-900 mb-3">Cafe L.</h3>
               <p className="text-sm text-gray-600 mb-3">
                 Launched Seoul&apos;s pistachio cream latte 4 weeks before Philz discovered it. 
                 Now supplies the recipe to 3 other cafes.
@@ -171,10 +171,10 @@ export default function SimpleLanding() {
             
             <div className="bg-white rounded-lg p-6 border border-gray-200">
               <p className="text-sm text-gray-500 mb-2">San Francisco, CA</p>
-              <h3 className="font-bold text-gray-900 mb-3">Boba Guys Partnership</h3>
+              <h3 className="font-bold text-gray-900 mb-3">S.B. Coffee</h3>
               <p className="text-sm text-gray-600 mb-3">
                 K-Bridge member spotted brown sugar matcha trend. 
-                Partnered with Boba Guys for exclusive 6-week launch.
+                Partnered with major chain for exclusive 6-week launch.
               </p>
               <p className="text-sm font-semibold text-green-600">$180K in first month</p>
             </div>
@@ -186,7 +186,7 @@ export default function SimpleLanding() {
               We tell them what&apos;s next.&quot;
             </p>
             <p className="text-sm text-gray-500">
-              — Jenny Kim, K-Bridge Member, Koreatown LA
+              — A.P., K-Bridge Member, Koreatown LA
             </p>
           </div>
         </div>
