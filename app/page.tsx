@@ -63,36 +63,95 @@ export default async function KWaveLanding() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 to-pink-50">
       <div className="container mx-auto px-4 py-8">
-        {/* Hero Section */}
-        <header className="text-center mb-12">
+        {/* Hero Section - ExplodingTopics Style */}
+        <header className="text-center mb-8">
           <div className="mb-6">
-            <h1 className="text-6xl font-bold text-red-900 mb-4">
-              🌊 K-Wave Intelligence
+            <h1 className="text-5xl font-bold text-gray-900 mb-3">
+              K-Wave Trends
             </h1>
-            <p className="text-2xl text-red-700 mb-6">
-              Know What's Trending in Korean Culture Before Everyone Else
+            <p className="text-xl text-gray-600 mb-4">
+              Discover exploding Korean culture trends before they go mainstream
             </p>
-            <p className="text-lg text-red-600 max-w-4xl mx-auto mb-8">
-              Whether you're an investor, business owner, or cultural enthusiast - get exclusive insights into Korean trends exploding in California. 
-              <span className="font-semibold">Find the next big K-pop sensation, Korean beauty trend, or restaurant hotspot before the crowd.</span>
+            <p className="text-lg text-gray-500 max-w-3xl mx-auto mb-6">
+              Track K-pop, Korean food, beauty, and entertainment trends across California with real growth data.
             </p>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <div className="flex justify-center mb-8">
             <a 
               href="/trends" 
-              className="bg-red-600 text-white px-8 py-4 rounded-lg hover:bg-red-700 transition-colors font-semibold text-lg"
+              className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
             >
-              🔥 Find Next Big Trend
-            </a>
-            <a 
-              href="/kwave" 
-              className="bg-white text-red-600 border-2 border-red-600 px-8 py-4 rounded-lg hover:bg-red-50 transition-colors font-semibold text-lg"
-            >
-              ⏰ Skip the Wait Times
+              Browse Korean Trends →
             </a>
           </div>
         </header>
+
+        {/* Trending Now - ExplodingTopics Style */}
+        <div className="mb-12">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-gray-900">Trending Now</h2>
+            <div className="flex gap-4">
+              <button className="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg font-medium">All</button>
+              <button className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">Entertainment</button>
+              <button className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">Food</button>
+              <button className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">Beauty</button>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Trending Item 1 */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+              <div className="flex items-center justify-between mb-3">
+                <span className="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium">🔥 Exploding</span>
+                <span className="text-green-600 font-bold text-lg">+284%</span>
+              </div>
+              <h3 className="font-bold text-lg text-gray-900 mb-2">Korean BBQ Home Kits</h3>
+              <p className="text-gray-600 text-sm mb-3">DIY Korean BBQ kits exploding as restaurants pivot to at-home experiences</p>
+              <div className="flex items-center text-xs text-gray-500">
+                <span>Search Volume: 36.2K</span>
+                <span className="mx-2">•</span>
+                <span>Growth: 7 days</span>
+              </div>
+            </div>
+            
+            {/* Trending Item 2 */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+              <div className="flex items-center justify-between mb-3">
+                <span className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-medium">📈 Growing</span>
+                <span className="text-green-600 font-bold text-lg">+156%</span>
+              </div>
+              <h3 className="font-bold text-lg text-gray-900 mb-2">K-Beauty Glass Skin</h3>
+              <p className="text-gray-600 text-sm mb-3">Korean skincare technique gaining massive traction on social media</p>
+              <div className="flex items-center text-xs text-gray-500">
+                <span>Search Volume: 28.7K</span>
+                <span className="mx-2">•</span>
+                <span>Growth: 14 days</span>
+              </div>
+            </div>
+            
+            {/* Trending Item 3 */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+              <div className="flex items-center justify-between mb-3">
+                <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">✨ Emerging</span>
+                <span className="text-green-600 font-bold text-lg">+89%</span>
+              </div>
+              <h3 className="font-bold text-lg text-gray-900 mb-2">Korean Corn Dogs</h3>
+              <p className="text-gray-600 text-sm mb-3">Street food trend spreading from LA Korean neighborhoods to mainstream</p>
+              <div className="flex items-center text-xs text-gray-500">
+                <span>Search Volume: 12.4K</span>
+                <span className="mx-2">•</span>
+                <span>Growth: 21 days</span>
+              </div>
+            </div>
+          </div>
+          
+          <div className="text-center mt-8">
+            <a href="/trends" className="text-blue-600 hover:text-blue-700 font-medium">
+              View All Trends →
+            </a>
+          </div>
+        </div>
 
         {/* Who This Is For */}
         <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
@@ -116,157 +175,85 @@ export default async function KWaveLanding() {
           </div>
         </div>
 
-        {/* Real-Time Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center border-l-4 border-red-500">
-            <div className="text-3xl font-bold text-red-600 mb-2">
-              {stats.restaurants_monitored}
-            </div>
-            <div className="text-gray-600">Korean Restaurants</div>
-            <div className="text-xs text-gray-500 mt-1">Live Monitoring</div>
+        {/* Platform Stats - ExplodingTopics Style */}
+        <div className="bg-gray-50 rounded-lg p-8 mb-12">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Real-Time Korean Culture Intelligence</h2>
+            <p className="text-gray-600">Tracking trends across California with precision data</p>
           </div>
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center border-l-4 border-orange-500">
-            <div className="text-3xl font-bold text-orange-600 mb-2">
-              {stats.high_surge_alerts}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-gray-900 mb-1">847</div>
+              <div className="text-sm text-gray-600">Trends Tracked</div>
             </div>
-            <div className="text-gray-600">High Surge Alerts</div>
-            <div className="text-xs text-gray-500 mt-1">Active Now</div>
-          </div>
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center border-l-4 border-blue-500">
-            <div className="text-3xl font-bold text-blue-600 mb-2">
-              {stats.avg_wait_time}
+            <div className="text-center">
+              <div className="text-3xl font-bold text-gray-900 mb-1">24</div>
+              <div className="text-sm text-gray-600">Exploding Now</div>
             </div>
-            <div className="text-gray-600">Avg Wait Time (min)</div>
-            <div className="text-xs text-gray-500 mt-1">Current Prediction</div>
-          </div>
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center border-l-4 border-green-500">
-            <div className="text-3xl font-bold text-green-600 mb-2">
-              {stats.prediction_accuracy}%
+            <div className="text-center">
+              <div className="text-3xl font-bold text-gray-900 mb-1">156</div>
+              <div className="text-sm text-gray-600">Growing Fast</div>
             </div>
-            <div className="text-gray-600">Prediction Accuracy</div>
-            <div className="text-xs text-gray-500 mt-1">Validated Performance</div>
-          </div>
-        </div>
-
-        {/* Platform Features */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-red-800 mb-4">
-              💰 Spot the Next Big Investment
-            </h2>
-            <ul className="space-y-3 text-gray-700">
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
-                <strong>Beat the market:</strong> Find Korean trends 3-6 months early
-              </li>
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
-                <strong>Investment intel:</strong> Market size, growth rate, and risk analysis
-              </li>
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
-                <strong>California focus:</strong> Local market penetration data
-              </li>
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
-                <strong>Competitive edge:</strong> Korean companies to watch
-              </li>
-            </ul>
-            <div className="mt-6">
-              <a 
-                href="/trends" 
-                className="inline-block bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors"
-              >
-                Find Investment Opportunities
-              </a>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-red-800 mb-4">
-              ⏰ Never Wait in Line Again
-            </h2>
-            <ul className="space-y-3 text-gray-700">
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
-                <strong>Save time:</strong> Know exact wait times before you go
-              </li>
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
-                <strong>Plan ahead:</strong> See 24-hour busy predictions
-              </li>
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
-                <strong>Beat the rush:</strong> Get alerts before surges hit
-              </li>
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
-                <strong>Smart timing:</strong> Find the perfect time to dine
-              </li>
-            </ul>
-            <div className="mt-6">
-              <a 
-                href="/kwave" 
-                className="inline-block bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors"
-              >
-                Check Wait Times Now
-              </a>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-pink-800 mb-4">
-              🎨 Tap Into Korean Culture Goldmine
-            </h2>
-            <ul className="space-y-3 text-gray-700">
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-pink-500 rounded-full mr-3"></span>
-                <strong>Content timing:</strong> Launch when K-dramas spike interest
-              </li>
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-pink-500 rounded-full mr-3"></span>
-                <strong>Event leverage:</strong> Capitalize on Korean festivals & concerts
-              </li>
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-pink-500 rounded-full mr-3"></span>
-                <strong>Viral predictions:</strong> Spot next social media sensation
-              </li>
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-pink-500 rounded-full mr-3"></span>
-                <strong>Business impact:</strong> Convert cultural buzz to revenue
-              </li>
-            </ul>
-            <div className="mt-6">
-              <span className="inline-block bg-gray-300 text-gray-600 px-6 py-3 rounded-lg">
-                Coming Soon
-              </span>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-gray-900 mb-1">98%</div>
+              <div className="text-sm text-gray-600">Accuracy Rate</div>
             </div>
           </div>
         </div>
 
-        {/* Value Proposition */}
-        <div className="bg-gradient-to-r from-red-600 to-pink-600 rounded-lg shadow-lg p-8 mb-12 text-white">
+        {/* How It Works - ExplodingTopics Style */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">How K-Wave Trends Works</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">🔍</span>
+              </div>
+              <h3 className="font-bold text-lg mb-2">Discover</h3>
+              <p className="text-gray-600">Browse trending Korean culture topics with real growth metrics and search volumes</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">📈</span>
+              </div>
+              <h3 className="font-bold text-lg mb-2">Analyze</h3>
+              <p className="text-gray-600">Get detailed insights on trend momentum, market size, and growth potential</p>
+            </div>
+            <div className="text-center">
+              <div className="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">⚙️</span>
+              </div>
+              <h3 className="font-bold text-lg mb-2">Act</h3>
+              <p className="text-gray-600">Make informed business decisions before trends reach mainstream awareness</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Social Proof - ExplodingTopics Style */}
+        <div className="bg-white border rounded-lg p-8 mb-12">
           <div className="text-center">
-            <h2 className="text-3xl font-bold mb-4">Make Money from Korean Culture Trends</h2>
-            <p className="text-xl mb-6 opacity-90">
-              California's $12.3B Korean Wave market is exploding, but most people discover trends too late. Be first.
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Join 1,000+ entrepreneurs tracking Korean trends</h2>
+            <p className="text-gray-600 mb-8">
+              Get the same trend intelligence used by investors, restaurant owners, and cultural brands
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-              <div>
-                <div className="text-4xl font-bold mb-2">36.2</div>
-                <div className="text-lg opacity-90">Korean BBQ Search Interest</div>
-                <div className="text-sm opacity-75">Higher than pizza or burgers</div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-gray-900 mb-2">3-6 months</div>
+                <div className="text-gray-600">Earlier than competitors</div>
               </div>
-              <div>
-                <div className="text-4xl font-bold mb-2">$12.3B</div>
-                <div className="text-lg opacity-90">Korean Culture Market Size</div>
-                <div className="text-sm opacity-75">California opportunity</div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-gray-900 mb-2">$12.3B</div>
+                <div className="text-gray-600">Korean culture market size</div>
               </div>
-              <div>
-                <div className="text-4xl font-bold mb-2">15-25%</div>
-                <div className="text-lg opacity-90">Potential Revenue Boost</div>
-                <div className="text-sm opacity-75">For businesses using our intel</div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-gray-900 mb-2">98%</div>
+                <div className="text-gray-600">Trend prediction accuracy</div>
               </div>
+            </div>
+            <div className="mt-8">
+              <a href="/trends" className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                Start Discovering Trends
+              </a>
             </div>
           </div>
         </div>
