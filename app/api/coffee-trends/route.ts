@@ -15,29 +15,7 @@ export async function GET() {
         socialMentions: 23400,
         searchGrowth: 156,
         districts: ['Gangnam', 'Hongdae', 'Myeongdong', 'Seongsu', 'Jongno', 'Itaewon'],
-        videoProof: [
-          {
-            youtubeId: 'dQw4w9WgXcQ',
-            title: 'Korean Cream Cheese Coffee Tutorial',
-            channel: 'K-Coffee Trends',
-            views: 45200,
-            uploadDate: '2024-12-10'
-          },
-          {
-            youtubeId: 'jNQXAC9IVRw',
-            title: 'Seoul Cafe Culture: New Trends',
-            channel: 'Seoul Food Guide',
-            views: 89300,
-            uploadDate: '2024-12-08'
-          },
-          {
-            youtubeId: 'oHg5SJYRHA0',
-            title: 'Korean Coffee Innovation',
-            channel: 'Barista Masters',
-            views: 34100,
-            uploadDate: '2024-12-05'
-          }
-        ],
+        videoProof: [],
         ingredients: ['Philadelphia cream cheese', 'Sea salt', 'Vanilla extract', 'Heavy cream'],
         priceRange: '6,500-8,000 KRW',
         targetDemo: 'Gen Z, Millennials',
@@ -56,22 +34,7 @@ export async function GET() {
         socialMentions: 8900,
         searchGrowth: 203,
         districts: ['Gangnam', 'Apgujeong', 'Cheongdam'],
-        videoProof: [
-          {
-            youtubeId: 'M7lc1UVf-VE',
-            title: 'Pistachio Latte Recipe Tutorial',
-            channel: 'Coffee Masters Korea',
-            views: 28500,
-            uploadDate: '2024-12-12'
-          },
-          {
-            youtubeId: 'ScMzIvxBSi4',
-            title: 'Seoul Specialty Coffee Trends',
-            channel: 'Seoul Cafe Guide',
-            views: 15200,
-            uploadDate: '2024-12-09'
-          }
-        ],
+        videoProof: [],
         ingredients: ['Sicilian pistachio paste', 'Almond milk', 'Agave syrup'],
         priceRange: '7,000-9,000 KRW',
         targetDemo: 'Premium segment, 25-40 years',
@@ -90,15 +53,7 @@ export async function GET() {
         socialMentions: 6700,
         searchGrowth: 178,
         districts: ['Hongdae', 'Sinchon', 'Seongsu'],
-        videoProof: [
-          {
-            youtubeId: 'kffacxfA7G4',
-            title: 'Black Sesame Coffee Recipe',
-            channel: 'Korean Home Cafe',
-            views: 19800,
-            uploadDate: '2024-12-11'
-          }
-        ],
+        videoProof: [],
         ingredients: ['Black sesame paste', 'Whipped cream', 'Condensed milk'],
         priceRange: '5,500-7,000 KRW',
         targetDemo: 'Health-conscious millennials',
@@ -117,15 +72,7 @@ export async function GET() {
         socialMentions: 1200,
         searchGrowth: 97,
         districts: ['Itaewon', 'Hannam'],
-        videoProof: [
-          {
-            youtubeId: 'fJ9rUzIMcZQ',
-            title: 'Winter Spiced Coffee Korean Style',
-            channel: 'Itaewon Coffee Scene',
-            views: 3400,
-            uploadDate: '2024-12-14'
-          }
-        ],
+        videoProof: [],
         ingredients: ['Mulled wine spices', 'Orange zest', 'Cinnamon', 'Star anise'],
         priceRange: '8,000-10,000 KRW',
         targetDemo: 'Expats, premium segment',
@@ -144,15 +91,7 @@ export async function GET() {
         socialMentions: 2300,
         searchGrowth: 134,
         districts: ['Insadong', 'Bukchon'],
-        videoProof: [
-          {
-            youtubeId: 'Qb_bmlVIG0s',
-            title: 'Traditional Korean Dessert Coffee',
-            channel: 'K-Food Trends',
-            views: 8900,
-            uploadDate: '2024-12-13'
-          }
-        ],
+        videoProof: [],
         ingredients: ['Traditional yakgwa', 'Honey', 'Ginger', 'Cinnamon'],
         priceRange: '6,000-7,500 KRW',
         targetDemo: 'K-culture enthusiasts',
@@ -171,15 +110,7 @@ export async function GET() {
         socialMentions: 4100,
         searchGrowth: 145,
         districts: ['Gangnam', 'Jamsil'],
-        videoProof: [
-          {
-            youtubeId: 'ZZ5LpwO-An4',
-            title: 'Korean Corn Cream Latte Trend',
-            channel: 'Trend Hunter Korea',
-            views: 11200,
-            uploadDate: '2024-12-12'
-          }
-        ],
+        videoProof: [],
         ingredients: ['Sweet corn', 'Corn cream', 'Vanilla', 'Condensed milk'],
         priceRange: '5,000-6,500 KRW',
         targetDemo: 'Adventurous Gen Z',

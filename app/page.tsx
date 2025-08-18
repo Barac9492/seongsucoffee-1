@@ -33,7 +33,7 @@ export default function SimpleLanding() {
 
           <div className="space-y-4 mb-8">
             <a 
-              href="/fnb" 
+              href="/coffee-trends" 
               className="inline-block w-full sm:w-auto px-8 py-4 bg-orange-600 text-white rounded-lg font-semibold hover:bg-orange-700 transition-colors"
             >
               Start Your 30-Day Edge
@@ -206,7 +206,7 @@ export default function SimpleLanding() {
             From San Francisco to San Diego. Daily intel on what&apos;s crossing the Pacific.
           </p>
           <a 
-            href="/fnb" 
+            href="/coffee-trends" 
             className="inline-block px-8 py-4 bg-orange-600 text-white rounded-lg font-semibold hover:bg-orange-700 transition-colors"
           >
             Claim Your 30-Day Edge
