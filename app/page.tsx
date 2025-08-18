@@ -6,7 +6,11 @@ export default function SimpleLanding() {
         <div className="max-w-4xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <h1 className="text-xl font-bold text-gray-900">K-Wave F&B Intelligence</h1>
-            <a href="/fnb" className="text-orange-600 font-medium">Dashboard</a>
+            <div className="flex items-center gap-4">
+              <a href="/predict" className="text-orange-600 font-medium">Live Predictions</a>
+              <a href="/operator" className="text-gray-600 font-medium text-sm">Operator</a>
+              <a href="/fnb" className="text-orange-600 font-medium">Dashboard</a>
+            </div>
           </div>
         </div>
       </header>
