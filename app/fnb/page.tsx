@@ -197,7 +197,7 @@ export default function SCIAFnBDashboard() {
                   : 'text-gray-500 hover:text-gray-700'
               }`}
             >
-              📅 Today's Alert
+              📅 Today&apos;s Alert
             </button>
             <button
               onClick={() => setActiveTab('weekly')}
@@ -314,7 +314,7 @@ export default function SCIAFnBDashboard() {
           <div className="space-y-6">
             {/* Executive One-Liner */}
             <div className="bg-gradient-to-r from-orange-600 to-red-600 text-white rounded-lg p-6">
-              <h2 className="text-xl font-bold mb-4">🎯 This Week's Focus</h2>
+              <h2 className="text-xl font-bold mb-4">🎯 This Week&apos;s Focus</h2>
               <p className="text-lg">{weeklyOnepager.executive_oneliner}</p>
             </div>
 

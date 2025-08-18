@@ -215,7 +215,7 @@ export default function Page() {
         <section className="rounded-2xl border p-5 shadow-sm">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <div className="text-sm text-gray-500">Today's Alert (as of {today.as_of})</div>
+              <div className="text-sm text-gray-500">Today&apos;s Alert (as of {today.as_of})</div>
               <h2 className="text-xl font-bold">{today.signal} <span className="text-gray-500">({today.region})</span></h2>
               {today.approval_status === 'approved' && today.approved_by && (
                 <div className="text-xs text-green-600 mt-1">✓ Approved by {today.approved_by}</div>

@@ -25,7 +25,7 @@ export default function SimpleLanding() {
           
           <p className="text-xl text-gray-600 mb-8">
             Simple daily alerts for Korean coffee shops and restaurants in California.
-            Know what's trending on Korean social media before your competitors.
+            Know what&apos;s trending on Korean social media before your competitors.
           </p>
 
           <div className="space-y-4 mb-8">
