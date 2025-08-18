@@ -13,10 +13,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
+    - name: Install Railway CLI
+      run: npm install -g @railway/cli
+    
     - name: Deploy to Railway
-      uses: railwayapp/cli@v2
-      with:
-        command: up --service seongsu-agent
+      run: railway up --service seongsu-agent
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         
