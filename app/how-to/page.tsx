@@ -138,7 +138,7 @@ export default function HowToPage() {
                 <div className="bg-gray-50 rounded-lg p-4">
                   <p className="text-sm text-gray-700 mb-2"><strong>Look for:</strong></p>
                   <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• Trends in "Discovery" or "Early" stages (highest opportunity)</li>
+                    <li>• Trends in &quot;Discovery&quot; or &quot;Early&quot; stages (highest opportunity)</li>
                     <li>• High growth percentages (300%+ is exceptional)</li>
                     <li>• Multiple video proof points</li>
                     <li>• Trends with &lt;50 cafes serving (early adoption window)</li>
@@ -188,7 +188,7 @@ export default function HowToPage() {
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Prediction probability &gt;60% (good odds)</li>
                     <li>• Multiple evidence sources (TikTok + Google Trends)</li>
-                    <li>• "Exploding" status (accelerating growth)</li>
+                    <li>• &quot;Exploding&quot; status (accelerating growth)</li>
                     <li>• Low uncertainty margin (&lt;10%)</li>
                   </ul>
                 </div>
@@ -236,7 +236,7 @@ export default function HowToPage() {
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• 30%+ higher margins vs regular menu items</li>
                     <li>• Social media buzz (Korean → English transition)</li>
-                    <li>• Customer retention for "authentic" experience</li>
+                    <li>• Customer retention for &quot;authentic&quot; experience</li>
                     <li>• First-mover advantage in your area</li>
                   </ul>
                 </div>
@@ -264,7 +264,7 @@ export default function HowToPage() {
                 <h3 className="text-lg font-semibold mb-2">Timing Advantage</h3>
                 <p className="text-sm text-gray-300">
                   3-week window before mainstream adoption. 
-                  Perfect time to establish as the "authentic" source.
+                  Perfect time to establish as the &quot;authentic&quot; source.
                 </p>
               </div>
               <div>
@@ -289,10 +289,10 @@ export default function HowToPage() {
               <ul className="space-y-2 text-sm text-green-700">
                 <li>• Start with Korean social media marketing</li>
                 <li>• Use authentic Korean ingredients when possible</li>
-                <li>• Document your "first to market" story</li>
+                <li>• Document your &quot;first to market&quot; story</li>
                 <li>• Build relationships with Korean food bloggers</li>
                 <li>• Train staff on the trend&apos;s Korean origin</li>
-                <li>• Price 20-30% premium as "authentic"</li>
+                <li>• Price 20-30% premium as &quot;authentic&quot;</li>
               </ul>
             </div>
             

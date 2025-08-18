@@ -2,22 +2,6 @@
 
 import { useState, useEffect } from 'react'
 
-interface PendingSignal {
-  id: string
-  as_of: string
-  signal: string
-  region: string
-  tiktok_growth_pct_7v28: number
-  trends_growth_pct_14d: number
-  prediction_prob_30d: number
-  uncertainty_pm: number
-  evidence: string[]
-  status: 'Exploding' | 'Peaking' | 'Cooling'
-  auto_score: number
-  generated_at: string
-  confidence_level: 'high' | 'medium' | 'low'
-  risk_flags: string[]
-}
 
 interface VideoProof {
   youtubeId: string
@@ -48,18 +32,14 @@ interface CoffeeTrend {
 }
 
 export default function AdminPage() {
-  const [activeTab, setActiveTab] = useState<'trends' | 'approvals'>('trends')
   const [trends, setTrends] = useState<CoffeeTrend[]>([])
-  const [pendingSignals, setPendingSignals] = useState<PendingSignal[]>([])
   const [loading, setLoading] = useState(true)
-  const [processingIds, setProcessingIds] = useState<Set<string>>(new Set())
   const [editingTrend, setEditingTrend] = useState<string | null>(null)
   const [newVideoUrl, setNewVideoUrl] = useState('')
   const [message, setMessage] = useState('')
 
   useEffect(() => {
     fetchTrends()
-    fetchPendingSignals()
   }, [])
 
   const fetchTrends = async () => {
@@ -178,9 +158,9 @@ export default function AdminPage() {
         <div className="mb-8 bg-blue-50 border border-blue-200 rounded-lg p-4">
           <h2 className="font-semibold text-blue-900 mb-2">How to Add YouTube Videos</h2>
           <div className="text-sm text-blue-800 space-y-1">
-            <p>• Search YouTube for real Korean coffee content (e.g., "크림치즈 커피", "피스타치오 라떼")</p>
+            <p>• Search YouTube for real Korean coffee content (e.g., &quot;크림치즈 커피&quot;, &quot;피스타치오 라떼&quot;)</p>
             <p>• Copy the YouTube URL (e.g., https://www.youtube.com/watch?v=ABC123)</p>
-            <p>• Paste it in the "Add Video" section below</p>
+            <p>• Paste it in the &quot;Add Video&quot; section below</p>
             <p>• The system will extract the video ID and add it to the trend</p>
           </div>
         </div>
@@ -280,12 +260,12 @@ export default function AdminPage() {
           <div className="text-sm text-gray-700 space-y-2">
             <p><strong>Search Terms to Try:</strong></p>
             <div className="grid grid-cols-2 gap-2 ml-4">
-              <span>• "크림치즈 커피" (cream cheese coffee)</span>
-              <span>• "피스타치오 라떼" (pistachio latte)</span>
-              <span>• "흑임자 커피" (black sesame coffee)</span>
-              <span>• "한국 카페 트렌드" (Korean cafe trends)</span>
-              <span>• "서울 카페" (Seoul cafe)</span>
-              <span>• "성수동 카페" (Seongsu-dong cafe)</span>
+              <span>• &quot;크림치즈 커피&quot; (cream cheese coffee)</span>
+              <span>• &quot;피스타치오 라떼&quot; (pistachio latte)</span>
+              <span>• &quot;흑임자 커피&quot; (black sesame coffee)</span>
+              <span>• &quot;한국 카페 트렌드&quot; (Korean cafe trends)</span>
+              <span>• &quot;서울 카페&quot; (Seoul cafe)</span>
+              <span>• &quot;성수동 카페&quot; (Seongsu-dong cafe)</span>
             </div>
             <p className="mt-3"><strong>Look for:</strong> Korean cafe vlogs, barista tutorials, cafe reviews, new menu introductions</p>
           </div>
