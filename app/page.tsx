@@ -1,4 +1,4 @@
-import Image from 'next/image'
+/* eslint-disable @next/next/no-img-element */
 
 async function getKWaveStats() {
   try {
@@ -97,7 +97,7 @@ export default async function KWaveLanding() {
             </p>
             
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-              From K-pop to Korean BBQ — track what's exploding in California before everyone else. 
+              From K-pop to Korean BBQ — track what&apos;s exploding in California before everyone else. 
               Get data-driven insights that turn cultural waves into business opportunities.
             </p>
 
@@ -151,7 +151,7 @@ export default async function KWaveLanding() {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               Trending Right Now
             </h2>
-            <p className="text-gray-400 text-lg">California's hottest Korean culture trends with real-time data</p>
+            <p className="text-gray-400 text-lg">California&apos;s hottest Korean culture trends with real-time data</p>
           </div>
 
           {/* Category Filters */}
@@ -394,7 +394,7 @@ export default async function KWaveLanding() {
                   <p className="text-gray-400 text-sm">Korean BBQ Restaurant Owner</p>
                 </div>
               </div>
-              <p className="text-gray-300 italic">"K-Wave helped us predict busy hours with 98% accuracy. We've reduced wait times by 40% and increased revenue by 25%."</p>
+              <p className="text-gray-300 italic">&quot;K-Wave helped us predict busy hours with 98% accuracy. We&apos;ve reduced wait times by 40% and increased revenue by 25%.&quot;</p>
               <div className="mt-4 text-yellow-400">★★★★★</div>
             </div>
 
@@ -411,7 +411,7 @@ export default async function KWaveLanding() {
                   <p className="text-gray-400 text-sm">VC Investor</p>
                 </div>
               </div>
-              <p className="text-gray-300 italic">"Found 3 Korean beauty brands before they exploded. K-Wave's trend data gave us a 6-month advantage over competitors."</p>
+              <p className="text-gray-300 italic">&quot;Found 3 Korean beauty brands before they exploded. K-Wave&apos;s trend data gave us a 6-month advantage over competitors.&quot;</p>
               <div className="mt-4 text-yellow-400">★★★★★</div>
             </div>
 
@@ -428,7 +428,7 @@ export default async function KWaveLanding() {
                   <p className="text-gray-400 text-sm">CPG Brand Manager</p>
                 </div>
               </div>
-              <p className="text-gray-300 italic">"Launched Korean snack line based on K-Wave insights. Now in 500+ stores with $2M in first-year sales."</p>
+              <p className="text-gray-300 italic">&quot;Launched Korean snack line based on K-Wave insights. Now in 500+ stores with $2M in first-year sales.&quot;</p>
               <div className="mt-4 text-yellow-400">★★★★★</div>
             </div>
           </div>
