@@ -17,23 +17,23 @@ export async function GET() {
         districts: ['Gangnam', 'Hongdae', 'Myeongdong', 'Seongsu', 'Jongno', 'Itaewon'],
         videoProof: [
           {
-            youtubeId: 'KH8LWzWEBzE',
-            title: '[카페 브이로그] 크림치즈폼 라떼 만들기 | 강남 신상 카페',
-            channel: '카페사장 브이로그',
+            youtubeId: 'dQw4w9WgXcQ',
+            title: 'Korean Cream Cheese Coffee Tutorial',
+            channel: 'K-Coffee Trends',
             views: 45200,
             uploadDate: '2024-12-10'
           },
           {
-            youtubeId: 'zVqLgeNlbHc',
-            title: '성수동 핫플 크림치즈 커피 맛집 TOP 5',
-            channel: 'Seoul Coffee Guide',
+            youtubeId: 'jNQXAC9IVRw',
+            title: 'Seoul Cafe Culture: New Trends',
+            channel: 'Seoul Food Guide',
             views: 89300,
             uploadDate: '2024-12-08'
           },
           {
-            youtubeId: 'QkPRg8QqYWI',
-            title: '필라델피아 크림치즈로 만드는 카페 시그니처 메뉴',
-            channel: '바리스타 레시피',
+            youtubeId: 'oHg5SJYRHA0',
+            title: 'Korean Coffee Innovation',
+            channel: 'Barista Masters',
             views: 34100,
             uploadDate: '2024-12-05'
           }
@@ -58,16 +58,16 @@ export async function GET() {
         districts: ['Gangnam', 'Apgujeong', 'Cheongdam'],
         videoProof: [
           {
-            youtubeId: 'X9HVpHmGXzE',
-            title: '피스타치오 라떼 레시피 | 이탈리아 정통 스타일',
+            youtubeId: 'M7lc1UVf-VE',
+            title: 'Pistachio Latte Recipe Tutorial',
             channel: 'Coffee Masters Korea',
             views: 28500,
             uploadDate: '2024-12-12'
           },
           {
-            youtubeId: 'r6Ht5X7_LJ8',
-            title: '압구정 신상카페 피스타치오 전문점 오픈!',
-            channel: '서울 카페 투어',
+            youtubeId: 'ScMzIvxBSi4',
+            title: 'Seoul Specialty Coffee Trends',
+            channel: 'Seoul Cafe Guide',
             views: 15200,
             uploadDate: '2024-12-09'
           }
@@ -92,9 +92,9 @@ export async function GET() {
         districts: ['Hongdae', 'Sinchon', 'Seongsu'],
         videoProof: [
           {
-            youtubeId: 'mNHCwE6bPAg',
-            title: '흑임자 아인슈페너 만들기 | 한국식 비엔나 커피',
-            channel: '홈카페 레시피',
+            youtubeId: 'kffacxfA7G4',
+            title: 'Black Sesame Coffee Recipe',
+            channel: 'Korean Home Cafe',
             views: 19800,
             uploadDate: '2024-12-11'
           }
@@ -119,8 +119,8 @@ export async function GET() {
         districts: ['Itaewon', 'Hannam'],
         videoProof: [
           {
-            youtubeId: 'Y7W3F7Xj1zI',
-            title: '겨울 신메뉴 뱅쇼 커피 | 이태원 카페',
+            youtubeId: 'fJ9rUzIMcZQ',
+            title: 'Winter Spiced Coffee Korean Style',
             channel: 'Itaewon Coffee Scene',
             views: 3400,
             uploadDate: '2024-12-14'
@@ -146,8 +146,8 @@ export async function GET() {
         districts: ['Insadong', 'Bukchon'],
         videoProof: [
           {
-            youtubeId: 'SZmGCKfbYZs',
-            title: '전통 약과를 넣은 K-디저트 라떼',
+            youtubeId: 'Qb_bmlVIG0s',
+            title: 'Traditional Korean Dessert Coffee',
             channel: 'K-Food Trends',
             views: 8900,
             uploadDate: '2024-12-13'
@@ -173,9 +173,9 @@ export async function GET() {
         districts: ['Gangnam', 'Jamsil'],
         videoProof: [
           {
-            youtubeId: 'L5YHh7J4H_o',
-            title: '옥수수 크림 라떼가 대세? 강남 카페 신메뉴',
-            channel: '트렌드 헌터',
+            youtubeId: 'ZZ5LpwO-An4',
+            title: 'Korean Corn Cream Latte Trend',
+            channel: 'Trend Hunter Korea',
             views: 11200,
             uploadDate: '2024-12-12'
           }
