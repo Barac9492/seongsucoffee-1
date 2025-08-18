@@ -67,14 +67,14 @@ export default async function KWaveLanding() {
         <header className="text-center mb-12">
           <div className="mb-6">
             <h1 className="text-6xl font-bold text-red-900 mb-4">
-              🌊 K-Wave California Intelligence
+              🌊 K-Wave Intelligence
             </h1>
             <p className="text-2xl text-red-700 mb-6">
-              Korean Culture Trend Discovery & Business Intelligence Platform
+              Know What's Trending in Korean Culture Before Everyone Else
             </p>
-            <p className="text-lg text-red-600 max-w-3xl mx-auto mb-8">
-              Discover Korean Wave trends before they explode. Track K-pop, K-beauty, K-food, and K-culture 
-              with AI-powered analysis. Plus real-time Korean restaurant surge predictions across California.
+            <p className="text-lg text-red-600 max-w-4xl mx-auto mb-8">
+              Whether you're an investor, business owner, or cultural enthusiast - get exclusive insights into Korean trends exploding in California. 
+              <span className="font-semibold">Find the next big K-pop sensation, Korean beauty trend, or restaurant hotspot before the crowd.</span>
             </p>
           </div>
           
@@ -83,16 +83,38 @@ export default async function KWaveLanding() {
               href="/trends" 
               className="bg-red-600 text-white px-8 py-4 rounded-lg hover:bg-red-700 transition-colors font-semibold text-lg"
             >
-              🔥 Discover K-Wave Trends →
+              🔥 Find Next Big Trend
             </a>
             <a 
               href="/kwave" 
               className="bg-white text-red-600 border-2 border-red-600 px-8 py-4 rounded-lg hover:bg-red-50 transition-colors font-semibold text-lg"
             >
-              🍖 Restaurant Intelligence
+              ⏰ Skip the Wait Times
             </a>
           </div>
         </header>
+
+        {/* Who This Is For */}
+        <div className="bg-white rounded-lg shadow-lg p-8 mb-12">
+          <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Perfect For</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="text-center p-4">
+              <div className="text-4xl mb-3">💼</div>
+              <h3 className="font-bold text-lg mb-2">Investors & VCs</h3>
+              <p className="text-gray-600">Spot Korean startups and trends before they go mainstream. Get market intelligence others don't have.</p>
+            </div>
+            <div className="text-center p-4">
+              <div className="text-4xl mb-3">🏪</div>
+              <h3 className="font-bold text-lg mb-2">Restaurant Owners</h3>
+              <p className="text-gray-600">Never get caught understaffed again. Know exactly when your Korean restaurant will be busy.</p>
+            </div>
+            <div className="text-center p-4">
+              <div className="text-4xl mb-3">🍜</div>
+              <h3 className="font-bold text-lg mb-2">Korean Food Lovers</h3>
+              <p className="text-gray-600">Skip the lines, discover new spots early, and eat at the perfect time every time.</p>
+            </div>
+          </div>
+        </div>
 
         {/* Real-Time Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
@@ -130,24 +152,24 @@ export default async function KWaveLanding() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
           <div className="bg-white rounded-lg shadow-lg p-8">
             <h2 className="text-2xl font-bold text-red-800 mb-4">
-              🔥 Korean Trend Discovery
+              💰 Spot the Next Big Investment
             </h2>
             <ul className="space-y-3 text-gray-700">
               <li className="flex items-center">
                 <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
-                Discover trends before they explode mainstream
+                <strong>Beat the market:</strong> Find Korean trends 3-6 months early
               </li>
               <li className="flex items-center">
                 <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
-                Track K-pop, K-beauty, K-food, and K-culture trends
+                <strong>Investment intel:</strong> Market size, growth rate, and risk analysis
               </li>
               <li className="flex items-center">
                 <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
-                AI-powered trend analysis and predictions
+                <strong>California focus:</strong> Local market penetration data
               </li>
               <li className="flex items-center">
                 <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
-                Growth metrics from multiple data sources
+                <strong>Competitive edge:</strong> Korean companies to watch
               </li>
             </ul>
             <div className="mt-6">
@@ -155,31 +177,31 @@ export default async function KWaveLanding() {
                 href="/trends" 
                 className="inline-block bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors"
               >
-                Explore Korean Trends
+                Find Investment Opportunities
               </a>
             </div>
           </div>
 
           <div className="bg-white rounded-lg shadow-lg p-8">
             <h2 className="text-2xl font-bold text-red-800 mb-4">
-              🍖 Korean Restaurant Intelligence
+              ⏰ Never Wait in Line Again
             </h2>
             <ul className="space-y-3 text-gray-700">
               <li className="flex items-center">
                 <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
-                Real-time surge predictions for Korean BBQ restaurants
+                <strong>Save time:</strong> Know exact wait times before you go
               </li>
               <li className="flex items-center">
                 <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
-                Wait time forecasting with 24-hour predictions
+                <strong>Plan ahead:</strong> See 24-hour busy predictions
               </li>
               <li className="flex items-center">
                 <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
-                Staffing optimization recommendations
+                <strong>Beat the rush:</strong> Get alerts before surges hit
               </li>
               <li className="flex items-center">
                 <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
-                Peak hour identification and planning
+                <strong>Smart timing:</strong> Find the perfect time to dine
               </li>
             </ul>
             <div className="mt-6">
@@ -187,31 +209,31 @@ export default async function KWaveLanding() {
                 href="/kwave" 
                 className="inline-block bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors"
               >
-                View Restaurant Predictions
+                Check Wait Times Now
               </a>
             </div>
           </div>
 
           <div className="bg-white rounded-lg shadow-lg p-8">
             <h2 className="text-2xl font-bold text-pink-800 mb-4">
-              🎵 K-Pop Cultural Impact Analysis
+              🎨 Tap Into Korean Culture Goldmine
             </h2>
             <ul className="space-y-3 text-gray-700">
               <li className="flex items-center">
                 <span className="w-2 h-2 bg-pink-500 rounded-full mr-3"></span>
-                Track K-pop content releases and business impact
+                <strong>Content timing:</strong> Launch when K-dramas spike interest
               </li>
               <li className="flex items-center">
                 <span className="w-2 h-2 bg-pink-500 rounded-full mr-3"></span>
-                Korean drama trend correlation analysis
+                <strong>Event leverage:</strong> Capitalize on Korean festivals & concerts
               </li>
               <li className="flex items-center">
                 <span className="w-2 h-2 bg-pink-500 rounded-full mr-3"></span>
-                Cultural event surge predictions
+                <strong>Viral predictions:</strong> Spot next social media sensation
               </li>
               <li className="flex items-center">
                 <span className="w-2 h-2 bg-pink-500 rounded-full mr-3"></span>
-                Social media buzz to business demand mapping
+                <strong>Business impact:</strong> Convert cultural buzz to revenue
               </li>
             </ul>
             <div className="mt-6">
@@ -225,25 +247,25 @@ export default async function KWaveLanding() {
         {/* Value Proposition */}
         <div className="bg-gradient-to-r from-red-600 to-pink-600 rounded-lg shadow-lg p-8 mb-12 text-white">
           <div className="text-center">
-            <h2 className="text-3xl font-bold mb-4">Why K-Wave California Intelligence?</h2>
+            <h2 className="text-3xl font-bold mb-4">Make Money from Korean Culture Trends</h2>
             <p className="text-xl mb-6 opacity-90">
-              The Korean culture market in California is worth billions, but no one has real-time business intelligence.
+              California's $12.3B Korean Wave market is exploding, but most people discover trends too late. Be first.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
               <div>
                 <div className="text-4xl font-bold mb-2">36.2</div>
-                <div className="text-lg opacity-90">Avg Korean BBQ Search Volume</div>
-                <div className="text-sm opacity-75">(MAX 100 during peaks)</div>
+                <div className="text-lg opacity-90">Korean BBQ Search Interest</div>
+                <div className="text-sm opacity-75">Higher than pizza or burgers</div>
               </div>
               <div>
                 <div className="text-4xl font-bold mb-2">$12.3B</div>
-                <div className="text-lg opacity-90">Korean Wave Economic Impact</div>
-                <div className="text-sm opacity-75">Global market size (2019)</div>
+                <div className="text-lg opacity-90">Korean Culture Market Size</div>
+                <div className="text-sm opacity-75">California opportunity</div>
               </div>
               <div>
                 <div className="text-4xl font-bold mb-2">15-25%</div>
-                <div className="text-lg opacity-90">Revenue Increase</div>
-                <div className="text-sm opacity-75">With surge optimization</div>
+                <div className="text-lg opacity-90">Potential Revenue Boost</div>
+                <div className="text-sm opacity-75">For businesses using our intel</div>
               </div>
             </div>
           </div>
