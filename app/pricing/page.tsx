@@ -7,10 +7,10 @@ export default function PricingPage() {
           <div className="flex items-center justify-between">
             <h1 className="text-xl font-bold text-gray-900">K-Bridge California</h1>
             <div className="flex items-center gap-4">
+              <a href="/how-to" className="text-gray-600 font-medium">How To</a>
               <a href="/coffee-trends" className="text-orange-600 font-medium">Coffee Trends</a>
               <a href="/predict" className="text-orange-600 font-medium">Live Predictions</a>
-              <a href="/how-to" className="text-gray-600 font-medium">How To</a>
-              <a href="/admin" className="text-gray-600 font-medium text-sm">Admin</a>
+              <a href="/pricing" className="text-orange-600 font-medium">Pricing</a>
               <a href="/fnb" className="text-orange-600 font-medium">Dashboard</a>
               <a href="/" className="text-gray-600 font-medium">Home</a>
             </div>

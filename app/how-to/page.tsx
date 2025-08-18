@@ -7,9 +7,10 @@ export default function HowToPage() {
           <div className="flex items-center justify-between">
             <h1 className="text-xl font-bold text-gray-900">K-Bridge California</h1>
             <div className="flex items-center gap-4">
+              <a href="/how-to" className="text-orange-600 font-medium">How To</a>
               <a href="/coffee-trends" className="text-orange-600 font-medium">Coffee Trends</a>
               <a href="/predict" className="text-orange-600 font-medium">Live Predictions</a>
-              <a href="/admin" className="text-gray-600 font-medium text-sm">Admin</a>
+              <a href="/pricing" className="text-gray-600 font-medium">Pricing</a>
               <a href="/fnb" className="text-orange-600 font-medium">Dashboard</a>
               <a href="/" className="text-gray-600 font-medium">Home</a>
             </div>
@@ -97,24 +98,6 @@ export default function HowToPage() {
               </a>
             </div>
 
-            {/* Admin */}
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-xl p-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">
-                ⚙️ Admin Panel
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Content management for YouTube video proof and trend curation.
-              </p>
-              <div className="space-y-2 text-sm text-gray-600">
-                <p>• Add/remove YouTube videos</p>
-                <p>• Curate authentic content</p>
-                <p>• Manage trend evidence</p>
-                <p>• Quality control</p>
-              </div>
-              <a href="/admin" className="inline-block mt-4 text-purple-600 font-medium hover:text-purple-700">
-                Admin Access →
-              </a>
-            </div>
           </div>
         </section>
 
