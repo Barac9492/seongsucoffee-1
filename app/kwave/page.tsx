@@ -26,7 +26,6 @@ interface KWaveData {
 async function getKWaveData(): Promise<KWaveData | null> {
   try {
     const response = await fetch('https://web-production-a60f.up.railway.app/predictions', {
-      cache: 'no-store',
       next: { revalidate: 300 } // 5 minutes
     })
     if (!response.ok) {
@@ -42,7 +41,6 @@ async function getKWaveData(): Promise<KWaveData | null> {
 async function getKWaveStatus() {
   try {
     const response = await fetch('https://web-production-a60f.up.railway.app/status', {
-      cache: 'no-store',
       next: { revalidate: 300 } // 5 minutes
     })
     if (!response.ok) {

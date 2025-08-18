@@ -13,11 +13,9 @@ async function getKWaveStats(): Promise<KWaveStats> {
     // Fetch from Railway K-Wave agent
     const [statusResponse, predictionsResponse] = await Promise.all([
       fetch('https://web-production-a60f.up.railway.app/status', { 
-        cache: 'no-store',
         next: { revalidate: 60 }
       }),
       fetch('https://web-production-a60f.up.railway.app/predictions', { 
-        cache: 'no-store',
         next: { revalidate: 60 }
       })
     ])
@@ -263,7 +261,7 @@ export default async function KWaveLanding() {
               <p className="text-sm text-gray-500 mt-2">Premium Korean BBQ experience with live predictions</p>
             </div>
             <div className="border rounded-lg p-4">
-              <h3 className="font-bold text-lg text-red-800">Park's BBQ</h3>
+              <h3 className="font-bold text-lg text-red-800">Park&apos;s BBQ</h3>
               <p className="text-gray-600">Korean BBQ • Los Angeles</p>
               <p className="text-sm text-gray-500 mt-2">Family-owned establishment with surge monitoring</p>
             </div>

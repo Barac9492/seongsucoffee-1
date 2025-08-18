@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 interface KoreanTrend {
   id: string
@@ -41,11 +41,7 @@ export default function KWaveTrendsDiscovery() {
   const [investmentFilter, setInvestmentFilter] = useState<string>('all')
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    fetchKoreanTrends()
-  }, [selectedCategory, searchQuery, investmentFilter])
-
-  const fetchKoreanTrends = async () => {
+  const fetchKoreanTrends = useCallback(async () => {
     setLoading(true)
     try {
       // Strategic Korean market intelligence with 20+ years expertise
@@ -265,7 +261,11 @@ export default function KWaveTrendsDiscovery() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [selectedCategory, searchQuery, investmentFilter])
+
+  useEffect(() => {
+    fetchKoreanTrends()
+  }, [fetchKoreanTrends])
 
   const getStatusColor = (status: string) => {
     switch (status) {

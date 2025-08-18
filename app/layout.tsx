@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Seongsu Coffee Intelligence',
-  description: 'Real-time trend analysis for Seoul Seongsu coffee district',
+  title: 'K-Wave California Intelligence',
+  description: 'Korean market intelligence and trend discovery platform. Professional Korean business analysis with 20+ years expertise.',
 }
 
 export default function RootLayout({
