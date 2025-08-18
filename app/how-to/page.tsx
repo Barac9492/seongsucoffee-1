@@ -7,11 +7,9 @@ export default function HowToPage() {
           <div className="flex items-center justify-between">
             <h1 className="text-xl font-bold text-gray-900">K-Bridge California</h1>
             <div className="flex items-center gap-4">
-              <a href="/how-to" className="text-orange-600 font-medium">How To</a>
               <a href="/coffee-trends" className="text-orange-600 font-medium">Coffee Trends</a>
-              <a href="/predict" className="text-orange-600 font-medium">Live Predictions</a>
+              <a href="/how-to" className="text-orange-600 font-medium">How To</a>
               <a href="/pricing" className="text-gray-600 font-medium">Pricing</a>
-              <a href="/fnb" className="text-orange-600 font-medium">Dashboard</a>
               <a href="/" className="text-gray-600 font-medium">Home</a>
             </div>
           </div>
@@ -39,64 +37,36 @@ export default function HowToPage() {
         {/* Navigation Guide */}
         <section className="mb-16">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Platform Overview</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 rounded-xl p-8 text-center">
             
-            {/* Coffee Trends */}
-            <div className="bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 rounded-xl p-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">
-                ☕ Coffee Trends
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Real-time tracking of emerging Korean coffee products with YouTube video proof.
-              </p>
-              <div className="space-y-2 text-sm text-gray-600">
-                <p>• View growth metrics and adoption rates</p>
-                <p>• Watch video proof from Korean cafes</p>
-                <p>• Track trend lifecycle stages</p>
-                <p>• See social media metrics</p>
+            {/* Coffee Trends - Single Focus */}
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              ☕ Korean Coffee Trend Tracker
+            </h3>
+            <p className="text-lg text-gray-700 mb-6">
+              Your complete platform for tracking emerging Korean coffee products with video proof.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 text-sm text-gray-600">
+              <div>
+                <div className="font-semibold text-orange-800">Growth Metrics</div>
+                <div>Real-time % growth tracking</div>
               </div>
-              <a href="/coffee-trends" className="inline-block mt-4 text-orange-600 font-medium hover:text-orange-700">
-                Explore Trends →
-              </a>
-            </div>
-
-            {/* Live Predictions */}
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-xl p-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">
-                📊 Live Predictions
-              </h3>
-              <p className="text-gray-700 mb-4">
-                AI-powered predictions for F&B trends with confidence scores and human approval.
-              </p>
-              <div className="space-y-2 text-sm text-gray-600">
-                <p>• Today&apos;s trend alerts</p>
-                <p>• 30-day growth predictions</p>
-                <p>• Historical accuracy tracking</p>
-                <p>• Evidence-based insights</p>
+              <div>
+                <div className="font-semibold text-orange-800">Video Proof</div>
+                <div>Korean cafe YouTube evidence</div>
               </div>
-              <a href="/predict" className="inline-block mt-4 text-blue-600 font-medium hover:text-blue-700">
-                View Predictions →
-              </a>
-            </div>
-
-            {/* Dashboard */}
-            <div className="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-xl p-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">
-                📈 Dashboard
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Comprehensive F&B intelligence dashboard with regional insights and alerts.
-              </p>
-              <div className="space-y-2 text-sm text-gray-600">
-                <p>• Regional trend breakdowns</p>
-                <p>• Alert management system</p>
-                <p>• Performance analytics</p>
-                <p>• Business intelligence</p>
+              <div>
+                <div className="font-semibold text-orange-800">Lifecycle Stages</div>
+                <div>Discovery → Mainstream</div>
               </div>
-              <a href="/fnb" className="inline-block mt-4 text-green-600 font-medium hover:text-green-700">
-                Open Dashboard →
-              </a>
+              <div>
+                <div className="font-semibold text-orange-800">Social Analytics</div>
+                <div>TikTok, Instagram, search trends</div>
+              </div>
             </div>
+            <a href="/coffee-trends" className="inline-block px-6 py-3 bg-orange-600 text-white rounded-lg font-semibold hover:bg-orange-700 transition-colors">
+              Start Tracking Trends →
+            </a>
 
           </div>
         </section>
@@ -113,7 +83,7 @@ export default function HowToPage() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Start with Coffee Trends
+                  Explore Korean Coffee Trends
                 </h3>
                 <p className="text-gray-600 mb-3">
                   Visit the Coffee Trends page to see what&apos;s emerging in Korean cafes right now.
@@ -161,30 +131,6 @@ export default function HowToPage() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Check Live Predictions
-                </h3>
-                <p className="text-gray-600 mb-3">
-                  Use the Live Predictions page to see AI-powered forecasts and confidence levels.
-                </p>
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <p className="text-sm text-gray-700 mb-2"><strong>Decision criteria:</strong></p>
-                  <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• Prediction probability &gt;60% (good odds)</li>
-                    <li>• Multiple evidence sources (TikTok + Google Trends)</li>
-                    <li>• &quot;Exploding&quot; status (accelerating growth)</li>
-                    <li>• Low uncertainty margin (&lt;10%)</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Step 4 */}
-            <div className="flex gap-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
-                4
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   Plan Your California Launch
                 </h3>
                 <p className="text-gray-600 mb-3">
@@ -202,17 +148,17 @@ export default function HowToPage() {
               </div>
             </div>
 
-            {/* Step 5 */}
+            {/* Step 4 */}
             <div className="flex gap-6">
               <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
-                5
+                4
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   Monitor and Scale
                 </h3>
                 <p className="text-gray-600 mb-3">
-                  Use the Dashboard to track your implementation and find the next opportunity.
+                  Track your implementation success and find the next opportunity.
                 </p>
                 <div className="bg-gray-50 rounded-lg p-4">
                   <p className="text-sm text-gray-700 mb-2"><strong>Success metrics:</strong></p>
@@ -355,15 +301,15 @@ export default function HowToPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
                 href="/coffee-trends" 
-                className="bg-white text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-orange-50 transition-colors"
+                className="bg-white text-orange-600 px-8 py-4 rounded-lg font-semibold hover:bg-orange-50 transition-colors"
               >
-                Explore Coffee Trends
+                Start Tracking Trends
               </a>
               <a 
-                href="/predict" 
-                className="bg-orange-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-800 transition-colors"
+                href="/pricing" 
+                className="bg-orange-700 text-white px-8 py-4 rounded-lg font-semibold hover:bg-orange-800 transition-colors"
               >
-                View Live Predictions
+                View Pricing
               </a>
             </div>
           </div>
