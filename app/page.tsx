@@ -72,28 +72,26 @@ export default async function KWaveLanding() {
               🌊 K-Wave California Intelligence
             </h1>
             <p className="text-2xl text-red-700 mb-6">
-              Korean Culture & Business Surge Prediction Platform
+              Korean Culture Trend Discovery & Business Intelligence Platform
             </p>
             <p className="text-lg text-red-600 max-w-3xl mx-auto mb-8">
-              The first AI-powered platform to predict Korean restaurant demand, K-pop event impact, 
-              and cultural trend surges across California using real-time data analysis.
+              Discover Korean Wave trends before they explode. Track K-pop, K-beauty, K-food, and K-culture 
+              with AI-powered analysis. Plus real-time Korean restaurant surge predictions across California.
             </p>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <a 
-              href="/kwave" 
+              href="/trends" 
               className="bg-red-600 text-white px-8 py-4 rounded-lg hover:bg-red-700 transition-colors font-semibold text-lg"
             >
-              View Live Predictions →
+              🔥 Discover K-Wave Trends →
             </a>
             <a 
-              href="https://web-production-a60f.up.railway.app/test-trends" 
+              href="/kwave" 
               className="bg-white text-red-600 border-2 border-red-600 px-8 py-4 rounded-lg hover:bg-red-50 transition-colors font-semibold text-lg"
-              target="_blank"
-              rel="noopener noreferrer"
             >
-              View Raw Trend Data
+              🍖 Restaurant Intelligence
             </a>
           </div>
         </header>
@@ -131,7 +129,39 @@ export default async function KWaveLanding() {
         </div>
 
         {/* Platform Features */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            <h2 className="text-2xl font-bold text-red-800 mb-4">
+              🔥 Korean Trend Discovery
+            </h2>
+            <ul className="space-y-3 text-gray-700">
+              <li className="flex items-center">
+                <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
+                Discover trends before they explode mainstream
+              </li>
+              <li className="flex items-center">
+                <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
+                Track K-pop, K-beauty, K-food, and K-culture trends
+              </li>
+              <li className="flex items-center">
+                <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
+                AI-powered trend analysis and predictions
+              </li>
+              <li className="flex items-center">
+                <span className="w-2 h-2 bg-red-500 rounded-full mr-3"></span>
+                Growth metrics from multiple data sources
+              </li>
+            </ul>
+            <div className="mt-6">
+              <a 
+                href="/trends" 
+                className="inline-block bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors"
+              >
+                Explore Korean Trends
+              </a>
+            </div>
+          </div>
+
           <div className="bg-white rounded-lg shadow-lg p-8">
             <h2 className="text-2xl font-bold text-red-800 mb-4">
               🍖 Korean Restaurant Intelligence
