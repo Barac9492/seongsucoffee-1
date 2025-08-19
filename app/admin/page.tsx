@@ -254,8 +254,11 @@ export default function AdminPage() {
               >
                 {refreshing ? '🔍 Searching...' : '🔄 Refresh Trends'}
               </button>
-              <a href="/coffee-trends" className="text-orange-600 font-medium">View Trends</a>
+              <a href="/coffee-trends" className="text-blue-600 font-medium">Trends</a>
+              <a href="/how-to" className="text-gray-600 font-medium">Guide</a>
+              <a href="/pricing" className="text-gray-600 font-medium">Pricing</a>
               <a href="/" className="text-gray-600 font-medium">Home</a>
+              <a href="/admin" className="text-blue-600 font-medium">Admin</a>
             </div>
           </div>
         </div>

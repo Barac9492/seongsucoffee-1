@@ -5,12 +5,13 @@ export default function PricingPage() {
       <header className="border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-xl font-bold text-gray-900">K-Bridge California</h1>
+            <h1 className="text-xl font-bold text-gray-900">Korean Trend Scout</h1>
             <div className="flex items-center gap-4">
-              <a href="/coffee-trends" className="text-orange-600 font-medium">Coffee Trends</a>
-              <a href="/how-to" className="text-gray-600 font-medium">How To</a>
-              <a href="/pricing" className="text-orange-600 font-medium">Pricing</a>
+              <a href="/coffee-trends" className="text-blue-600 font-medium">Trends</a>
+              <a href="/how-to" className="text-gray-600 font-medium">Guide</a>
+              <a href="/pricing" className="text-blue-600 font-medium">Pricing</a>
               <a href="/" className="text-gray-600 font-medium">Home</a>
+              <a href="/admin" className="text-gray-600 font-medium text-sm">Admin</a>
             </div>
           </div>
         </div>

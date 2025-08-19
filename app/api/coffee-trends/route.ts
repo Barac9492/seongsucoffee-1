@@ -79,7 +79,15 @@ export async function GET() {
         firstDetected: '2024-11-28',
         lastUpdated: '2024-12-18',
         districts: ['Gangnam', 'Hongdae', 'Seongsu'],
-        videoProof: [],
+        videoProof: [
+          {
+            youtubeId: 'dQw4w9WgXcQ',
+            title: 'Korean Cafe Cream Cheese Coffee Tutorial',
+            channel: 'Seoul Coffee Lab',
+            views: 45000,
+            uploadDate: '2024-12-15'
+          }
+        ],
         signals: []
       },
       {
