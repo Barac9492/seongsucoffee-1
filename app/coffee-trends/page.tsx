@@ -113,22 +113,14 @@ export default function CoffeeTrendsPage() {
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Korean Trend Scout</h1>
-              <p className="text-sm text-gray-600">Should I launch this? How do I launch this?</p>
+              <h1 className="text-2xl font-bold text-gray-900">4 Drinks to Launch This Month</h1>
+              <p className="text-sm text-gray-600">Recipe → Order supplies → Train staff → Profit</p>
             </div>
-            <div className="flex items-center gap-6">
-              <div className="text-right">
-                <div className="text-2xl font-bold text-green-600">↑ {avgGrowth}%</div>
-                <div className="text-xs text-gray-500">Avg. trend growth</div>
-              </div>
-              <nav className="flex items-center gap-4">
-                <a href="/coffee-trends" className="text-blue-600 font-medium">Trends</a>
-                <a href="/how-to" className="text-gray-600 hover:text-blue-600 font-medium">Guide</a>
-                <a href="/pricing" className="text-gray-600 hover:text-blue-600 font-medium">Pricing</a>
-                <a href="/" className="text-gray-600 hover:text-blue-600 font-medium">Home</a>
-                <a href="/admin" className="text-gray-600 hover:text-blue-600 font-medium">Admin</a>
-              </nav>
-            </div>
+            <nav className="flex items-center gap-4">
+              <a href="/" className="text-gray-600 hover:text-blue-600 font-medium">Home</a>
+              <a href="/pricing" className="text-gray-600 hover:text-blue-600 font-medium">Pricing</a>
+              <a href="/admin" className="text-gray-400 font-medium text-xs">Admin</a>
+            </nav>
           </div>
         </div>
       </header>
@@ -143,59 +135,49 @@ export default function CoffeeTrendsPage() {
               <div className="flex items-center justify-between mb-8">
                 <div>
                   <h3 className="text-2xl font-bold text-gray-900">{trend.name}</h3>
-                  <p className="text-gray-600">{trend.nameKr}</p>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {trend.districts.join(', ')} • {daysAgo(trend.firstDetected)} days old
+                  <p className="text-lg text-green-600 font-semibold mt-1">
+                    ${trend.pricing.costPerServing} cost → ${trend.pricing.suggestedRetail} price = {trend.pricing.margin} margin
                   </p>
                 </div>
                 <div className="text-right">
-                  <div className="text-3xl font-bold text-green-600">↑{trend.growth}%</div>
-                  <div className="text-sm text-gray-500">{trend.cafesServing} cafes serving</div>
+                  <div className="text-3xl font-bold text-green-600">+$15-25K</div>
+                  <div className="text-sm text-gray-500">monthly revenue potential</div>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 
-                {/* THE WHY */}
-                <div className="bg-blue-50 rounded-lg p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="text-2xl mr-3">🎯</div>
-                    <h4 className="text-lg font-bold text-gray-900">THE WHY</h4>
-                  </div>
-                  <p className="text-sm text-gray-600 mb-4">Should I launch this in my market?</p>
+                {/* QUICK DECISION */}
+                <div className="bg-green-50 rounded-lg p-6">
+                  <h4 className="text-lg font-bold text-gray-900 mb-4">Launch Decision</h4>
                   
                   <div className="space-y-3">
                     <div className="flex justify-between">
-                      <span className="text-gray-700">Success Probability</span>
-                      <span className="font-bold text-green-600">{trend.successProbability}%</span>
+                      <span className="text-gray-700">Ready to Launch?</span>
+                      <span className="font-bold text-green-600">{trend.successProbability >= 70 ? 'YES' : 'WAIT'}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-700">Market Readiness</span>
-                      <span className="font-semibold">{trend.marketReadiness}</span>
+                      <span className="text-gray-700">Profit Margin</span>
+                      <span className="font-bold">{trend.pricing.margin}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-700">Competitor Risk</span>
-                      <span className="font-semibold">{trend.competitorRisk}</span>
+                      <span className="text-gray-700">Competition Risk</span>
+                      <span className="font-bold">{trend.competitorRisk}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-700">Time to Global</span>
-                      <span className="font-semibold">{trend.timeToGlobal}</span>
+                      <span className="text-gray-700">Launch Window</span>
+                      <span className="font-bold">Next 30 days</span>
                     </div>
                   </div>
                   
                   <div className="mt-4 p-3 bg-white rounded border">
-                    <p className="text-xs font-semibold text-gray-700 mb-1">Historical Precedent:</p>
-                    <p className="text-xs text-gray-600">{trend.historicalPrecedent}</p>
+                    <p className="text-sm font-semibold text-gray-700">Similar Success: {trend.historicalPrecedent}</p>
                   </div>
                 </div>
 
-                {/* THE HOW */}
-                <div className="bg-green-50 rounded-lg p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="text-2xl mr-3">⚡</div>
-                    <h4 className="text-lg font-bold text-gray-900">THE HOW</h4>
-                  </div>
-                  <p className="text-sm text-gray-600 mb-4">Exact business execution plan</p>
+                {/* LAUNCH PLAN */}
+                <div className="bg-blue-50 rounded-lg p-6">
+                  <h4 className="text-lg font-bold text-gray-900 mb-4">48-Hour Launch Plan</h4>
                   
                   <div className="space-y-4">
                     <div>
