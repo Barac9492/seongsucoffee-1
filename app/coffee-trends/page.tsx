@@ -7,12 +7,46 @@ interface CoffeeTrend {
   id: string
   name: string
   nameKr: string
+  
+  // THE WHY - Market Analysis
+  successProbability: number
+  marketReadiness: string
+  competitorRisk: string
+  historicalPrecedent: string
+  timeToGlobal: string
+  
+  // THE HOW - Business Execution
+  recipe: {
+    ingredients: string[]
+    instructions: string[]
+    difficulty: string
+    prepTime: string
+    shelfLife: string
+  }
+  suppliers: {
+    ingredient: string
+    source: string
+    cost: string
+    notes: string
+  }[]
+  pricing: {
+    costPerServing: string
+    suggestedRetail: string
+    margin: string
+    premiumPosition: string
+  }
+  training: {
+    keyTechniques: string[]
+    commonMistakes: string[]
+    qualityControl: string
+  }
+  
+  // Tracking data
   growth: number
-  stage: 'discovery' | 'early' | 'growth' | 'mainstream' | 'saturated'
+  stage: string
   cafesServing: number
   firstDetected: string
-  socialMentions: number
-  searchGrowth: number
+  lastUpdated: string
   districts: string[]
   videoProof: {
     youtubeId: string
@@ -21,12 +55,7 @@ interface CoffeeTrend {
     views: number
     uploadDate: string
   }[]
-  ingredients?: string[]
-  priceRange?: string
-  targetDemo?: string
-  instagramHashtag?: string
-  naverSearchVolume?: number
-  tiktokViews?: number
+  signals?: any[]
 }
 
 interface TrendResponse {
@@ -117,8 +146,8 @@ export default function CoffeeTrendsPage() {
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Korean Coffee Trends</h1>
-              <p className="text-sm text-gray-600">Real-time tracking of emerging coffee products in Korea</p>
+              <h1 className="text-2xl font-bold text-gray-900">Korean Trend Scout</h1>
+              <p className="text-sm text-gray-600">Should I launch this? How do I launch this?</p>
             </div>
             <div className="flex items-center gap-6">
               <div className="text-right">
@@ -126,16 +155,16 @@ export default function CoffeeTrendsPage() {
                 <div className="text-xs text-gray-500">Avg. trend growth</div>
               </div>
               <nav className="flex items-center gap-4">
-                <a href="/" className="text-gray-600 hover:text-orange-600 font-medium">
+                <a href="/" className="text-gray-600 hover:text-blue-600 font-medium">
                   Home
                 </a>
-                <a href="/how-to" className="text-gray-600 hover:text-orange-600 font-medium">
-                  How To
+                <a href="/how-to" className="text-gray-600 hover:text-blue-600 font-medium">
+                  Guide
                 </a>
-                <a href="/pricing" className="text-gray-600 hover:text-orange-600 font-medium">
+                <a href="/pricing" className="text-gray-600 hover:text-blue-600 font-medium">
                   Pricing
                 </a>
-                <a href="/admin" className="text-gray-600 hover:text-orange-600 font-medium">
+                <a href="/admin" className="text-gray-600 hover:text-blue-600 font-medium">
                   Admin
                 </a>
               </nav>
