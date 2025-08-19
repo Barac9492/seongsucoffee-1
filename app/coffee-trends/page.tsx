@@ -120,9 +120,25 @@ export default function CoffeeTrendsPage() {
               <h1 className="text-2xl font-bold text-gray-900">Korean Coffee Trends</h1>
               <p className="text-sm text-gray-600">Real-time tracking of emerging coffee products in Korea</p>
             </div>
-            <div className="text-right">
-              <div className="text-2xl font-bold text-green-600">↑ {avgGrowth}%</div>
-              <div className="text-xs text-gray-500">Avg. trend growth</div>
+            <div className="flex items-center gap-6">
+              <div className="text-right">
+                <div className="text-2xl font-bold text-green-600">↑ {avgGrowth}%</div>
+                <div className="text-xs text-gray-500">Avg. trend growth</div>
+              </div>
+              <nav className="flex items-center gap-4">
+                <a href="/" className="text-gray-600 hover:text-orange-600 font-medium">
+                  Home
+                </a>
+                <a href="/how-to" className="text-gray-600 hover:text-orange-600 font-medium">
+                  How To
+                </a>
+                <a href="/pricing" className="text-gray-600 hover:text-orange-600 font-medium">
+                  Pricing
+                </a>
+                <a href="/admin" className="text-gray-600 hover:text-orange-600 font-medium">
+                  Admin
+                </a>
+              </nav>
             </div>
           </div>
         </div>

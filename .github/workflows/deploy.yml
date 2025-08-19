@@ -1,26 +1,10 @@
-name: Deploy Seongsu Coffee Intelligence
+name: Deploy Korean Coffee Trends
 
 on:
   push:
     branches: [ main ]
-  schedule:
-    # Run every hour to keep Railway awake
-    - cron: '0 * * * *'
 
 jobs:
-  deploy-railway:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Install Railway CLI
-      run: npm install -g @railway/cli
-    
-    - name: Deploy to Railway
-      run: railway up --service seongsu-agent
-      env:
-        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        
   deploy-vercel:
     runs-on: ubuntu-latest
     steps:
@@ -34,12 +18,11 @@ jobs:
         vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
         
   health-check:
-    needs: [deploy-railway, deploy-vercel]
+    needs: [deploy-vercel]
     runs-on: ubuntu-latest
     steps:
     - name: Health Check
       run: |
-        echo "🚀 Full throttle deployment complete!"
-        echo "📊 Dashboard: https://seongsucoffee-1.vercel.app"
-        echo "🤖 Agent: Running on Railway"
-        echo "💾 Database: Supabase (Seoul region)"
+        echo "🚀 Korean Coffee Trends deployment complete!"
+        echo "☕ Live at: https://seongsucoffee-1.vercel.app"
+        echo "🎯 Simple, focused, fast!"
