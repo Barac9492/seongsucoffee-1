@@ -105,13 +105,14 @@ export default function CoffeeTrendsPage() {
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-4xl animate-fade-in-up">
-            <h1 className="text-6xl md:text-7xl font-light leading-[0.9] tracking-tight mb-6">
-              Four drinks.<br/>
-              <span className="text-gray-400">Ready to launch.</span>
+          <div className="text-center animate-fade-in-up">
+            <h1 className="text-5xl md:text-6xl font-light leading-tight tracking-tight mb-6">
+              Launch these drinks<br/>
+              <span className="text-gray-400">before your competition</span>
             </h1>
-            <p className="text-xl text-gray-600 font-light max-w-2xl">
-              Recipe. Suppliers. Training. Revenue.
+            <p className="text-xl text-gray-600 font-light max-w-3xl mx-auto">
+              Four trending Korean drinks with complete business packages.
+              <br/>Priority ranked by market readiness and profit potential.
             </p>
           </div>
         </div>
@@ -121,55 +122,75 @@ export default function CoffeeTrendsPage() {
       <section className="px-8 pb-32">
         <div className="max-w-7xl mx-auto">
           <div className="space-y-16">
-            {trends.map((trend, index) => (
-              <div key={trend.id} className={`${index > 0 ? 'animate-fade-in-up' : ''}`}>
-                {/* Trend Header */}
-                <div className="flex items-end justify-between mb-12">
-                  <div>
-                    <h2 className="text-4xl font-light tracking-tight mb-3">{trend.name}</h2>
-                    <div className="text-lg text-gray-600">
-                      <span className="text-2xl font-light">{trend.pricing.margin}</span> margin
+            {trends.map((trend, index) => {
+              const priority = index === 0 ? 'Launch Now' : index === 1 ? 'Launch Soon' : 'Monitor'
+              const priorityColor = index === 0 ? 'bg-green-100 text-green-800' : index === 1 ? 'bg-yellow-100 text-yellow-800' : 'bg-gray-100 text-gray-800'
+              
+              return (
+              <div key={trend.id} className={`border border-gray-100 ${index === 0 ? 'border-green-200' : ''} ${index > 0 ? 'animate-fade-in-up' : ''}`}>
+                
+                {/* Priority Header */}
+                <div className="p-8 border-b border-gray-100">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center gap-4">
+                      <span className={`px-3 py-1 text-xs font-medium rounded-full ${priorityColor}`}>
+                        {priority}
+                      </span>
+                      <span className="text-sm text-gray-500">#{index + 1} Priority</span>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-2xl font-light">{trend.pricing.margin}</div>
+                      <div className="text-xs text-gray-500">margin</div>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className="text-3xl font-light">$50K</div>
-                    <div className="text-sm text-gray-500">monthly potential</div>
+                  
+                  <h2 className="text-3xl font-light tracking-tight mb-2">{trend.name}</h2>
+                  <p className="text-gray-600">{trend.historicalPrecedent}</p>
+                </div>
+
+                {/* Quick Stats */}
+                <div className="p-8 border-b border-gray-100">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div>
+                      <div className="text-2xl font-light mb-1">{trend.successProbability}%</div>
+                      <div className="text-xs text-gray-500 uppercase tracking-wider">Success Rate</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-light mb-1">{trend.recipe.difficulty}</div>
+                      <div className="text-xs text-gray-500 uppercase tracking-wider">Difficulty</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-light mb-1">{trend.recipe.prepTime}</div>
+                      <div className="text-xs text-gray-500 uppercase tracking-wider">Prep Time</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-light mb-1">{trend.pricing.suggestedRetail}</div>
+                      <div className="text-xs text-gray-500 uppercase tracking-wider">Retail Price</div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-px bg-gray-200 mb-8">
-                  <div className="bg-white p-8 hover-lift cursor-pointer">
-                    <div className="text-2xl font-light mb-2">{trend.successProbability}%</div>
-                    <div className="text-sm text-gray-500 uppercase tracking-wider">Success Rate</div>
+                {/* Action */}
+                <div className="p-8">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm text-gray-600 mb-1">Complete launch package available</p>
+                      <p className="text-xs text-gray-500">Recipe, suppliers, training, pricing strategy</p>
+                    </div>
+                    <button 
+                      onClick={() => {
+                        setSelectedTrend(trend)
+                        setDetailsOpen(true)
+                      }}
+                      className={`px-6 py-3 rounded-full font-medium transition-transform hover:scale-105 ${
+                        index === 0 
+                          ? 'bg-black text-white' 
+                          : 'bg-gray-100 text-gray-900'
+                      }`}
+                    >
+                      {index === 0 ? 'Launch now' : 'View details'}
+                    </button>
                   </div>
-                  <div className="bg-white p-8 hover-lift cursor-pointer">
-                    <div className="text-2xl font-light mb-2">{trend.recipe.difficulty}</div>
-                    <div className="text-sm text-gray-500 uppercase tracking-wider">Difficulty</div>
-                  </div>
-                  <div className="bg-white p-8 hover-lift cursor-pointer">
-                    <div className="text-2xl font-light mb-2">{trend.recipe.prepTime}</div>
-                    <div className="text-sm text-gray-500 uppercase tracking-wider">Prep Time</div>
-                  </div>
-                  <div className="bg-white p-8 hover-lift cursor-pointer">
-                    <div className="text-2xl font-light mb-2">{trend.pricing.suggestedRetail}</div>
-                    <div className="text-sm text-gray-500 uppercase tracking-wider">Retail</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-gray-600">{trend.historicalPrecedent}</p>
-                  </div>
-                  <button 
-                    onClick={() => {
-                      setSelectedTrend(trend)
-                      setDetailsOpen(true)
-                    }}
-                    className="inline-flex items-center gap-3 group"
-                  >
-                    <span className="text-lg">View recipe</span>
-                    <span className="text-gray-400 group-hover:translate-x-1 transition-transform">→</span>
-                  </button>
                 </div>
 
                 {/* Video Proof Section */}
@@ -201,7 +222,7 @@ export default function CoffeeTrendsPage() {
                   </div>
                 )}
               </div>
-            ))}
+            )})}
           </div>
         </div>
       </section>
