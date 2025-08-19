@@ -435,7 +435,7 @@ export default function AdminPage() {
         growth: newGrowth,
         socialMentions: newMentions,
         lastUpdated: timestamp,
-        signals: [...trend.signals, newSignal]
+        signals: [...(trend.signals || []), newSignal]
       }
     })
     
@@ -462,6 +462,35 @@ export default function AdminPage() {
           id: `trend-${Date.now()}`,
           name: randomIdea.name,
           nameKr: randomIdea.nameKr,
+          successProbability: Math.floor(Math.random() * 30) + 60, // 60-90%
+          marketReadiness: Math.random() > 0.5 ? 'Medium' : 'Low',
+          competitorRisk: Math.random() > 0.7 ? 'High' : 'Medium',
+          historicalPrecedent: 'New discovery - no historical precedent',
+          timeToGlobal: '6-8 months',
+          recipe: {
+            ingredients: ['Coffee', 'Milk', 'Special ingredient'],
+            instructions: ['Brew coffee', 'Add ingredients', 'Serve'],
+            difficulty: 'Medium',
+            prepTime: '5 minutes',
+            shelfLife: '15 minutes'
+          },
+          suppliers: [{
+            ingredient: 'Special ingredient',
+            source: 'Korean suppliers',
+            cost: '$5.00/unit',
+            notes: 'Sourced from Korea'
+          }],
+          pricing: {
+            costPerServing: '$2.00',
+            suggestedRetail: '$6.50',
+            margin: '70%',
+            premiumPosition: 'Standard'
+          },
+          training: {
+            keyTechniques: ['Standard preparation'],
+            commonMistakes: ['Over-mixing'],
+            qualityControl: 'Standard quality checks'
+          },
           growth: Math.floor(Math.random() * 50) + 20,
           stage: 'discovery' as const,
           cafesServing: Math.floor(Math.random() * 5) + 1,
