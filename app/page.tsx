@@ -140,7 +140,7 @@ export default function SimpleLanding() {
       <footer className="py-16 px-8 border-t border-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-center">
-            <div className="text-xs text-gray-400">© 2024 Profit</div>
+            <div className="text-xs text-gray-400">© 2024 Seongsu</div>
             <div className="flex gap-8">
               <a href="/admin" className="text-xs text-gray-400 hover:text-gray-600">Admin</a>
             </div>

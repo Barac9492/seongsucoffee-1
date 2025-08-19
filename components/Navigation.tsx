@@ -10,7 +10,7 @@ export default function Navigation({ currentPage }: NavigationProps) {
       <div className="max-w-7xl mx-auto px-8 py-6">
         <div className="flex items-center justify-between">
           <a href="/" className="font-semibold text-sm tracking-wide hover:opacity-70 transition-opacity">
-            PROFIT
+            SEONGSU
           </a>
           <nav className="flex items-center gap-8">
             <a 
