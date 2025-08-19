@@ -59,7 +59,23 @@ export default function AdminPage() {
 
   useEffect(() => {
     fetchTrends()
+    fetchVideos()
   }, [])
+  
+  const fetchVideos = async () => {
+    try {
+      const response = await fetch('/api/videos')
+      const data = await response.json()
+      
+      // Merge videos into trends
+      setTrends(prevTrends => prevTrends.map(trend => ({
+        ...trend,
+        videoProof: data.videos[trend.id] || []
+      })))
+    } catch (error) {
+      console.error('Failed to fetch videos:', error)
+    }
+  }
 
   const fetchTrends = async () => {
     try {
@@ -95,17 +111,20 @@ export default function AdminPage() {
     }
 
     try {
-      // Add video to actual trends API so it appears on all pages
-      const response = await fetch('/api/admin/update-trends', {
+      // Add video using simpler JSON-based API
+      const response = await fetch('/api/videos', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          action: 'add',
           trendId,
-          youtubeId,
-          title: 'User Added Video',
-          channel: 'Unknown Channel'
+          video: {
+            youtubeId,
+            title: 'User Added Video',
+            channel: 'Unknown Channel'
+          }
         }),
       })
 
@@ -137,7 +156,7 @@ export default function AdminPage() {
       
       setTrends(updatedTrends)
       setNewVideoUrl('')
-      setMessage(`🎉 Video added successfully! It will now appear on all pages for users to see.`)
+      setMessage(`🎉 Video added! YouTube link: https://youtube.com/watch?v=${youtubeId}`)
       setTimeout(() => setMessage(''), 5000)
 
     } catch (error) {
@@ -157,13 +176,17 @@ export default function AdminPage() {
     const youtubeId = trend.videoProof[videoIndex].youtubeId
 
     try {
-      // Remove video from actual trends API so it disappears from all pages
-      const response = await fetch('/api/admin/update-trends', {
-        method: 'DELETE',
+      // Remove video using simpler JSON-based API
+      const response = await fetch('/api/videos', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ trendId, youtubeId }),
+        body: JSON.stringify({
+          action: 'remove',
+          trendId,
+          video: { youtubeId }
+        }),
       })
 
       const result = await response.json()
@@ -186,7 +209,7 @@ export default function AdminPage() {
       })
       
       setTrends(updatedTrends)
-      setMessage(`🗑️ Video removed successfully from all pages`)
+      setMessage(`🗑️ Video removed successfully`)
       setTimeout(() => setMessage(''), 3000)
 
     } catch (error) {

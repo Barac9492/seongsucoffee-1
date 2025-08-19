@@ -64,6 +64,9 @@ export default function CoffeeTrendsPage() {
         const response = await fetch('/api/coffee-trends')
         const data = await response.json()
         setTrends(data.trends)
+        
+        // Also fetch videos from JSON storage and merge them
+        await fetchAndMergeVideos(data.trends)
       } catch (error) {
         console.error('Failed to fetch trends:', error)
       } finally {
@@ -72,6 +75,23 @@ export default function CoffeeTrendsPage() {
     }
     fetchTrends()
   }, [])
+
+  const fetchAndMergeVideos = async (trendsData: CoffeeTrend[]) => {
+    try {
+      const response = await fetch('/api/videos')
+      const videoData = await response.json()
+      
+      // Merge videos into trends
+      const trendsWithVideos = trendsData.map(trend => ({
+        ...trend,
+        videoProof: videoData.videos[trend.id] || []
+      }))
+      
+      setTrends(trendsWithVideos)
+    } catch (error) {
+      console.error('Failed to fetch videos:', error)
+    }
+  }
 
   if (loading) {
     return (
@@ -215,6 +235,39 @@ export default function CoffeeTrendsPage() {
                   </button>
                 </div>
               </div>
+
+              {/* Video Proof Section */}
+              {trend.videoProof && trend.videoProof.length > 0 && (
+                <div className="mt-8 border-t pt-6">
+                  <div className="flex items-center mb-4">
+                    <div className="text-xl mr-2">🎬</div>
+                    <h4 className="text-lg font-bold text-gray-900">What it looks like</h4>
+                    <span className="ml-2 text-sm text-gray-500">({trend.videoProof.length} video{trend.videoProof.length !== 1 ? 's' : ''})</span>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {trend.videoProof.map((video, index) => (
+                      <div key={index} className="border border-gray-200 rounded-lg p-3 bg-white">
+                        <div className="mb-2">
+                          <p className="font-medium text-sm text-gray-900 line-clamp-2">{video.title}</p>
+                          <p className="text-xs text-gray-500">{video.channel}</p>
+                        </div>
+                        <div className="flex items-center justify-between text-xs text-gray-400 mb-3">
+                          <span>{video.views?.toLocaleString() || '0'} views</span>
+                          <span>{video.uploadDate}</span>
+                        </div>
+                        <a
+                          href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block w-full px-3 py-2 bg-red-600 text-white text-center text-sm font-medium rounded hover:bg-red-700 transition-colors"
+                        >
+                          Watch on YouTube →
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
