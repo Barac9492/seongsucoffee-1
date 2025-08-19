@@ -107,149 +107,120 @@ export default function CoffeeTrendsPage() {
   const avgGrowth = trends.length > 0 ? Math.round(trends.reduce((acc, t) => acc + t.growth, 0) / trends.length) : 0
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-40">
-        <div className="max-w-6xl mx-auto px-4 py-4">
+    <div className="min-h-screen bg-white">
+      {/* Minimal Header */}
+      <header className="fixed top-0 w-full z-50 glass">
+        <div className="max-w-7xl mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">4 Drinks to Launch This Month</h1>
-              <p className="text-sm text-gray-600">Recipe → Order supplies → Train staff → Profit</p>
-            </div>
-            <nav className="flex items-center gap-4">
-              <a href="/" className="text-gray-600 hover:text-blue-600 font-medium">Home</a>
-              <a href="/pricing" className="text-gray-600 hover:text-blue-600 font-medium">Pricing</a>
-              <a href="/admin" className="text-gray-400 font-medium text-xs">Admin</a>
+            <div className="font-semibold text-sm tracking-wide">PROFIT</div>
+            <nav className="flex items-center gap-8">
+              <a href="/" className="text-sm text-gray-600 hover:text-black">Home</a>
+              <span className="text-sm text-black font-medium">Trends</span>
+              <a href="/pricing" className="text-sm text-gray-600 hover:text-black">Pricing</a>
+              <a href="/admin" className="text-sm text-gray-400 hover:text-gray-600">Admin</a>
             </nav>
           </div>
         </div>
       </header>
 
-      {/* Korean Trend Intelligence */}
-      <section className="max-w-6xl mx-auto px-4 py-8">        
-        <div className="space-y-8">
-          {trends.map((trend) => (
-            <div key={trend.id} className="bg-white rounded-xl border border-gray-200 p-8">
-              
-              {/* Trend Header */}
-              <div className="flex items-center justify-between mb-8">
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900">{trend.name}</h3>
-                  <p className="text-lg text-green-600 font-semibold mt-1">
-                    ${trend.pricing.costPerServing} cost → ${trend.pricing.suggestedRetail} price = {trend.pricing.margin} margin
-                  </p>
-                </div>
-                <div className="text-right">
-                  <div className="text-3xl font-bold text-green-600">+$15-25K</div>
-                  <div className="text-sm text-gray-500">monthly revenue potential</div>
-                </div>
-              </div>
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-4xl animate-fade-in-up">
+            <h1 className="text-6xl md:text-7xl font-light leading-[0.9] tracking-tight mb-6">
+              Four drinks.<br/>
+              <span className="text-gray-400">Ready to launch.</span>
+            </h1>
+            <p className="text-xl text-gray-600 font-light max-w-2xl">
+              Recipe. Suppliers. Training. Revenue.
+            </p>
+          </div>
+        </div>
+      </section>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                
-                {/* QUICK DECISION */}
-                <div className="bg-green-50 rounded-lg p-6">
-                  <h4 className="text-lg font-bold text-gray-900 mb-4">Launch Decision</h4>
-                  
-                  <div className="space-y-3">
-                    <div className="flex justify-between">
-                      <span className="text-gray-700">Ready to Launch?</span>
-                      <span className="font-bold text-green-600">{trend.successProbability >= 70 ? 'YES' : 'WAIT'}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-700">Profit Margin</span>
-                      <span className="font-bold">{trend.pricing.margin}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-700">Competition Risk</span>
-                      <span className="font-bold">{trend.competitorRisk}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-700">Launch Window</span>
-                      <span className="font-bold">Next 30 days</span>
+      {/* Trends */}
+      <section className="px-8 pb-32">
+        <div className="max-w-7xl mx-auto">
+          <div className="space-y-16">
+            {trends.map((trend, index) => (
+              <div key={trend.id} className={`${index > 0 ? 'animate-fade-in-up' : ''}`}>
+                {/* Trend Header */}
+                <div className="flex items-end justify-between mb-12">
+                  <div>
+                    <h2 className="text-4xl font-light tracking-tight mb-3">{trend.name}</h2>
+                    <div className="text-lg text-gray-600">
+                      <span className="text-2xl font-light">{trend.pricing.margin}</span> margin
                     </div>
                   </div>
-                  
-                  <div className="mt-4 p-3 bg-white rounded border">
-                    <p className="text-sm font-semibold text-gray-700">Similar Success: {trend.historicalPrecedent}</p>
+                  <div className="text-right">
+                    <div className="text-3xl font-light">$50K</div>
+                    <div className="text-sm text-gray-500">monthly potential</div>
                   </div>
                 </div>
 
-                {/* LAUNCH PLAN */}
-                <div className="bg-blue-50 rounded-lg p-6">
-                  <h4 className="text-lg font-bold text-gray-900 mb-4">48-Hour Launch Plan</h4>
-                  
-                  <div className="space-y-4">
-                    <div>
-                      <p className="font-semibold text-sm text-gray-800 mb-2">Recipe & Prep</p>
-                      <div className="text-xs text-gray-600 space-y-1">
-                        <p>Difficulty: {trend.recipe.difficulty} • Prep: {trend.recipe.prepTime}</p>
-                        <p>{trend.recipe.ingredients.length} ingredients • {trend.recipe.instructions.length} steps</p>
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <p className="font-semibold text-sm text-gray-800 mb-2">Pricing Strategy</p>
-                      <div className="text-xs text-gray-600 space-y-1">
-                        <p>Cost: {trend.pricing.costPerServing} • Retail: {trend.pricing.suggestedRetail}</p>
-                        <p>Margin: {trend.pricing.margin}</p>
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <p className="font-semibold text-sm text-gray-800 mb-2">Key Suppliers</p>
-                      <div className="text-xs text-gray-600">
-                        {trend.suppliers.slice(0, 2).map((supplier, idx) => (
-                          <p key={idx}>{supplier.ingredient}: {supplier.source}</p>
-                        ))}
-                      </div>
-                    </div>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-px bg-gray-200 mb-8">
+                  <div className="bg-white p-8 hover-lift cursor-pointer">
+                    <div className="text-2xl font-light mb-2">{trend.successProbability}%</div>
+                    <div className="text-sm text-gray-500 uppercase tracking-wider">Success Rate</div>
                   </div>
-                  
+                  <div className="bg-white p-8 hover-lift cursor-pointer">
+                    <div className="text-2xl font-light mb-2">{trend.recipe.difficulty}</div>
+                    <div className="text-sm text-gray-500 uppercase tracking-wider">Difficulty</div>
+                  </div>
+                  <div className="bg-white p-8 hover-lift cursor-pointer">
+                    <div className="text-2xl font-light mb-2">{trend.recipe.prepTime}</div>
+                    <div className="text-sm text-gray-500 uppercase tracking-wider">Prep Time</div>
+                  </div>
+                  <div className="bg-white p-8 hover-lift cursor-pointer">
+                    <div className="text-2xl font-light mb-2">{trend.pricing.suggestedRetail}</div>
+                    <div className="text-sm text-gray-500 uppercase tracking-wider">Retail</div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-gray-600">{trend.historicalPrecedent}</p>
+                  </div>
                   <button 
                     onClick={() => {
                       setSelectedTrend(trend)
                       setDetailsOpen(true)
                     }}
-                    className="w-full mt-4 px-4 py-2 bg-blue-600 text-white rounded font-semibold hover:bg-blue-700 transition-colors"
+                    className="inline-flex items-center gap-3 group"
                   >
-                    View Complete Recipe & Training Guide
+                    <span className="text-lg">View recipe</span>
+                    <span className="text-gray-400 group-hover:translate-x-1 transition-transform">→</span>
                   </button>
                 </div>
-              </div>
 
-              {/* Video Proof Section */}
-              {trend.videoProof && trend.videoProof.length > 0 && (
-                <div className="mt-8 border-t pt-6">
-                  <div className="flex items-center mb-4">
-                    <div className="text-xl mr-2">🎬</div>
-                    <h4 className="text-lg font-bold text-gray-900">What it looks like</h4>
-                    <span className="ml-2 text-sm text-gray-500">({trend.videoProof.length} video{trend.videoProof.length !== 1 ? 's' : ''})</span>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {trend.videoProof.map((video, index) => (
-                      <div key={index} className="border border-gray-200 rounded-lg p-3 bg-white">
-                        <div className="mb-2">
-                          <p className="font-medium text-sm text-gray-900 line-clamp-2">{video.title}</p>
-                          <p className="text-xs text-gray-500">{video.channel}</p>
+                {/* Video Proof Section */}
+                {trend.videoProof && trend.videoProof.length > 0 && (
+                  <div className="mt-12 pt-8 border-t border-gray-100">
+                    <div className="mb-6">
+                      <h4 className="text-lg font-light mb-2">Video proof</h4>
+                      <p className="text-sm text-gray-500">{trend.videoProof.length} reference{trend.videoProof.length !== 1 ? 's' : ''}</p>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {trend.videoProof.map((video, index) => (
+                        <div key={index} className="group">
+                          <div className="p-4 border border-gray-100 hover:border-gray-200 transition-colors">
+                            <p className="font-light text-sm text-gray-900 mb-1 line-clamp-2">{video.title}</p>
+                            <p className="text-xs text-gray-500 mb-3">{video.channel}</p>
+                            <a
+                              href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-black group"
+                            >
+                              <span>Watch</span>
+                              <span className="group-hover:translate-x-1 transition-transform">→</span>
+                            </a>
+                          </div>
                         </div>
-                        <div className="flex items-center justify-between text-xs text-gray-400 mb-3">
-                          <span>{video.views?.toLocaleString() || '0'} views</span>
-                          <span>{video.uploadDate}</span>
-                        </div>
-                        <a
-                          href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block w-full px-3 py-2 bg-red-600 text-white text-center text-sm font-medium rounded hover:bg-red-700 transition-colors"
-                        >
-                          Watch on YouTube →
-                        </a>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
             </div>
           ))}
         </div>
@@ -257,38 +228,44 @@ export default function CoffeeTrendsPage() {
 
       {/* Recipe Modal */}
       {selectedTrend && detailsOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
-          <div className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-gray-900">Complete Guide: {selectedTrend.name}</h2>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-8 bg-black bg-opacity-30 backdrop-blur-sm">
+          <div className="bg-white max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-large">
+            <div className="p-12">
+              <div className="flex items-center justify-between mb-12">
+                <h2 className="text-4xl font-light tracking-tight">{selectedTrend.name}</h2>
                 <button 
                   onClick={() => setDetailsOpen(false)}
-                  className="text-gray-500 hover:text-gray-700"
+                  className="text-gray-400 hover:text-gray-600 text-2xl"
                 >
                   ✕
                 </button>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
                 {/* Recipe */}
                 <div>
-                  <h3 className="font-bold text-lg mb-4">📋 Complete Recipe</h3>
-                  <div className="space-y-4">
+                  <h3 className="text-2xl font-light mb-8">Recipe</h3>
+                  <div className="space-y-8">
                     <div>
-                      <h4 className="font-semibold mb-2">Ingredients:</h4>
-                      <ul className="text-sm text-gray-600 space-y-1">
+                      <h4 className="font-medium mb-4 text-gray-900">Ingredients</h4>
+                      <ul className="text-gray-600 space-y-2">
                         {selectedTrend.recipe.ingredients.map((ingredient, idx) => (
-                          <li key={idx}>• {ingredient}</li>
+                          <li key={idx} className="flex items-start">
+                            <span className="text-gray-400 mr-3">•</span>
+                            <span>{ingredient}</span>
+                          </li>
                         ))}
                       </ul>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold mb-2">Instructions:</h4>
-                      <ol className="text-sm text-gray-600 space-y-1">
+                      <h4 className="font-medium mb-4 text-gray-900">Instructions</h4>
+                      <ol className="text-gray-600 space-y-3">
                         {selectedTrend.recipe.instructions.map((step, idx) => (
-                          <li key={idx}>{idx + 1}. {step}</li>
+                          <li key={idx} className="flex items-start">
+                            <span className="text-gray-400 mr-3 font-mono text-sm">{idx + 1}.</span>
+                            <span>{step}</span>
+                          </li>
                         ))}
                       </ol>
                     </div>
@@ -297,42 +274,50 @@ export default function CoffeeTrendsPage() {
                 
                 {/* Business Details */}
                 <div>
-                  <h3 className="font-bold text-lg mb-4">💼 Business Execution</h3>
-                  <div className="space-y-4">
+                  <h3 className="text-2xl font-light mb-8">Business</h3>
+                  <div className="space-y-8">
                     <div>
-                      <h4 className="font-semibold mb-2">Suppliers:</h4>
-                      {selectedTrend.suppliers.map((supplier, idx) => (
-                        <div key={idx} className="text-sm bg-gray-50 p-3 rounded mb-2">
-                          <p className="font-medium">{supplier.ingredient}</p>
-                          <p className="text-gray-600">Source: {supplier.source}</p>
-                          <p className="text-gray-600">Cost: {supplier.cost}</p>
-                          <p className="text-xs text-gray-500">{supplier.notes}</p>
-                        </div>
-                      ))}
+                      <h4 className="font-medium mb-4 text-gray-900">Suppliers</h4>
+                      <div className="space-y-4">
+                        {selectedTrend.suppliers.map((supplier, idx) => (
+                          <div key={idx} className="border-l-2 border-gray-100 pl-4">
+                            <p className="font-medium text-gray-900">{supplier.ingredient}</p>
+                            <p className="text-gray-600 text-sm">Source: {supplier.source}</p>
+                            <p className="text-gray-600 text-sm">Cost: {supplier.cost}</p>
+                            <p className="text-gray-500 text-xs mt-1">{supplier.notes}</p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold mb-2">Training Notes:</h4>
-                      <div className="text-sm text-gray-600 space-y-2">
+                      <h4 className="font-medium mb-4 text-gray-900">Training</h4>
+                      <div className="space-y-6">
                         <div>
-                          <p className="font-medium">Key Techniques:</p>
-                          <ul className="space-y-1">
+                          <p className="font-medium text-gray-900 mb-2">Key Techniques</p>
+                          <ul className="text-gray-600 space-y-1">
                             {selectedTrend.training.keyTechniques.map((technique, idx) => (
-                              <li key={idx}>• {technique}</li>
+                              <li key={idx} className="flex items-start">
+                                <span className="text-gray-400 mr-3">•</span>
+                                <span>{technique}</span>
+                              </li>
                             ))}
                           </ul>
                         </div>
                         <div>
-                          <p className="font-medium">Common Mistakes:</p>
-                          <ul className="space-y-1">
+                          <p className="font-medium text-gray-900 mb-2">Common Mistakes</p>
+                          <ul className="text-gray-600 space-y-1">
                             {selectedTrend.training.commonMistakes.map((mistake, idx) => (
-                              <li key={idx}>• {mistake}</li>
+                              <li key={idx} className="flex items-start">
+                                <span className="text-gray-400 mr-3">•</span>
+                                <span>{mistake}</span>
+                              </li>
                             ))}
                           </ul>
                         </div>
                         <div>
-                          <p className="font-medium">Quality Control:</p>
-                          <p>{selectedTrend.training.qualityControl}</p>
+                          <p className="font-medium text-gray-900 mb-2">Quality Control</p>
+                          <p className="text-gray-600">{selectedTrend.training.qualityControl}</p>
                         </div>
                       </div>
                     </div>

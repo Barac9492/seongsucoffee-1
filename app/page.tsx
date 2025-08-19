@@ -1,136 +1,146 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+
 export default function SimpleLanding() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Simple Header */}
-      <header className="border-b border-gray-200">
-        <div className="max-w-4xl mx-auto px-6 py-4">
+      {/* Minimal Header */}
+      <header className="fixed top-0 w-full z-50 glass">
+        <div className="max-w-7xl mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
-            <h1 className="text-xl font-bold text-gray-900">Next Drink Profit</h1>
-            <div className="flex items-center gap-4">
-              <a href="/coffee-trends" className="text-blue-600 font-medium">4 Drinks to Launch</a>
-              <a href="/pricing" className="text-gray-600 font-medium">Pricing</a>
-              <a href="/admin" className="text-gray-400 font-medium text-xs">Admin</a>
-            </div>
+            <div className="font-semibold text-sm tracking-wide">PROFIT</div>
+            <nav className="flex items-center gap-8">
+              <a href="/coffee-trends" className="text-sm text-gray-600 hover:text-black">Trends</a>
+              <a href="/pricing" className="text-sm text-gray-600 hover:text-black">Pricing</a>
+              <a href="/coffee-trends" className="btn-primary text-white text-sm px-6 py-2 rounded-full">
+                Get Started
+              </a>
+            </nav>
           </div>
         </div>
       </header>
 
-      {/* Hero - Laser Focused */}
-      <section className="py-20 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Your next $50K menu item<br/>
-            <span className="text-green-600">is trending in Seoul right now</span>
-          </h1>
-          
-          <p className="text-xl text-gray-600 mb-6">
-            We monitor Korean cafes. You launch proven winners.<br/>
-            Recipe included. Suppliers included. Training included.
-          </p>
+      {/* Hero - Extreme Minimalism */}
+      <section className="pt-32 pb-24 px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className={`space-y-12 ${mounted ? 'animate-fade-in-up' : 'opacity-0'}`}>
+            {/* Main Message */}
+            <div className="max-w-4xl">
+              <h1 className="text-7xl md:text-8xl font-light leading-[0.9] tracking-tight mb-8">
+                Your next<br/>
+                <span className="text-gray-400">$50K</span> drink<br/>
+                is trending<br/>
+                in Seoul.
+              </h1>
+              
+              <p className="text-xl text-gray-600 font-light max-w-2xl">
+                We monitor. You launch. They profit.
+              </p>
+            </div>
 
-          {/* Immediate Proof */}
-          <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="font-bold text-green-900 text-lg">RIGHT NOW: Cream Cheese Foam Coffee</h3>
-                <p className="text-sm text-green-700 mt-1">$1.85 cost → $7.50 retail = <strong>75% margin</strong></p>
-              </div>
-              <div className="text-right">
-                <div className="text-2xl font-bold text-green-600">+$18K/month</div>
-                <div className="text-xs text-green-600">avg. shop revenue</div>
+            {/* Single Proof Point */}
+            <div className="pt-12">
+              <div className="inline-block">
+                <div className="flex items-baseline gap-4 mb-2">
+                  <span className="text-5xl font-light">75%</span>
+                  <span className="text-xl text-gray-500">margin</span>
+                </div>
+                <div className="text-sm text-gray-500">Cream Cheese Foam Coffee</div>
+                <div className="text-sm text-gray-400">Available now</div>
               </div>
             </div>
-          </div>
 
-          <div className="space-y-4 mb-8">
-            <a 
-              href="/coffee-trends" 
-              className="inline-block w-full sm:w-auto px-8 py-4 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors text-lg"
-            >
-              Get Recipe + Launch Plan →
-            </a>
-            
-            <div className="text-sm text-gray-500">
-              $97/month • Cancel anytime • ROI in first week
+            {/* Single CTA */}
+            <div className="pt-8">
+              <a 
+                href="/coffee-trends" 
+                className="inline-flex items-center gap-3 group"
+              >
+                <span className="text-lg">View all trends</span>
+                <span className="text-gray-400 group-hover:translate-x-1 transition-transform">→</span>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* What You Get - Simple */}
-      <section className="py-16 px-6 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-900 text-center mb-12">
-            Everything You Need. Nothing You Don&apos;t.
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
-            <div className="bg-white rounded-lg p-6">
-              <div className="text-3xl mb-3">📋</div>
-              <h3 className="font-bold text-gray-900 mb-2">Exact Recipe</h3>
-              <p className="text-sm text-gray-600">Measurements, temps, timing</p>
-            </div>
-            
-            <div className="bg-white rounded-lg p-6">
-              <div className="text-3xl mb-3">📞</div>
-              <h3 className="font-bold text-gray-900 mb-2">Supplier Contacts</h3>
-              <p className="text-sm text-gray-600">Names, numbers, minimums</p>
-            </div>
-            
-            <div className="bg-white rounded-lg p-6">
-              <div className="text-3xl mb-3">💰</div>
-              <h3 className="font-bold text-gray-900 mb-2">Pricing Formula</h3>
-              <p className="text-sm text-gray-600">Cost, retail, margin</p>
-            </div>
-            
-            <div className="bg-white rounded-lg p-6">
-              <div className="text-3xl mb-3">📖</div>
-              <h3 className="font-bold text-gray-900 mb-2">Staff Script</h3>
-              <p className="text-sm text-gray-600">Training in 10 minutes</p>
-            </div>
+      {/* The Product - Grid */}
+      <section className="py-32 px-8 gradient-cool">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200">
+            {[
+              { label: 'Recipe', value: 'Complete' },
+              { label: 'Suppliers', value: 'Verified' },
+              { label: 'Margin', value: '70-80%' },
+              { label: 'Launch', value: '48 hours' }
+            ].map((item, i) => (
+              <div key={i} className="bg-white p-12 hover-lift cursor-pointer">
+                <div className="text-3xl font-light mb-2">{item.value}</div>
+                <div className="text-sm text-gray-500 uppercase tracking-wider">{item.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Results Only */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-900 text-center mb-12">
-            Real Shops. Real Revenue.
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-green-600 mb-2">+$18K</div>
-              <p className="text-sm text-gray-600">Portland coffee shop<br/>First month with cream cheese foam</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="text-4xl font-bold text-green-600 mb-2">+$50K</div>
-              <p className="text-sm text-gray-600">Austin roastery<br/>Black sesame product line</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="text-4xl font-bold text-green-600 mb-2">+40%</div>
-              <p className="text-sm text-gray-600">12-location chain<br/>Margin improvement</p>
-            </div>
+      {/* Results - Minimal */}
+      <section className="py-32 px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+            {[
+              { metric: '+$18K', context: 'First month', location: 'Portland' },
+              { metric: '+$50K', context: 'Product line', location: 'Austin' },
+              { metric: '+40%', context: 'Margin increase', location: '12 locations' }
+            ].map((item, i) => (
+              <div key={i} className="text-center">
+                <div className="text-5xl font-light mb-2">{item.metric}</div>
+                <div className="text-sm text-gray-600">{item.context}</div>
+                <div className="text-xs text-gray-400 mt-1">{item.location}</div>
+              </div>
+            ))}
           </div>
-          
-          <div className="bg-gray-900 text-white rounded-xl p-8 text-center">
-            <h3 className="text-3xl font-bold mb-6">Start Monday. Profit Tuesday.</h3>
-            <p className="text-lg mb-6 opacity-90">
-              4 ready-to-launch Korean drinks. Updated monthly.
+        </div>
+      </section>
+
+      {/* Pricing - Simplified */}
+      <section className="py-32 px-8 bg-black text-white">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="max-w-2xl mx-auto space-y-8">
+            <h2 className="text-5xl font-light">$97/month</h2>
+            <p className="text-lg text-gray-400 font-light">
+              Four drinks. Complete plans. Updated monthly.
             </p>
-            <a 
-              href="/coffee-trends" 
-              className="inline-block px-8 py-4 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-colors text-lg"
-            >
-              Get Your First Recipe →
-            </a>
-            <p className="text-sm mt-4 opacity-70">$97/month • ROI guaranteed or money back</p>
+            <div className="pt-8">
+              <a 
+                href="/coffee-trends" 
+                className="inline-block bg-white text-black px-12 py-4 rounded-full hover:scale-105 transition-transform"
+              >
+                Start today
+              </a>
+            </div>
+            <p className="text-xs text-gray-500">Cancel anytime. ROI guaranteed.</p>
           </div>
         </div>
       </section>
+
+      {/* Footer - Minimal */}
+      <footer className="py-16 px-8 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-center">
+            <div className="text-xs text-gray-400">© 2024 Profit</div>
+            <div className="flex gap-8">
+              <a href="/admin" className="text-xs text-gray-400 hover:text-gray-600">Admin</a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
