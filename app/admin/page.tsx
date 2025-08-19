@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Navigation from '../../components/Navigation'
 
 
 interface VideoProof {
@@ -537,42 +538,39 @@ export default function AdminPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200">
-        <div className="max-w-6xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
+      <Navigation currentPage="home" />
+      
+      {/* Admin Controls */}
+      <section className="pt-32 pb-8 px-8 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-end justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Admin Panel</h1>
-              <p className="text-sm text-gray-600">Manage YouTube video links and search for new Korean coffee trends</p>
+              <h1 className="text-4xl font-light tracking-tight mb-3">Admin Panel</h1>
+              <p className="text-lg text-gray-600 font-light">Manage trends and video content</p>
             </div>
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setShowAddTrend(true)}
                 disabled={addingTrend}
-                className="px-4 py-2 bg-green-600 text-white rounded-md font-medium hover:bg-green-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+                className="px-6 py-3 bg-black text-white rounded-full font-medium hover:scale-105 transition-transform disabled:bg-gray-300 disabled:cursor-not-allowed disabled:transform-none"
               >
-                {addingTrend ? '🤖 AI Working...' : '✨ Add New Trend'}
+                {addingTrend ? 'AI Working...' : 'Add New Trend'}
               </button>
               <button
                 onClick={refreshTrends}
                 disabled={refreshing}
-                className={`px-4 py-2 rounded-md font-medium ${
+                className={`px-6 py-3 rounded-full font-medium transition-transform ${
                   refreshing 
                     ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
-                    : 'bg-blue-600 text-white hover:bg-blue-700'
+                    : 'bg-gray-100 text-black hover:scale-105'
                 }`}
               >
-                {refreshing ? '🔍 Searching...' : '🔄 Refresh Trends'}
+                {refreshing ? 'Searching...' : 'Refresh Trends'}
               </button>
-              <a href="/coffee-trends" className="text-blue-600 font-medium">Trends</a>
-              <a href="/how-to" className="text-gray-600 font-medium">Guide</a>
-              <a href="/pricing" className="text-gray-600 font-medium">Pricing</a>
-              <a href="/" className="text-gray-600 font-medium">Home</a>
-              <a href="/admin" className="text-blue-600 font-medium">Admin</a>
             </div>
           </div>
         </div>
-      </header>
+      </section>
 
       {/* Message */}
       {message && (

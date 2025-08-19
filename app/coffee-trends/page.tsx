@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Navigation from '../../components/Navigation'
 
 interface CoffeeTrend {
   id: string
@@ -99,20 +100,7 @@ export default function CoffeeTrendsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Minimal Header */}
-      <header className="fixed top-0 w-full z-50 glass">
-        <div className="max-w-7xl mx-auto px-8 py-6">
-          <div className="flex items-center justify-between">
-            <div className="font-semibold text-sm tracking-wide">PROFIT</div>
-            <nav className="flex items-center gap-8">
-              <a href="/" className="text-sm text-gray-600 hover:text-black">Home</a>
-              <span className="text-sm text-black font-medium">Trends</span>
-              <a href="/pricing" className="text-sm text-gray-600 hover:text-black">Pricing</a>
-              <a href="/admin" className="text-sm text-gray-400 hover:text-gray-600">Admin</a>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Navigation currentPage="trends" />
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-8">

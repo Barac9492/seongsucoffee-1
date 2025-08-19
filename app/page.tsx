@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Navigation from '../components/Navigation'
 
 export default function SimpleLanding() {
   const [mounted, setMounted] = useState(false)
@@ -11,21 +12,7 @@ export default function SimpleLanding() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Minimal Header */}
-      <header className="fixed top-0 w-full z-50 glass">
-        <div className="max-w-7xl mx-auto px-8 py-6">
-          <div className="flex items-center justify-between">
-            <div className="font-semibold text-sm tracking-wide">PROFIT</div>
-            <nav className="flex items-center gap-8">
-              <a href="/coffee-trends" className="text-sm text-gray-600 hover:text-black">Trends</a>
-              <a href="/pricing" className="text-sm text-gray-600 hover:text-black">Pricing</a>
-              <a href="/coffee-trends" className="btn-primary text-white text-sm px-6 py-2 rounded-full">
-                Get Started
-              </a>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Navigation currentPage="home" />
 
       {/* Hero - Extreme Minimalism */}
       <section className="pt-32 pb-24 px-8">
