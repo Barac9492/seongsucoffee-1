@@ -64,7 +64,7 @@ export default function PricingPage() {
           <div className="bg-gray-100 rounded-lg p-6">
             <h3 className="font-bold text-gray-900 mb-2">ROI Guarantee</h3>
             <p className="text-sm text-gray-600">
-              Launch one drink. If you don't make $97 in profit on day one, we'll refund your month.
+              Launch one drink. If you don&apos;t make $97 in profit on day one, we&apos;ll refund your month.
             </p>
           </div>
           
