@@ -59,6 +59,8 @@ interface CoffeeTrend {
   cafesServing: number
   firstDetected: string
   lastUpdated: string
+  socialMentions: number
+  searchGrowth: number
   districts: string[]
   videoProof: VideoProof[]
   signals?: TrendSignal[]
