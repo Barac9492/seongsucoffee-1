@@ -25,22 +25,43 @@ interface CoffeeTrend {
   id: string
   name: string
   nameKr: string
+  successProbability: number
+  marketReadiness: string
+  competitorRisk: string
+  historicalPrecedent: string
+  timeToGlobal: string
+  recipe: {
+    ingredients: string[]
+    instructions: string[]
+    difficulty: string
+    prepTime: string
+    shelfLife: string
+  }
+  suppliers: {
+    ingredient: string
+    source: string
+    cost: string
+    notes: string
+  }[]
+  pricing: {
+    costPerServing: string
+    suggestedRetail: string
+    margin: string
+    premiumPosition: string
+  }
+  training: {
+    keyTechniques: string[]
+    commonMistakes: string[]
+    qualityControl: string
+  }
   growth: number
   stage: string
   cafesServing: number
   firstDetected: string
   lastUpdated: string
-  socialMentions: number
-  searchGrowth: number
   districts: string[]
   videoProof: VideoProof[]
-  ingredients?: string[]
-  priceRange?: string
-  targetDemo?: string
-  instagramHashtag?: string
-  naverSearchVolume?: number
-  tiktokViews?: number
-  signals: TrendSignal[]
+  signals?: TrendSignal[]
 }
 
 export default function AdminPage() {
