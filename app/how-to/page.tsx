@@ -5,10 +5,10 @@ export default function HowToPage() {
       <header className="border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-xl font-bold text-gray-900">K-Bridge California</h1>
+            <h1 className="text-xl font-bold text-gray-900">Korean Trend Scout</h1>
             <div className="flex items-center gap-4">
-              <a href="/coffee-trends" className="text-orange-600 font-medium">Coffee Trends</a>
-              <a href="/how-to" className="text-orange-600 font-medium">How To</a>
+              <a href="/coffee-trends" className="text-blue-600 font-medium">Trends</a>
+              <a href="/how-to" className="text-blue-600 font-medium">Guide</a>
               <a href="/pricing" className="text-gray-600 font-medium">Pricing</a>
               <a href="/" className="text-gray-600 font-medium">Home</a>
             </div>
@@ -20,16 +20,16 @@ export default function HowToPage() {
         {/* Hero */}
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-6">
-            How to Use K-Bridge California
+            How to Use Korean Trend Scout
           </h1>
           <p className="text-xl text-gray-600 mb-8">
-            Your complete guide to leveraging Korean coffee trends for California success
+            Your complete guide to Korean coffee trend intelligence for business success
           </p>
-          <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
-            <h2 className="text-lg font-semibold text-orange-800 mb-2">🎯 Your 3-Week Advantage</h2>
-            <p className="text-orange-700">
-              Track emerging Korean coffee trends 3 weeks before they hit California. 
-              Turn cultural bridge knowledge into competitive business advantage.
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <h2 className="text-lg font-semibold text-blue-800 mb-2">🎯 Two Critical Questions</h2>
+            <p className="text-blue-700">
+              For every Korean coffee trend: "Should I launch this?" and "How do I launch it?" 
+              Professional-grade intelligence for serious coffee businesses.
             </p>
           </div>
         </div>
@@ -239,55 +239,6 @@ export default function HowToPage() {
           </div>
         </section>
 
-        {/* UX Design Principles */}
-        <section className="mb-16 bg-blue-50 border border-blue-200 rounded-xl p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">UX Design Principles (Dev Reference)</h2>
-          <p className="text-blue-800 mb-6">
-            These principles guide all UI/UX decisions on the platform:
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="font-semibold text-blue-900 mb-3">Visual Hierarchy</h3>
-              <ul className="space-y-1 text-sm text-blue-800">
-                <li>• Growth percentages are primary focus</li>
-                <li>• Video proof gives credibility</li>
-                <li>• Trend stages use color coding</li>
-                <li>• Korean names secondary to English</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold text-blue-900 mb-3">Interaction Patterns</h3>
-              <ul className="space-y-1 text-sm text-blue-800">
-                <li>• Click-to-play video modals</li>
-                <li>• Hover states for engagement</li>
-                <li>• Card-based browsing</li>
-                <li>• Clear CTAs for actions</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold text-blue-900 mb-3">Trust Indicators</h3>
-              <ul className="space-y-1 text-sm text-blue-800">
-                <li>• YouTube view counts</li>
-                <li>• Real cafe locations</li>
-                <li>• Specific metrics (not vague)</li>
-                <li>• Source attribution</li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold text-blue-900 mb-3">Mobile-First</h3>
-              <ul className="space-y-1 text-sm text-blue-800">
-                <li>• Touch-friendly targets</li>
-                <li>• Vertical card layouts</li>
-                <li>• Readable typography</li>
-                <li>• Fast loading videos</li>
-              </ul>
-            </div>
-          </div>
-        </section>
 
         {/* Call to Action */}
         <section className="text-center">
