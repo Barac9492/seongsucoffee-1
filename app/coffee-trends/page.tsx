@@ -45,13 +45,6 @@ interface CoffeeTrend {
   signals?: any[]
 }
 
-function daysAgo(date: string) {
-  const now = new Date()
-  const then = new Date(date)
-  const diff = Math.floor((now.getTime() - then.getTime()) / (1000 * 60 * 60 * 24))
-  return diff
-}
-
 export default function CoffeeTrendsPage() {
   const [trends, setTrends] = useState<CoffeeTrend[]>([])
   const [loading, setLoading] = useState(true)
@@ -95,16 +88,14 @@ export default function CoffeeTrendsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-400"></div>
           <p className="mt-2 text-gray-600">Loading Korean trends...</p>
         </div>
       </div>
     )
   }
-
-  const avgGrowth = trends.length > 0 ? Math.round(trends.reduce((acc, t) => acc + t.growth, 0) / trends.length) : 0
 
   return (
     <div className="min-h-screen bg-white">
@@ -221,8 +212,9 @@ export default function CoffeeTrendsPage() {
                     </div>
                   </div>
                 )}
-            </div>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
