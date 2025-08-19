@@ -56,11 +56,39 @@ export default function AdminPage() {
   const [newCoffeeName, setNewCoffeeName] = useState('')
   const [newKoreanName, setNewKoreanName] = useState('')
   const [addingTrend, setAddingTrend] = useState(false)
+  
+  // Edit trend states
+  const [editingTrendId, setEditingTrendId] = useState<string | null>(null)
+  const [showEditTrend, setShowEditTrend] = useState(false)
+  const [editTrendData, setEditTrendData] = useState<any>(null)
 
   useEffect(() => {
-    fetchTrends()
-    fetchVideos()
+    fetchTrendsAndVideos()
   }, [])
+
+  const fetchTrendsAndVideos = async () => {
+    try {
+      // Fetch trends first
+      const trendsResponse = await fetch('/api/coffee-trends')
+      const trendsData = await trendsResponse.json()
+      
+      // Then fetch videos
+      const videosResponse = await fetch('/api/videos')
+      const videosData = await videosResponse.json()
+      
+      // Merge videos into trends
+      const trendsWithVideos = trendsData.trends.map(trend => ({
+        ...trend,
+        videoProof: videosData.videos[trend.id] || []
+      }))
+      
+      setTrends(trendsWithVideos)
+    } catch (error) {
+      console.error('Failed to fetch trends and videos:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
   
   const fetchVideos = async () => {
     try {
@@ -74,18 +102,6 @@ export default function AdminPage() {
       })))
     } catch (error) {
       console.error('Failed to fetch videos:', error)
-    }
-  }
-
-  const fetchTrends = async () => {
-    try {
-      const response = await fetch('/api/coffee-trends')
-      const data = await response.json()
-      setTrends(data.trends)
-    } catch (error) {
-      console.error('Failed to fetch trends:', error)
-    } finally {
-      setLoading(false)
     }
   }
 
@@ -249,8 +265,8 @@ export default function AdminPage() {
         return
       }
 
-      // Refresh trends to show the new one
-      await fetchTrends()
+      // Refresh trends and videos to show the new one
+      await fetchTrendsAndVideos()
       
       // Clear form
       setNewCoffeeName('')
@@ -266,6 +282,101 @@ export default function AdminPage() {
       setTimeout(() => setMessage(''), 3000)
     } finally {
       setAddingTrend(false)
+    }
+  }
+
+  const deleteTrend = async (trendId: string, trendName: string) => {
+    if (!confirm(`Are you sure you want to delete the trend "${trendName}"? This will also remove all associated videos and data. This action cannot be undone.`)) {
+      return
+    }
+
+    setMessage('🗑️ Deleting trend and all associated data...')
+    
+    try {
+      // Remove all videos for this trend first
+      const videosResponse = await fetch('/api/videos')
+      const videosData = await videosResponse.json()
+      const trendVideos = videosData.videos[trendId] || []
+      
+      // Remove each video
+      for (const video of trendVideos) {
+        await fetch('/api/videos', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'remove',
+            trendId,
+            video: { youtubeId: video.youtubeId }
+          }),
+        })
+      }
+      
+      // Remove trend from local state (we don't have a backend delete API yet)
+      const updatedTrends = trends.filter(t => t.id !== trendId)
+      setTrends(updatedTrends)
+      
+      setMessage(`🗑️ "${trendName}" deleted successfully along with all videos`)
+      setTimeout(() => setMessage(''), 4000)
+
+    } catch (error) {
+      console.error('Error deleting trend:', error)
+      setMessage('❌ Failed to delete trend. Please try again.')
+      setTimeout(() => setMessage(''), 3000)
+    }
+  }
+
+  const editTrend = (trend: CoffeeTrend) => {
+    setEditTrendData({
+      id: trend.id,
+      name: trend.name,
+      nameKr: trend.nameKr,
+      successProbability: trend.successProbability,
+      marketReadiness: trend.marketReadiness,
+      competitorRisk: trend.competitorRisk,
+      timeToGlobal: trend.timeToGlobal
+    })
+    setEditingTrendId(trend.id)
+    setShowEditTrend(true)
+  }
+
+  const saveEditTrend = async () => {
+    if (!editTrendData.name.trim() || !editTrendData.nameKr.trim()) {
+      setMessage('❌ Please enter both English and Korean names')
+      setTimeout(() => setMessage(''), 3000)
+      return
+    }
+
+    setMessage('💾 Saving trend changes...')
+    
+    try {
+      // Update trend in local state (we don't have a backend update API yet)
+      const updatedTrends = trends.map(trend => {
+        if (trend.id === editingTrendId) {
+          return {
+            ...trend,
+            name: editTrendData.name.trim(),
+            nameKr: editTrendData.nameKr.trim(),
+            successProbability: parseInt(editTrendData.successProbability),
+            marketReadiness: editTrendData.marketReadiness,
+            competitorRisk: editTrendData.competitorRisk,
+            timeToGlobal: editTrendData.timeToGlobal
+          }
+        }
+        return trend
+      })
+      
+      setTrends(updatedTrends)
+      setShowEditTrend(false)
+      setEditingTrendId(null)
+      setEditTrendData(null)
+      
+      setMessage(`💾 Trend updated successfully`)
+      setTimeout(() => setMessage(''), 3000)
+
+    } catch (error) {
+      console.error('Error updating trend:', error)
+      setMessage('❌ Failed to update trend. Please try again.')
+      setTimeout(() => setMessage(''), 3000)
     }
   }
 
@@ -487,6 +598,117 @@ export default function AdminPage() {
         </div>
       )}
 
+      {/* Edit Trend Modal */}
+      {showEditTrend && editTrendData && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-8 max-w-lg w-full mx-4">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">✏️ Edit Coffee Trend</h2>
+            
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Coffee Name (English)
+                </label>
+                <input
+                  type="text"
+                  value={editTrendData.name}
+                  onChange={(e) => setEditTrendData({...editTrendData, name: e.target.value})}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Korean Name
+                </label>
+                <input
+                  type="text"
+                  value={editTrendData.nameKr}
+                  onChange={(e) => setEditTrendData({...editTrendData, nameKr: e.target.value})}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Success Probability (%)
+                </label>
+                <input
+                  type="number"
+                  min="0"
+                  max="100"
+                  value={editTrendData.successProbability}
+                  onChange={(e) => setEditTrendData({...editTrendData, successProbability: e.target.value})}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Market Readiness
+                </label>
+                <select
+                  value={editTrendData.marketReadiness}
+                  onChange={(e) => setEditTrendData({...editTrendData, marketReadiness: e.target.value})}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="High">High</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Competitor Risk
+                </label>
+                <select
+                  value={editTrendData.competitorRisk}
+                  onChange={(e) => setEditTrendData({...editTrendData, competitorRisk: e.target.value})}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Time to Global Market
+                </label>
+                <input
+                  type="text"
+                  value={editTrendData.timeToGlobal}
+                  onChange={(e) => setEditTrendData({...editTrendData, timeToGlobal: e.target.value})}
+                  placeholder="e.g., 3-4 months"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+            </div>
+            
+            <div className="flex gap-3 mt-8">
+              <button
+                onClick={saveEditTrend}
+                className="flex-1 bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700"
+              >
+                💾 Save Changes
+              </button>
+              <button
+                onClick={() => {
+                  setShowEditTrend(false)
+                  setEditingTrendId(null)
+                  setEditTrendData(null)
+                }}
+                className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Admin Content */}
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="mb-8 bg-blue-50 border border-blue-200 rounded-lg p-4">
@@ -519,7 +741,7 @@ export default function AdminPage() {
             <div key={trend.id} className="bg-white rounded-xl border border-gray-200 p-6">
               {/* Trend Header */}
               <div className="flex items-center justify-between mb-4">
-                <div>
+                <div className="flex-1">
                   <h3 className="text-xl font-bold text-gray-900">{trend.name}</h3>
                   <p className="text-gray-600">{trend.nameKr}</p>
                   <p className="text-xs text-gray-400">
@@ -527,9 +749,25 @@ export default function AdminPage() {
                     {trend.lastUpdated && ` • Last updated: ${new Date(trend.lastUpdated).toLocaleDateString()}`}
                   </p>
                 </div>
-                <div className="text-right">
-                  <div className="text-lg font-semibold text-green-600">↑{Math.round(trend.growth)}%</div>
-                  <div className="text-sm text-gray-500">{trend.videoProof.length} videos • {trend.signals?.length || 0} signals</div>
+                <div className="flex items-center gap-4">
+                  <div className="text-right">
+                    <div className="text-lg font-semibold text-green-600">↑{Math.round(trend.growth)}%</div>
+                    <div className="text-sm text-gray-500">{trend.videoProof.length} videos • {trend.signals?.length || 0} signals</div>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <button
+                      onClick={() => editTrend(trend)}
+                      className="px-3 py-1 bg-blue-600 text-white text-xs rounded hover:bg-blue-700 transition-colors"
+                    >
+                      ✏️ Edit
+                    </button>
+                    <button
+                      onClick={() => deleteTrend(trend.id, trend.name)}
+                      className="px-3 py-1 bg-red-600 text-white text-xs rounded hover:bg-red-700 transition-colors"
+                    >
+                      🗑️ Delete
+                    </button>
+                  </div>
                 </div>
               </div>
 
