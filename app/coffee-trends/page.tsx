@@ -102,9 +102,10 @@ export default function CoffeeTrendsPage() {
                 <div className="text-xs text-gray-500">Avg. trend growth</div>
               </div>
               <nav className="flex items-center gap-4">
-                <a href="/" className="text-gray-600 hover:text-blue-600 font-medium">Home</a>
+                <a href="/coffee-trends" className="text-blue-600 font-medium">Trends</a>
                 <a href="/how-to" className="text-gray-600 hover:text-blue-600 font-medium">Guide</a>
                 <a href="/pricing" className="text-gray-600 hover:text-blue-600 font-medium">Pricing</a>
+                <a href="/" className="text-gray-600 hover:text-blue-600 font-medium">Home</a>
                 <a href="/admin" className="text-gray-600 hover:text-blue-600 font-medium">Admin</a>
               </nav>
             </div>

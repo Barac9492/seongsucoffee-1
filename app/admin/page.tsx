@@ -50,6 +50,12 @@ export default function AdminPage() {
   const [newVideoUrl, setNewVideoUrl] = useState('')
   const [message, setMessage] = useState('')
   const [refreshing, setRefreshing] = useState(false)
+  
+  // New trend creation states
+  const [showAddTrend, setShowAddTrend] = useState(false)
+  const [newCoffeeName, setNewCoffeeName] = useState('')
+  const [newKoreanName, setNewKoreanName] = useState('')
+  const [addingTrend, setAddingTrend] = useState(false)
 
   useEffect(() => {
     fetchTrends()
@@ -88,45 +94,156 @@ export default function AdminPage() {
       return
     }
 
-    // For demo purposes, we'll just update the local state
-    // In a real app, this would make an API call to update the database
-    const updatedTrends = trends.map(trend => {
-      if (trend.id === trendId) {
-        const newVideo: VideoProof = {
+    try {
+      // Add video to actual trends API so it appears on all pages
+      const response = await fetch('/api/admin/update-trends', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          trendId,
           youtubeId,
-          title: 'User Added Video', // You could fetch this from YouTube API
-          channel: 'Unknown Channel',
-          views: 0,
-          uploadDate: new Date().toISOString().split('T')[0]
-        }
-        return {
-          ...trend,
-          videoProof: [...trend.videoProof, newVideo]
-        }
+          title: 'User Added Video',
+          channel: 'Unknown Channel'
+        }),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        setMessage(`❌ Error: ${result.error}`)
+        setTimeout(() => setMessage(''), 4000)
+        return
       }
-      return trend
-    })
-    
-    setTrends(updatedTrends)
-    setNewVideoUrl('')
-    setMessage(`Video added to ${trends.find(t => t.id === trendId)?.name}`)
-    setTimeout(() => setMessage(''), 3000)
+
+      // Update local state to show the change immediately
+      const updatedTrends = trends.map(trend => {
+        if (trend.id === trendId) {
+          const newVideo: VideoProof = {
+            youtubeId,
+            title: 'User Added Video',
+            channel: 'Unknown Channel',
+            views: 0,
+            uploadDate: new Date().toISOString().split('T')[0]
+          }
+          return {
+            ...trend,
+            videoProof: [...(trend.videoProof || []), newVideo]
+          }
+        }
+        return trend
+      })
+      
+      setTrends(updatedTrends)
+      setNewVideoUrl('')
+      setMessage(`🎉 Video added successfully! It will now appear on all pages for users to see.`)
+      setTimeout(() => setMessage(''), 5000)
+
+    } catch (error) {
+      console.error('Error adding video:', error)
+      setMessage('❌ Failed to add video. Please try again.')
+      setTimeout(() => setMessage(''), 3000)
+    }
   }
 
-  const removeVideo = (trendId: string, videoIndex: number) => {
-    const updatedTrends = trends.map(trend => {
-      if (trend.id === trendId) {
-        return {
-          ...trend,
-          videoProof: trend.videoProof.filter((_, index) => index !== videoIndex)
-        }
+  const removeVideo = async (trendId: string, videoIndex: number) => {
+    const trend = trends.find(t => t.id === trendId)
+    if (!trend || !trend.videoProof || !trend.videoProof[videoIndex]) {
+      setMessage('Video not found')
+      return
+    }
+
+    const youtubeId = trend.videoProof[videoIndex].youtubeId
+
+    try {
+      // Remove video from actual trends API so it disappears from all pages
+      const response = await fetch('/api/admin/update-trends', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ trendId, youtubeId }),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        setMessage(`❌ Error: ${result.error}`)
+        setTimeout(() => setMessage(''), 4000)
+        return
       }
-      return trend
-    })
-    
-    setTrends(updatedTrends)
-    setMessage('Video removed')
-    setTimeout(() => setMessage(''), 3000)
+
+      // Update local state to reflect the change
+      const updatedTrends = trends.map(t => {
+        if (t.id === trendId) {
+          return {
+            ...t,
+            videoProof: t.videoProof.filter((_, index) => index !== videoIndex)
+          }
+        }
+        return t
+      })
+      
+      setTrends(updatedTrends)
+      setMessage(`🗑️ Video removed successfully from all pages`)
+      setTimeout(() => setMessage(''), 3000)
+
+    } catch (error) {
+      console.error('Error removing video:', error)
+      setMessage('❌ Failed to remove video. Please try again.')
+      setTimeout(() => setMessage(''), 3000)
+    }
+  }
+
+  const addNewTrend = async () => {
+    if (!newCoffeeName.trim() || !newKoreanName.trim()) {
+      setMessage('❌ Please enter both English and Korean names')
+      setTimeout(() => setMessage(''), 3000)
+      return
+    }
+
+    setAddingTrend(true)
+    setMessage('🤖 AI is generating complete business intelligence for your new coffee trend...')
+
+    try {
+      const response = await fetch('/api/admin/add-trend', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          coffeeName: newCoffeeName.trim(),
+          koreanName: newKoreanName.trim()
+        }),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        setMessage(`❌ Error: ${result.error}`)
+        setTimeout(() => setMessage(''), 4000)
+        return
+      }
+
+      // Refresh trends to show the new one
+      await fetchTrends()
+      
+      // Clear form
+      setNewCoffeeName('')
+      setNewKoreanName('')
+      setShowAddTrend(false)
+      
+      setMessage(`🎉 "${result.trend.name}" added successfully! AI generated complete recipe, suppliers, pricing & training data.`)
+      setTimeout(() => setMessage(''), 6000)
+
+    } catch (error) {
+      console.error('Error adding trend:', error)
+      setMessage('❌ Failed to add new trend. Please try again.')
+      setTimeout(() => setMessage(''), 3000)
+    } finally {
+      setAddingTrend(false)
+    }
   }
 
   const refreshTrends = async () => {
@@ -244,6 +361,13 @@ export default function AdminPage() {
             </div>
             <div className="flex items-center gap-4">
               <button
+                onClick={() => setShowAddTrend(true)}
+                disabled={addingTrend}
+                className="px-4 py-2 bg-green-600 text-white rounded-md font-medium hover:bg-green-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+              >
+                {addingTrend ? '🤖 AI Working...' : '✨ Add New Trend'}
+              </button>
+              <button
                 onClick={refreshTrends}
                 disabled={refreshing}
                 className={`px-4 py-2 rounded-md font-medium ${
@@ -273,15 +397,97 @@ export default function AdminPage() {
         </div>
       )}
 
+      {/* Add New Trend Modal */}
+      {showAddTrend && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-8 max-w-md w-full mx-4">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">✨ Add New Coffee Trend</h2>
+            <p className="text-sm text-gray-600 mb-6">
+              AI will automatically generate complete business intelligence including recipe, suppliers, pricing, and training data.
+            </p>
+            
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Coffee Name (English)
+                </label>
+                <input
+                  type="text"
+                  value={newCoffeeName}
+                  onChange={(e) => setNewCoffeeName(e.target.value)}
+                  placeholder="e.g., Matcha Cream Latte"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                  disabled={addingTrend}
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Korean Name
+                </label>
+                <input
+                  type="text"
+                  value={newKoreanName}
+                  onChange={(e) => setNewKoreanName(e.target.value)}
+                  placeholder="e.g., 말차 크림 라떼"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                  disabled={addingTrend}
+                />
+              </div>
+            </div>
+            
+            <div className="flex gap-3 mt-8">
+              <button
+                onClick={addNewTrend}
+                disabled={addingTrend || !newCoffeeName.trim() || !newKoreanName.trim()}
+                className="flex-1 bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 disabled:bg-gray-300 disabled:cursor-not-allowed"
+              >
+                {addingTrend ? '🤖 AI Generating...' : '🚀 Create Trend'}
+              </button>
+              <button
+                onClick={() => {
+                  setShowAddTrend(false)
+                  setNewCoffeeName('')
+                  setNewKoreanName('')
+                }}
+                disabled={addingTrend}
+                className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 disabled:opacity-50"
+              >
+                Cancel
+              </button>
+            </div>
+            
+            <div className="mt-4 text-xs text-gray-500">
+              <p><strong>AI will generate:</strong> Success probability, market analysis, complete recipe with measurements, supplier sources, pricing strategy, and staff training guide.</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Admin Content */}
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="mb-8 bg-blue-50 border border-blue-200 rounded-lg p-4">
           <h2 className="font-semibold text-blue-900 mb-2">Trend Discovery & Video Management</h2>
           <div className="text-sm text-blue-800 space-y-1">
+            <p><strong>✨ Add New Trend:</strong> Click &quot;Add New Trend&quot; to create a coffee trend with AI-generated business intelligence</p>
             <p><strong>🔄 Refresh Trends:</strong> Click the &quot;Refresh Trends&quot; button to manually search for new Korean coffee trends</p>
             <p><strong>📹 Add Videos:</strong> Search YouTube for real Korean coffee content (e.g., &quot;크림치즈 커피&quot;, &quot;피스타치오 라떼&quot;)</p>
             <p>• Copy the YouTube URL or Shorts URL and paste it in the &quot;Add Video&quot; section below</p>
             <p>• The system supports: youtube.com/watch?v=ID, youtube.com/shorts/ID, youtu.be/ID</p>
+            <p><strong>🎬 Public Display:</strong> Videos added here will appear on ALL pages for users to see coffee trends</p>
+          </div>
+        </div>
+
+        <div className="mb-8 bg-green-50 border border-green-200 rounded-lg p-4">
+          <h2 className="font-semibold text-green-900 mb-2">📊 Admin Database Access</h2>
+          <div className="text-sm text-green-800 space-y-2">
+            <p><strong>Extract Data:</strong> Use these URLs to extract data for ML training:</p>
+            <div className="bg-white p-2 rounded border font-mono text-xs">
+              <p>Videos: /api/admin/database?action=export_videos&admin_key=korean_trend_scout_admin_2024</p>
+              <p>Trends: /api/admin/database?action=export_trends&admin_key=korean_trend_scout_admin_2024</p>
+              <p>Signals: /api/admin/database?action=export_signals&admin_key=korean_trend_scout_admin_2024</p>
+            </div>
+            <p><strong>Note:</strong> Videos are now automatically added to public pages. Database extracts admin actions for ML training.</p>
           </div>
         </div>
 

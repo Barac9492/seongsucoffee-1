@@ -20,12 +20,12 @@ export default function SimpleLanding() {
       <section className="py-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Spot the next Dalgona coffee
-            <span className="text-blue-600"> 3 months early</span>
+            Spot the next Dalgona coffee<br/>
+            <span className="text-blue-600">3 months early</span>
           </h1>
           
           <p className="text-xl text-gray-600 mb-6">
-            Korean coffee trends reach your market 2-6 months later. 
+            Korean coffee trends reach your market 2-6 months later.<br/>
             Get the exact recipe and business plan to launch first.
           </p>
 
@@ -140,7 +140,7 @@ export default function SimpleLanding() {
                 </div>
               </div>
               <p className="text-sm text-gray-600 mb-3">
-                "Launched brown sugar coffee 4 months before it hit US chains. Made $18K extra revenue before competition caught up."
+                &quot;Launched brown sugar coffee 4 months before it hit US chains. Made $18K extra revenue before competition caught up.&quot;
               </p>
               <p className="text-xs text-green-600 font-semibold">+312% monthly revenue</p>
             </div>
@@ -154,7 +154,7 @@ export default function SimpleLanding() {
                 </div>
               </div>
               <p className="text-sm text-gray-600 mb-3">
-                "Korean sesame coffee intel helped us develop our signature blend. Now our bestseller at $24/bag."
+                &quot;Korean sesame coffee intel helped us develop our signature blend. Now our bestseller at $24/bag.&quot;
               </p>
               <p className="text-xs text-green-600 font-semibold">$50K product launch</p>
             </div>
@@ -168,7 +168,7 @@ export default function SimpleLanding() {
                 </div>
               </div>
               <p className="text-sm text-gray-600 mb-3">
-                "Rolled out Korean cream cheese foam across all stores. 40% margin improvement vs regular lattes."
+                &quot;Rolled out Korean cream cheese foam across all stores. 40% margin improvement vs regular lattes.&quot;
               </p>
               <p className="text-xs text-green-600 font-semibold">40% margin boost</p>
             </div>
