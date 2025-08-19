@@ -77,7 +77,7 @@ export default function AdminPage() {
       const videosData = await videosResponse.json()
       
       // Merge videos into trends
-      const trendsWithVideos = trendsData.trends.map(trend => ({
+      const trendsWithVideos = trendsData.trends.map((trend: CoffeeTrend) => ({
         ...trend,
         videoProof: videosData.videos[trend.id] || []
       }))
