@@ -1,4 +1,10 @@
+'use client'
+
+import { useState } from 'react'
+
 export default function HowToPage() {
+  const [activeCard, setActiveCard] = useState<string | null>(null)
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -20,249 +26,187 @@ export default function HowToPage() {
         {/* Hero */}
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-6">
-            How to Use Korean Trend Scout
+            How Korean Trend Scout Works
           </h1>
           <p className="text-xl text-gray-600 mb-8">
-            Your complete guide to Korean coffee trend intelligence for business success
+            Professional Korean coffee intelligence for global coffee businesses
           </p>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-            <h2 className="text-lg font-semibold text-blue-800 mb-2">🎯 Two Critical Questions</h2>
+            <h2 className="text-lg font-semibold text-blue-800 mb-2">🎯 Two Questions. Complete Answers.</h2>
             <p className="text-blue-700">
-              For every Korean coffee trend: "Should I launch this?" and "How do I launch it?" 
-              Professional-grade intelligence for serious coffee businesses.
+              Every trend gives you decisive business intelligence: market viability and exact execution plan.
             </p>
           </div>
         </div>
 
-        {/* Navigation Guide */}
+        {/* Main Value Cards - Clickable */}
         <section className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Platform Overview</h2>
-          <div className="bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 rounded-xl p-8 text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">What You Get For Every Trend</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             
-            {/* Coffee Trends - Single Focus */}
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              ☕ Korean Coffee Trend Tracker
-            </h3>
-            <p className="text-lg text-gray-700 mb-6">
-              Your complete platform for tracking emerging Korean coffee products with video proof.
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 text-sm text-gray-600">
-              <div>
-                <div className="font-semibold text-orange-800">Growth Metrics</div>
-                <div>Real-time % growth tracking</div>
+            {/* THE WHY Card */}
+            <div 
+              className={`border-2 rounded-xl p-8 cursor-pointer transition-all ${
+                activeCard === 'why' 
+                  ? 'border-blue-500 bg-blue-50' 
+                  : 'border-gray-200 hover:border-blue-300 hover:bg-blue-25'
+              }`}
+              onClick={() => setActiveCard(activeCard === 'why' ? null : 'why')}
+            >
+              <div className="text-center mb-6">
+                <div className="text-4xl mb-4">🎯</div>
+                <h3 className="text-xl font-bold text-gray-900">THE WHY</h3>
+                <p className="text-gray-600 mt-2">Should I launch this in my market?</p>
               </div>
-              <div>
-                <div className="font-semibold text-orange-800">Video Proof</div>
-                <div>Korean cafe YouTube evidence</div>
-              </div>
-              <div>
-                <div className="font-semibold text-orange-800">Lifecycle Stages</div>
-                <div>Discovery → Mainstream</div>
-              </div>
-              <div>
-                <div className="font-semibold text-orange-800">Social Analytics</div>
-                <div>TikTok, Instagram, search trends</div>
-              </div>
-            </div>
-            <a href="/coffee-trends" className="inline-block px-6 py-3 bg-orange-600 text-white rounded-lg font-semibold hover:bg-orange-700 transition-colors">
-              Start Tracking Trends →
-            </a>
-
-          </div>
-        </section>
-
-        {/* Step by Step Guide */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Step-by-Step Usage Guide</h2>
-          
-          <div className="space-y-8">
-            {/* Step 1 */}
-            <div className="flex gap-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
-                1
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Explore Korean Coffee Trends
-                </h3>
-                <p className="text-gray-600 mb-3">
-                  Visit the Coffee Trends page to see what&apos;s emerging in Korean cafes right now.
-                </p>
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <p className="text-sm text-gray-700 mb-2"><strong>Look for:</strong></p>
-                  <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• Trends in &quot;Discovery&quot; or &quot;Early&quot; stages (highest opportunity)</li>
-                    <li>• High growth percentages (300%+ is exceptional)</li>
-                    <li>• Multiple video proof points</li>
-                    <li>• Trends with &lt;50 cafes serving (early adoption window)</li>
-                  </ul>
+              
+              {activeCard === 'why' && (
+                <div className="space-y-4 mt-6 pt-6 border-t border-blue-200">
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700">Success Probability</span>
+                      <span className="font-bold text-green-600 bg-green-100 px-2 py-1 rounded">87%</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700">Market Readiness</span>
+                      <span className="font-semibold bg-blue-100 px-2 py-1 rounded">High</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700">Competitor Risk</span>
+                      <span className="font-semibold bg-yellow-100 px-2 py-1 rounded">Low</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-700">Time to Global</span>
+                      <span className="font-semibold bg-purple-100 px-2 py-1 rounded">3-4 months</span>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-4 p-3 bg-white rounded border">
+                    <p className="text-xs font-semibold text-gray-700 mb-1">Historical Precedent:</p>
+                    <p className="text-xs text-gray-600">&quot;Dalgona coffee (2020) - 340% global adoption within 6 months&quot;</p>
+                  </div>
+                  
+                  <div className="mt-4 text-center">
+                    <p className="text-sm font-medium text-blue-700">
+                      ✅ Clear go/no-go decision with confidence score
+                    </p>
+                  </div>
                 </div>
-              </div>
+              )}
+              
+              {activeCard !== 'why' && (
+                <div className="text-center">
+                  <p className="text-sm text-gray-500">Click to see sample analysis →</p>
+                </div>
+              )}
             </div>
 
-            {/* Step 2 */}
-            <div className="flex gap-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
-                2
+            {/* THE HOW Card */}
+            <div 
+              className={`border-2 rounded-xl p-8 cursor-pointer transition-all ${
+                activeCard === 'how' 
+                  ? 'border-green-500 bg-green-50' 
+                  : 'border-gray-200 hover:border-green-300 hover:bg-green-25'
+              }`}
+              onClick={() => setActiveCard(activeCard === 'how' ? null : 'how')}
+            >
+              <div className="text-center mb-6">
+                <div className="text-4xl mb-4">⚡</div>
+                <h3 className="text-xl font-bold text-gray-900">THE HOW</h3>
+                <p className="text-gray-600 mt-2">Exact recipe + business execution</p>
               </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Watch the Video Proof
-                </h3>
-                <p className="text-gray-600 mb-3">
-                  Click on any trend card to see YouTube videos of Korean cafes actually making these products.
-                </p>
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <p className="text-sm text-gray-700 mb-2"><strong>Evaluate:</strong></p>
-                  <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• Are cafes actually serving this?</li>
-                    <li>• Does it look technically feasible?</li>
-                    <li>• What ingredients/equipment needed?</li>
-                    <li>• How are customers responding?</li>
-                  </ul>
+              
+              {activeCard === 'how' && (
+                <div className="space-y-4 mt-6 pt-6 border-t border-green-200">
+                  <div>
+                    <h4 className="font-semibold text-sm text-gray-800 mb-2">📋 Complete Recipe</h4>
+                    <div className="text-xs text-gray-600 bg-white p-3 rounded">
+                      <p>• 200ml espresso, 60g cream cheese (room temp)</p>
+                      <p>• 6-step process with exact measurements</p>
+                      <p>• Prep time: 5 minutes, serves fresh</p>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-semibold text-sm text-gray-800 mb-2">💰 Business Plan</h4>
+                    <div className="text-xs text-gray-600 bg-white p-3 rounded space-y-1">
+                      <p>Cost: $1.85 → Retail: $6.50-$7.50 (75% margin)</p>
+                      <p>Suppliers: Restaurant Depot, H Mart</p>
+                      <p>Staff training: 3 key techniques, common mistakes</p>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-4 text-center">
+                    <p className="text-sm font-medium text-green-700">
+                      ⚡ Ready to launch within days, not weeks
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Step 3 */}
-            <div className="flex gap-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
-                3
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Plan Your California Launch
-                </h3>
-                <p className="text-gray-600 mb-3">
-                  Use the 3-week window to test and launch before mainstream adoption.
-                </p>
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <p className="text-sm text-gray-700 mb-2"><strong>Action plan:</strong></p>
-                  <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• Week 1: Source ingredients, test recipe</li>
-                    <li>• Week 2: Soft launch with Korean hashtags</li>
-                    <li>• Week 3: Scale up before mainstream discovers</li>
-                    <li>• Price premium: 20-30% above similar items</li>
-                  </ul>
+              )}
+              
+              {activeCard !== 'how' && (
+                <div className="text-center">
+                  <p className="text-sm text-gray-500">Click to see execution details →</p>
                 </div>
-              </div>
-            </div>
-
-            {/* Step 4 */}
-            <div className="flex gap-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
-                4
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  Monitor and Scale
-                </h3>
-                <p className="text-gray-600 mb-3">
-                  Track your implementation success and find the next opportunity.
-                </p>
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <p className="text-sm text-gray-700 mb-2"><strong>Success metrics:</strong></p>
-                  <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• 30%+ higher margins vs regular menu items</li>
-                    <li>• Social media buzz (Korean → English transition)</li>
-                    <li>• Customer retention for &quot;authentic&quot; experience</li>
-                    <li>• First-mover advantage in your area</li>
-                  </ul>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </section>
 
-        {/* Success Framework */}
+        {/* Simple Process */}
         <section className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">The K-Bridge Success Framework</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">How to Use</h2>
           
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-2xl p-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="space-y-6">
+            <div className="flex gap-4">
+              <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
               <div>
-                <div className="text-4xl mb-4">🇰🇷</div>
-                <h3 className="text-lg font-semibold mb-2">Cultural Bridge</h3>
-                <p className="text-sm text-gray-300">
-                  You understand both Korean and American tastes. 
-                  This isn&apos;t just translation—it&apos;s cultural adaptation.
-                </p>
+                <h3 className="font-semibold text-gray-900 mb-1">Browse Current Trends</h3>
+                <p className="text-gray-600 text-sm">Visit Trends page to see emerging Korean coffee products with WHY and HOW analysis</p>
               </div>
-              <div>
-                <div className="text-4xl mb-4">⏰</div>
-                <h3 className="text-lg font-semibold mb-2">Timing Advantage</h3>
-                <p className="text-sm text-gray-300">
-                  3-week window before mainstream adoption. 
-                  Perfect time to establish as the &quot;authentic&quot; source.
-                </p>
-              </div>
-              <div>
-                <div className="text-4xl mb-4">💰</div>
-                <h3 className="text-lg font-semibold mb-2">Premium Positioning</h3>
-                <p className="text-sm text-gray-300">
-                  When others copy, customers come to you for the real thing. 
-                  Authenticity commands premium pricing.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Pro Tips */}
-        <section className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Pro Tips for Maximum Success</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-              <h3 className="font-semibold text-green-800 mb-3">✅ Do This</h3>
-              <ul className="space-y-2 text-sm text-green-700">
-                <li>• Start with Korean social media marketing</li>
-                <li>• Use authentic Korean ingredients when possible</li>
-                <li>• Document your &quot;first to market&quot; story</li>
-                <li>• Build relationships with Korean food bloggers</li>
-                <li>• Train staff on the trend&apos;s Korean origin</li>
-                <li>• Price 20-30% premium as &quot;authentic&quot;</li>
-              </ul>
             </div>
             
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6">
-              <h3 className="font-semibold text-red-800 mb-3">❌ Avoid This</h3>
-              <ul className="space-y-2 text-sm text-red-700">
-                <li>• Don&apos;t wait for mainstream adoption</li>
-                <li>• Don&apos;t compromise on authenticity</li>
-                <li>• Don&apos;t ignore the Korean community</li>
-                <li>• Don&apos;t launch without testing the recipe</li>
-                <li>• Don&apos;t price at commodity levels</li>
-                <li>• Don&apos;t skip the cultural story</li>
-              </ul>
+            <div className="flex gap-4">
+              <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-1">Evaluate Market Fit</h3>
+                <p className="text-gray-600 text-sm">Review success probability, market readiness, and competitor risk for your location</p>
+              </div>
+            </div>
+            
+            <div className="flex gap-4">
+              <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-1">Get Complete Recipe & Business Plan</h3>
+                <p className="text-gray-600 text-sm">Click &quot;View Complete Recipe & Training Guide&quot; for exact ingredients, suppliers, pricing, and staff training</p>
+              </div>
+            </div>
+            
+            <div className="flex gap-4">
+              <div className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">4</div>
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-1">Launch Before Competition</h3>
+                <p className="text-gray-600 text-sm">Execute with 3-6 month head start over competitors who wait for trends to reach their market</p>
+              </div>
             </div>
           </div>
         </section>
 
-
-        {/* Call to Action */}
+        {/* CTA */}
         <section className="text-center">
-          <div className="bg-orange-600 text-white rounded-2xl p-8">
+          <div className="bg-blue-600 text-white rounded-xl p-8">
             <h2 className="text-2xl font-bold mb-4">
-              Ready to Leverage Your K-Bridge Advantage?
+              Ready to Lead Instead of Follow?
             </h2>
             <p className="text-lg mb-6 opacity-90">
-              Start tracking trends and building your 3-week competitive edge today.
+              Professional Korean coffee trend intelligence with actionable business plans.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="/coffee-trends" 
-                className="bg-white text-orange-600 px-8 py-4 rounded-lg font-semibold hover:bg-orange-50 transition-colors"
-              >
-                Start Tracking Trends
-              </a>
-              <a 
-                href="/pricing" 
-                className="bg-orange-700 text-white px-8 py-4 rounded-lg font-semibold hover:bg-orange-800 transition-colors"
-              >
-                View Pricing
-              </a>
-            </div>
+            <a 
+              href="/coffee-trends" 
+              className="inline-block px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+            >
+              View Current Trends
+            </a>
           </div>
         </section>
       </div>
