@@ -167,6 +167,150 @@ export async function GET() {
         districts: ['Hongdae', 'Sinchon', 'Seongsu'],
         videoProof: [],
         signals: []
+      },
+      {
+        id: '3',
+        name: 'Jeju Hallabong Latte',
+        nameKr: '제주 한라봉 라떼',
+        
+        // THE WHY - Market Analysis
+        successProbability: 91,
+        marketReadiness: 'High',
+        competitorRisk: 'Low',
+        historicalPrecedent: 'Yuzu trends (2019) - 280% adoption in premium markets',
+        timeToGlobal: '2-3 months',
+        
+        // THE HOW - Business Execution
+        recipe: {
+          ingredients: [
+            '200ml espresso or strong coffee',
+            '80ml Jeju hallabong juice (fresh)',
+            '40ml steamed milk',
+            '20ml vanilla syrup',
+            '1 tsp orange zest',
+            'Whipped cream for topping'
+          ],
+          instructions: [
+            'Brew strong espresso and let cool slightly',
+            'Steam milk to 65°C with vanilla syrup',
+            'Add fresh hallabong juice to espresso',
+            'Top with steamed milk, creating layers',
+            'Garnish with whipped cream and orange zest',
+            'Serve immediately in clear glass'
+          ],
+          difficulty: 'Easy',
+          prepTime: '4 minutes',
+          shelfLife: 'Best consumed within 15 minutes'
+        },
+        suppliers: [
+          {
+            ingredient: 'Jeju Hallabong Juice',
+            source: 'H Mart, Korean grocers, online',
+            cost: '$12.50/bottle (750ml)',
+            notes: 'Premium Korean citrus - substitute with premium orange juice if unavailable'
+          }
+        ],
+        pricing: {
+          costPerServing: '$1.65',
+          suggestedRetail: '$6.00-$7.00',
+          margin: '73%',
+          premiumPosition: 'Position as seasonal premium offering'
+        },
+        training: {
+          keyTechniques: [
+            'Use fresh hallabong juice for authentic taste',
+            'Layer milk carefully for visual appeal',
+            'Serve in clear glass to showcase color'
+          ],
+          commonMistakes: [
+            'Using artificial orange flavoring instead of real juice',
+            'Over-heating milk which curdles with citrus',
+            'Serving in opaque cups (loses visual impact)'
+          ],
+          qualityControl: 'Should have bright orange color and fresh citrus aroma'
+        },
+        
+        // Tracking data
+        growth: 312,
+        stage: 'early',
+        cafesServing: 56,
+        firstDetected: '2024-12-08',
+        lastUpdated: '2024-12-19',
+        districts: ['Jeju', 'Gangnam', 'Apgujeong'],
+        videoProof: [],
+        signals: []
+      },
+      {
+        id: '4',
+        name: 'Ssireum Coffee',
+        nameKr: '씨름 커피',
+        
+        // THE WHY - Market Analysis
+        successProbability: 68,
+        marketReadiness: 'Medium',
+        competitorRisk: 'High',
+        historicalPrecedent: 'Protein coffee trends (2021) - niche but profitable',
+        timeToGlobal: '4-6 months',
+        
+        // THE HOW - Business Execution
+        recipe: {
+          ingredients: [
+            '200ml cold brew coffee',
+            '30g Korean rice protein powder',
+            '50ml oat milk',
+            '1 tbsp honey',
+            '1/2 tsp vanilla extract',
+            'Ice cubes'
+          ],
+          instructions: [
+            'Blend cold brew with rice protein powder until smooth',
+            'Add oat milk, honey, and vanilla',
+            'Blend with ice until frothy',
+            'Serve in tall glass',
+            'Garnish with protein powder dusting',
+            'Provide straw for mixing'
+          ],
+          difficulty: 'Medium',
+          prepTime: '3 minutes',
+          shelfLife: 'Consume within 30 minutes'
+        },
+        suppliers: [
+          {
+            ingredient: 'Korean Rice Protein',
+            source: 'Asian health stores, iHerb',
+            cost: '$18.00/container (500g)',
+            notes: 'Plant-based protein popular in Korean fitness culture'
+          }
+        ],
+        pricing: {
+          costPerServing: '$2.25',
+          suggestedRetail: '$8.50-$9.50',
+          margin: '74%',
+          premiumPosition: 'Target fitness enthusiasts and gym-adjacent locations'
+        },
+        training: {
+          keyTechniques: [
+            'Blend protein powder thoroughly to avoid clumps',
+            'Use cold brew to prevent protein denaturation',
+            'Market to fitness community'
+          ],
+          commonMistakes: [
+            'Using hot coffee which clumps protein',
+            'Under-blending leaving chalky texture',
+            'Wrong target demographic (general vs fitness)'
+          ],
+          qualityControl: 'Should be smooth and frothy with no protein clumps'
+        },
+        
+        // Tracking data
+        growth: 189,
+        stage: 'discovery',
+        cafesServing: 23,
+        firstDetected: '2024-12-12',
+        lastUpdated: '2024-12-19',
+        districts: ['Gangnam', 'Jamsil', 'Olympic Park'],
+        videoProof: [],
+        signals: []
       }
     ]
 
