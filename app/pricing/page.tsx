@@ -83,43 +83,43 @@ export default function PricingPage() {
             </div>
 
             {/* Pro Tier - Highlighted */}
-            <div className="bg-coffee-primary text-white p-8 rounded-lg shadow-large transform scale-105 relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-coffee-accent text-white px-4 py-1 rounded-full text-sm">
+            <div className="bg-gradient-to-b from-coffee-accent to-coffee-primary text-white p-8 rounded-lg shadow-large transform scale-105 relative border-2 border-coffee-accent">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-white text-coffee-accent px-4 py-1 rounded-full text-sm font-medium">
                 Most Popular
               </div>
               
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-craft text-coffee-foam mb-2">Pro</h3>
-                <div className="text-4xl font-light text-coffee-foam mb-2">
+                <h3 className="text-2xl font-craft text-white mb-2">Pro</h3>
+                <div className="text-4xl font-light text-white mb-2">
                   $47<span className="text-xl">/month</span>
                 </div>
-                <p className="text-coffee-cream text-sm">Launch price: $29/month</p>
+                <p className="text-white/90 text-sm font-medium">Launch price: $29/month</p>
               </div>
               
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
-                  <span className="text-coffee-accent mr-2 mt-1">✓</span>
-                  <span className="text-coffee-foam">All 4 weekly trends</span>
+                  <span className="text-white mr-2 mt-1 font-bold">✓</span>
+                  <span className="text-white">All 4 weekly trends</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-coffee-accent mr-2 mt-1">✓</span>
-                  <span className="text-coffee-foam">Complete recipes & instructions</span>
+                  <span className="text-white mr-2 mt-1 font-bold">✓</span>
+                  <span className="text-white">Complete recipes & instructions</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-coffee-accent mr-2 mt-1">✓</span>
-                  <span className="text-coffee-foam">Supplier contacts & pricing</span>
+                  <span className="text-white mr-2 mt-1 font-bold">✓</span>
+                  <span className="text-white">Supplier contacts & pricing</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-coffee-accent mr-2 mt-1">✓</span>
-                  <span className="text-coffee-foam">Community Slack access</span>
+                  <span className="text-white mr-2 mt-1 font-bold">✓</span>
+                  <span className="text-white">Community Slack access</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-coffee-accent mr-2 mt-1">✓</span>
-                  <span className="text-coffee-foam">ROI tracking dashboard</span>
+                  <span className="text-white mr-2 mt-1 font-bold">✓</span>
+                  <span className="text-white">ROI tracking dashboard</span>
                 </li>
               </ul>
               
-              <button className="w-full py-3 bg-coffee-accent text-white rounded-lg hover:scale-105 transition-transform font-medium">
+              <button className="w-full py-3 bg-white text-coffee-accent rounded-lg hover:scale-105 transition-transform font-bold">
                 Get Early Access
               </button>
             </div>
