@@ -53,7 +53,7 @@ export default function SimpleLanding() {
       }
     } catch (error) {
       console.error('Signup error:', error)
-      alert('Network error: ' + error.message)
+      alert('Network error: ' + (error instanceof Error ? error.message : 'Unknown error'))
     }
   }
 
