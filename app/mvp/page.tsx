@@ -12,53 +12,49 @@ export default function MVPPage() {
   }
 
   return (
-    <div className="min-h-screen bg-coffee-warm">
+    <div className="min-h-screen bg-page-primary">
       <Navigation currentPage="home" />
       
-      {/* Levels' No-BS Hero */}
-      <section className="pt-32 pb-16 px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-red-500 text-white px-4 py-2 rounded-lg inline-block mb-6 font-craft">
-            🚀 LIVE IN 24 HOURS - Pieter Levels Mode
+      {/* Clean Hero */}
+      <section className="section-padding">
+        <div className="content-max-width text-center">
+          <div className="bg-coffee-accent text-white px-6 py-3 rounded-full inline-block mb-8 font-craft text-sm font-medium">
+            ✨ Coffee Trends Weekly - Now Live
           </div>
           
-          <div className="bg-coffee-accent text-white px-4 py-2 rounded-lg inline-block mb-4 font-craft text-sm font-medium">
-            🌐 Now Live: CoffeeTrendsWeekly.com
-          </div>
-          
-          <h1 className="text-5xl md:text-6xl font-light leading-tight tracking-tight mb-6 text-coffee-primary">
+          <h1 className="heading-hero mb-6">
             Korean Coffee Trends<br/>
-            <span className="text-coffee-accent">That Actually Make Money</span>
+            <span className="text-accent">That Actually Make Money</span>
           </h1>
           
-          <p className="text-xl text-coffee-secondary font-light max-w-2xl mx-auto mb-8">
+          <p className="body-large max-w-2xl mx-auto mb-8">
             Stop guessing. Get the exact Korean coffee trends that are proven to generate $2,000-8,000/month. 
             Used by 47 coffee shops. No fluff. Just profit.
           </p>
 
-          {/* Levels' Social Proof */}
-          <div className="bg-white p-6 rounded-lg border border-coffee shadow-medium mb-8 max-w-2xl mx-auto">
+          {/* Clean Social Proof */}
+          <div className="bg-card card-padding mb-8 max-w-2xl mx-auto">
             <div className="grid grid-cols-3 gap-6 text-center">
               <div>
-                <div className="text-2xl font-light text-coffee-accent">$247K</div>
-                <div className="text-sm text-coffee-earth">Revenue generated</div>
+                <div className="text-2xl font-ritual text-accent mb-1">$247K</div>
+                <div className="body-small">Revenue generated</div>
               </div>
               <div>
-                <div className="text-2xl font-light text-coffee-accent">47</div>
-                <div className="text-sm text-coffee-earth">Coffee shops using</div>
+                <div className="text-2xl font-ritual text-accent mb-1">47</div>
+                <div className="body-small">Coffee shops using</div>
               </div>
               <div>
-                <div className="text-2xl font-light text-coffee-accent">4.9/5</div>
-                <div className="text-sm text-coffee-earth">Customer rating</div>
+                <div className="text-2xl font-ritual text-accent mb-1">4.9/5</div>
+                <div className="body-small">Customer rating</div>
               </div>
             </div>
           </div>
 
-          {/* Levels' Direct CTA */}
-          <div className="bg-coffee-accent p-8 rounded-lg text-center max-w-xl mx-auto">
-            <div className="text-coffee-foam mb-4">
-              <div className="text-3xl font-light mb-2">$47/month</div>
-              <div className="text-sm opacity-90">Cancel anytime. Start making money this week.</div>
+          {/* Clean CTA */}
+          <div className="bg-card card-padding text-center max-w-xl mx-auto">
+            <div className="mb-6">
+              <div className="text-3xl font-ritual text-accent mb-2">$47/month</div>
+              <div className="body-small text-muted">Cancel anytime. Start making money this week.</div>
             </div>
             
             <input
@@ -66,25 +62,25 @@ export default function MVPPage() {
               placeholder="Enter your email to start"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-3 rounded-lg mb-4 text-coffee-primary"
+              className="w-full p-4 rounded-lg mb-4 border border-coffee-neutral-200 focus:border-coffee-accent outline-none"
             />
             
             <button 
               onClick={handleLaunch}
-              className="w-full py-3 bg-coffee-primary text-white rounded-lg hover:scale-105 transition-transform font-craft font-medium"
+              className="btn-coffee-primary w-full py-4 text-lg mb-3"
             >
-              🚀 Start Making Money Today
+              Start Making Money Today
             </button>
             
-            <div className="text-xs text-coffee-foam opacity-75 mt-2">
+            <div className="body-small text-muted">
               7-day free trial • No setup fees • Instant access
             </div>
           </div>
         </div>
       </section>
 
-      {/* Levels' Problem/Solution Clarity */}
-      <section className="py-16 px-8 bg-white">
+      {/* Problem/Solution Clarity */}
+      <section className="section-padding bg-page-secondary">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             
