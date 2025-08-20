@@ -8,7 +8,7 @@ export default function ArchivePage() {
       issue: '#47',
       date: 'Dec 17, 2024',
       title: '4 Korean Coffee Trends Making $8K-12K Monthly',
-      trends: ['Dalgona Whipped Coffee', 'Cream Cheese Foam Coffee', 'Jeju Hallabong Latte', 'Honey Butter Coffee'],
+      trends: ['Black Pepper Latte', 'Dutch Einspanner', 'Jeju Hallabong Latte', 'Honey Butter Coffee'],
       subscribers: 231
     },
     {

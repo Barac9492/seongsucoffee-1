@@ -6,8 +6,8 @@ export async function GET() {
     const trends = [
       {
         id: '1',
-        name: 'Cream Cheese Foam Coffee',
-        nameKr: '크림치즈폼 커피',
+        name: 'Black Pepper Latte',
+        nameKr: '블랙 페퍼 라떼',
         
         // THE WHY - Market Analysis
         successProbability: 87,
@@ -19,20 +19,21 @@ export async function GET() {
         // THE HOW - Business Execution
         recipe: {
           ingredients: [
-            '200ml espresso or strong coffee',
-            '60g Philadelphia cream cheese (room temperature)',
-            '30ml heavy cream',
-            '1 tsp vanilla extract',
-            '1/4 tsp sea salt',
-            '2 tbsp sugar'
+            '200ml whole milk',
+            'Double shot espresso (60ml)',
+            '1/2 tsp freshly ground black pepper',
+            '1 tbsp honey',
+            '1/4 tsp cinnamon powder',
+            'Whipped cream (optional)'
           ],
           instructions: [
-            'Whip cream cheese until smooth and fluffy (2-3 minutes)',
-            'Add heavy cream, vanilla, salt, and sugar',
-            'Whip until soft peaks form (do not over-whip)',
-            'Pour hot coffee into glass, leaving 2cm at top',
-            'Spoon foam generously on top',
-            'Serve immediately with spoon for mixing'
+            'Steam milk with black pepper and cinnamon to 65°C',
+            'Let infuse for 30 seconds while steaming',
+            'Strain milk through fine mesh to remove pepper chunks',
+            'Pull double shot espresso into 12oz cup',
+            'Add honey to espresso and stir',
+            'Pour infused milk creating latte art',
+            'Top with light dusting of black pepper'
           ],
           difficulty: 'Medium',
           prepTime: '5 minutes',
@@ -92,8 +93,8 @@ export async function GET() {
       },
       {
         id: '2',
-        name: 'Dalgona Whipped Coffee',
-        nameKr: '달고나 커피',
+        name: 'Dutch Einspanner',
+        nameKr: '더치 아인슈페너',
         
         // THE WHY - Market Analysis
         successProbability: 94,

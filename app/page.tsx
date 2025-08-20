@@ -18,12 +18,41 @@ export default function SimpleLanding() {
     setMounted(true)
   }, [])
 
-  const handleSignup = (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Track for monetization validation
-    console.log('Newsletter signup with monetization data:', signupData)
-    // TODO: Send to analytics/database
-    setSubmitted(true)
+    
+    try {
+      const response = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...signupData,
+          source: 'homepage',
+          page: 'landing'
+        })
+      })
+      
+      if (response.ok) {
+        setSubmitted(true)
+        // Track conversion if analytics is loaded
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'conversion', {
+            'event_category': 'Newsletter',
+            'event_label': 'Homepage Signup',
+            'value': 1
+          })
+        }
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+          (window as any).fbq('track', 'Lead', {
+            content_name: 'Newsletter Signup',
+            content_category: 'Homepage'
+          })
+        }
+      }
+    } catch (error) {
+      console.error('Signup failed:', error)
+      alert('Signup failed. Please try again.')
+    }
   }
 
   return (
@@ -208,15 +237,15 @@ export default function SimpleLanding() {
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-coffee-accent rounded-full mt-2"></div>
                 <div>
-                  <h4 className="font-medium text-coffee-primary">Dalgona Whipped Coffee</h4>
-                  <p className="text-sm text-coffee-earth">94% success rate • 85% margin • TikTok viral with 17% YoY growth</p>
+                  <h4 className="font-medium text-coffee-primary">Black Pepper Latte</h4>
+                  <p className="text-sm text-coffee-earth">87% success rate • 82% margin • Seoul's signature spiced coffee trend</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-coffee-accent rounded-full mt-2"></div>
                 <div>
-                  <h4 className="font-medium text-coffee-primary">Cream Cheese Foam Coffee</h4>
-                  <p className="text-sm text-coffee-earth">87% success rate • 75% margin • Seoul verified at Blue Bottle Seongsu</p>
+                  <h4 className="font-medium text-coffee-primary">Dutch Einspanner</h4>
+                  <p className="text-sm text-coffee-earth">94% success rate • 85% margin • Featured in every Seoul cafe</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">

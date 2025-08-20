@@ -12,10 +12,44 @@ export default function PricingPage() {
 
   const handleEarlyAccess = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Track interest for monetization validation
-    console.log('Early access signup:', { email, shopName, shopSize, pricePoint })
-    // TODO: Send to analytics/database
-    setSubmitted(true)
+    
+    try {
+      const response = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          shopName,
+          shopSize,
+          pricePoint,
+          source: 'pricing',
+          earlyAccess: true,
+          page: 'pricing'
+        })
+      })
+      
+      if (response.ok) {
+        setSubmitted(true)
+        // Track conversion
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'conversion', {
+            'event_category': 'Early Access',
+            'event_label': 'Pricing Page Signup',
+            'value': 2  // Higher value for pricing interest
+          })
+        }
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+          (window as any).fbq('track', 'Lead', {
+            content_name: 'Early Access Signup',
+            content_category: 'Pricing',
+            value: 2
+          })
+        }
+      }
+    } catch (error) {
+      console.error('Signup failed:', error)
+      alert('Signup failed. Please try again.')
+    }
   }
 
   return (
