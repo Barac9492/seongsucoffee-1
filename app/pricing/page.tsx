@@ -33,7 +33,44 @@ export default function PricingPage() {
       {/* Tiered Pricing Strategy */}
       <section className="py-24 px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            
+            {/* Free Plan */}
+            <div className="border border-gray-200 rounded-lg p-8">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-light mb-2">Free</h3>
+                <p className="text-gray-600 mb-6">Taste the opportunity</p>
+                <div className="text-4xl font-light mb-2">$0</div>
+                <div className="text-sm text-gray-500">forever</div>
+              </div>
+              
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">1 trending drink this month</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">Complete recipe & measurements</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">Basic launch guide</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-gray-400 mr-3">✕</span>
+                  <span className="text-sm text-gray-400">Supplier contacts</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-gray-400 mr-3">✕</span>
+                  <span className="text-sm text-gray-400">Training materials</span>
+                </li>
+              </ul>
+              
+              <a href="/coffee-trends" className="block w-full py-3 bg-green-600 text-white text-center rounded-lg hover:bg-green-700 transition-colors">
+                Start Free Today
+              </a>
+            </div>
             
             {/* Starter Plan */}
             <div className="border border-gray-200 rounded-lg p-8">
@@ -159,7 +196,12 @@ export default function PricingPage() {
           {/* ROI Comparison */}
           <div className="mt-16 bg-gray-50 p-8 rounded-lg">
             <h3 className="text-2xl font-light text-center mb-8">Average ROI by Plan</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              <div className="text-center">
+                <div className="text-3xl font-light mb-2 text-green-600">$3.2K</div>
+                <div className="text-sm text-gray-600">Free plan avg. first drink</div>
+                <div className="text-xs text-gray-500">∞ ROI</div>
+              </div>
               <div className="text-center">
                 <div className="text-3xl font-light mb-2">$8K</div>
                 <div className="text-sm text-gray-600">Starter avg. first month</div>

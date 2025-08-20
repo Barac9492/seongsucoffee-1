@@ -107,13 +107,16 @@ export default function CoffeeTrendsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center animate-fade-in-up">
             <h1 className="text-5xl md:text-6xl font-light leading-tight tracking-tight mb-6">
-              Launch these drinks<br/>
+              Launch trending drinks<br/>
               <span className="text-gray-400">before your competition</span>
             </h1>
-            <p className="text-xl text-gray-600 font-light max-w-3xl mx-auto">
-              Four trending Korean drinks with complete business packages.
-              <br/>Priority ranked by market readiness and profit potential.
+            <p className="text-xl text-gray-600 font-light max-w-3xl mx-auto mb-8">
+              Start with one free drink. Upgrade for complete business intelligence.
             </p>
+            
+            <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-full">
+              <span className="text-sm font-medium">✓ Your free drink is ready below</span>
+            </div>
           </div>
         </div>
       </section>
@@ -123,11 +126,12 @@ export default function CoffeeTrendsPage() {
         <div className="max-w-7xl mx-auto">
           <div className="space-y-16">
             {trends.map((trend, index) => {
-              const priority = index === 0 ? 'Launch Now' : index === 1 ? 'Launch Soon' : 'Monitor'
-              const priorityColor = index === 0 ? 'bg-green-100 text-green-800' : index === 1 ? 'bg-yellow-100 text-yellow-800' : 'bg-gray-100 text-gray-800'
+              const isFree = index === 0
+              const priority = isFree ? 'FREE DRINK' : index === 1 ? 'Starter Plan' : index === 2 ? 'Professional Plan' : 'Enterprise Plan'
+              const priorityColor = isFree ? 'bg-green-600 text-white' : index === 1 ? 'bg-blue-100 text-blue-800' : index === 2 ? 'bg-black text-white' : 'bg-gray-100 text-gray-800'
               
               return (
-              <div key={trend.id} className={`border border-gray-100 ${index === 0 ? 'border-green-200' : ''} ${index > 0 ? 'animate-fade-in-up' : ''}`}>
+              <div key={trend.id} className={`border ${isFree ? 'border-green-300 shadow-lg' : 'border-gray-200'} rounded-lg ${index > 0 ? 'animate-fade-in-up' : ''}`}>
                 
                 {/* Priority Header */}
                 <div className="p-8 border-b border-gray-100">
@@ -136,7 +140,8 @@ export default function CoffeeTrendsPage() {
                       <span className={`px-3 py-1 text-xs font-medium rounded-full ${priorityColor}`}>
                         {priority}
                       </span>
-                      <span className="text-sm text-gray-500">#{index + 1} Priority</span>
+                      {isFree && <span className="text-sm text-green-600 font-medium">No credit card required</span>}
+                      {!isFree && <span className="text-sm text-gray-500">Requires paid plan</span>}
                     </div>
                     <div className="text-right">
                       <div className="text-2xl font-light">{trend.pricing.margin}</div>
@@ -174,8 +179,12 @@ export default function CoffeeTrendsPage() {
                 <div className="p-8">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-gray-600 mb-1">Complete launch package available</p>
-                      <p className="text-xs text-gray-500">Recipe, suppliers, training, pricing strategy</p>
+                      <p className="text-sm text-gray-600 mb-1">
+                        {isFree ? 'Free recipe and launch guide included' : 'Complete business package available'}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        {isFree ? 'Recipe, measurements, basic guide' : 'Recipe, suppliers, training, pricing strategy'}
+                      </p>
                     </div>
                     <button 
                       onClick={() => {
@@ -183,12 +192,12 @@ export default function CoffeeTrendsPage() {
                         setDetailsOpen(true)
                       }}
                       className={`px-6 py-3 rounded-full font-medium transition-transform hover:scale-105 ${
-                        index === 0 
-                          ? 'bg-black text-white' 
+                        isFree 
+                          ? 'bg-green-600 text-white' 
                           : 'bg-gray-100 text-gray-900'
                       }`}
                     >
-                      {index === 0 ? 'Launch now' : 'View details'}
+                      {isFree ? 'Get free recipe' : `Upgrade for ${priority}`}
                     </button>
                   </div>
                 </div>

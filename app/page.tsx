@@ -22,27 +22,45 @@ export default function SimpleLanding() {
             {/* Problem Statement */}
             <div className="max-w-5xl mx-auto">
               <h1 className="text-7xl md:text-8xl font-light leading-[0.85] tracking-tight mb-8">
-                Launch before<br/>
-                <span className="text-gray-400">your competition</span>
+                Get your first<br/>
+                <span className="text-gray-400">profitable drink</span><br/>
+                <span className="text-green-600">free</span>
               </h1>
               
-              <p className="text-2xl text-gray-600 font-light max-w-3xl mx-auto mb-12">
+              <p className="text-2xl text-gray-600 font-light max-w-3xl mx-auto mb-8">
                 Korean coffee trends reach US markets 2-6 months later.<br/>
-                Get the exact recipes and launch first.
+                Launch your first trend-ahead drink at zero cost.
               </p>
+              
+              <div className="inline-flex items-center gap-8 p-6 bg-green-50 rounded-lg mb-12">
+                <div className="text-center">
+                  <div className="text-3xl font-light">$0</div>
+                  <div className="text-sm text-gray-500">to start</div>
+                </div>
+                <div className="text-gray-300">→</div>
+                <div className="text-center">
+                  <div className="text-3xl font-light text-green-600">$3.2K</div>
+                  <div className="text-sm text-gray-500">avg. first drink revenue</div>
+                </div>
+                <div className="text-gray-300">=</div>
+                <div className="text-center">
+                  <div className="text-3xl font-light">∞</div>
+                  <div className="text-sm text-gray-500">return on investment</div>
+                </div>
+              </div>
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a 
                   href="/coffee-trends" 
-                  className="inline-block bg-black text-white px-8 py-3 rounded-full hover:scale-105 transition-transform"
+                  className="inline-block bg-green-600 text-white px-12 py-4 rounded-full text-lg hover:scale-105 transition-transform"
                 >
-                  View current trends
+                  Start free today
                 </a>
                 <a 
                   href="/pricing" 
                   className="inline-block border border-gray-300 text-gray-900 px-8 py-3 rounded-full hover:border-gray-900 transition-colors"
                 >
-                  See pricing
+                  See all plans
                 </a>
               </div>
             </div>
@@ -126,26 +144,26 @@ export default function SimpleLanding() {
         <div className="max-w-7xl mx-auto text-center">
           <div className="max-w-3xl mx-auto space-y-8">
             <h2 className="text-5xl md:text-6xl font-light leading-tight">
-              Choose your<br/>advantage level
+              Start free,<br/>upgrade when ready
             </h2>
             <p className="text-xl text-gray-400 font-light">
-              From $47/month - plans for every business size
+              No credit card required. Launch your first profitable drink today.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
               <a 
-                href="/pricing" 
+                href="/coffee-trends" 
                 className="inline-block bg-white text-black px-12 py-4 rounded-full text-lg hover:scale-105 transition-transform"
               >
-                View pricing plans
+                Get free drink now
               </a>
               <a 
-                href="/coffee-trends" 
+                href="/pricing" 
                 className="inline-block border border-gray-600 text-white px-12 py-4 rounded-full hover:border-white transition-colors"
               >
-                See current trends
+                View paid plans
               </a>
             </div>
-            <p className="text-sm text-gray-500">All plans: Cancel anytime. ROI guaranteed or full refund.</p>
+            <p className="text-sm text-gray-500">Join 12,000+ free users. Upgrade anytime for more drinks.</p>
           </div>
         </div>
       </section>
