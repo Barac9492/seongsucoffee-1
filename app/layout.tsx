@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'K-Wave California Intelligence',
-  description: 'Korean market intelligence and trend discovery platform. Professional Korean business analysis with 20+ years expertise.',
+  title: 'Coffee Trends Weekly',
+  description: 'Korean coffee trends that generate $2-8K/month extra revenue for coffee shops. Get authentic trends before your competition.',
 }
 
 export default function RootLayout({
@@ -15,6 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         {children}
+        <Analytics />
       </body>
     </html>
   )
