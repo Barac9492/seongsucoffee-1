@@ -1,7 +1,7 @@
 'use client'
 
 interface NavigationProps {
-  currentPage: 'home' | 'trends' | 'archive' | 'about'
+  currentPage: 'home' | 'trends' | 'archive' | 'about' | 'pricing'
 }
 
 export default function Navigation({ currentPage }: NavigationProps) {
@@ -52,6 +52,19 @@ export default function Navigation({ currentPage }: NavigationProps) {
               }`}
             >
               About
+            </a>
+            <a 
+              href="/pricing" 
+              className={`text-sm font-craft transition-colors ${
+                currentPage === 'pricing' 
+                  ? 'text-coffee-primary font-medium' 
+                  : 'text-coffee-earth hover:text-coffee-primary'
+              }`}
+            >
+              <span className="flex items-center gap-1">
+                Pricing
+                <span className="bg-coffee-accent text-white text-xs px-2 py-0.5 rounded-full">Soon</span>
+              </span>
             </a>
             <a 
               href="/admin" 

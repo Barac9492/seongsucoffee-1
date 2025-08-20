@@ -5,10 +5,25 @@ import Navigation from '../components/Navigation'
 
 export default function SimpleLanding() {
   const [mounted, setMounted] = useState(false)
+  const [signupData, setSignupData] = useState({
+    name: '',
+    shopName: '',
+    email: '',
+    shopSize: '',
+    willingness: ''
+  })
 
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  const handleSignup = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Track for monetization validation
+    console.log('Newsletter signup with monetization data:', signupData)
+    // TODO: Send to analytics/database
+    alert('Welcome! Check your email for this week\'s trends.')
+  }
 
   return (
     <div className="min-h-screen bg-coffee-warm coffee-texture">
@@ -37,31 +52,70 @@ export default function SimpleLanding() {
                 <h3 className="text-2xl font-craft text-coffee-primary mb-4">Get This Week&apos;s Trends</h3>
                 <p className="text-coffee-earth mb-6">4 verified Korean trends making $8K-12K monthly. Next issue Tuesday.</p>
                 
-                <div className="space-y-4">
+                <form onSubmit={handleSignup} className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <input
                       type="text"
                       placeholder="Your name"
+                      value={signupData.name}
+                      onChange={(e) => setSignupData({...signupData, name: e.target.value})}
                       className="w-full p-3 border border-coffee-neutral-200 rounded-lg focus:border-coffee-accent"
+                      required
                     />
                     <input
                       type="text"
                       placeholder="Coffee shop name"
+                      value={signupData.shopName}
+                      onChange={(e) => setSignupData({...signupData, shopName: e.target.value})}
                       className="w-full p-3 border border-coffee-neutral-200 rounded-lg focus:border-coffee-accent"
+                      required
                     />
                   </div>
                   <input
                     type="email"
                     placeholder="your@email.com"
+                    value={signupData.email}
+                    onChange={(e) => setSignupData({...signupData, email: e.target.value})}
                     className="w-full p-3 border border-coffee-neutral-200 rounded-lg focus:border-coffee-accent"
+                    required
                   />
-                  <button className="w-full btn-primary text-white py-3 rounded-lg text-lg font-craft font-medium">
+                  
+                  {/* Hidden monetization tracking fields */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <select
+                      value={signupData.shopSize}
+                      onChange={(e) => setSignupData({...signupData, shopSize: e.target.value})}
+                      className="w-full p-3 border border-coffee-neutral-200 rounded-lg focus:border-coffee-accent text-coffee-earth"
+                    >
+                      <option value="">Daily customers (optional)</option>
+                      <option value="<50">Less than 50</option>
+                      <option value="50-100">50-100</option>
+                      <option value="100-200">100-200</option>
+                      <option value="200+">200+</option>
+                    </select>
+                    <select
+                      value={signupData.willingness}
+                      onChange={(e) => setSignupData({...signupData, willingness: e.target.value})}
+                      className="w-full p-3 border border-coffee-neutral-200 rounded-lg focus:border-coffee-accent text-coffee-earth"
+                    >
+                      <option value="">Would pay for trends? (optional)</option>
+                      <option value="0">No, free only</option>
+                      <option value="<20">Under $20/month</option>
+                      <option value="20-50">$20-50/month</option>
+                      <option value="50+">$50+/month</option>
+                    </select>
+                  </div>
+                  
+                  <button type="submit" className="w-full btn-primary text-white py-3 rounded-lg text-lg font-craft font-medium">
                     🚀 Get Korean Trends (Free)
                   </button>
-                </div>
+                </form>
                 
                 <div className="text-center mt-4">
                   <div className="text-xs text-coffee-earth">✓ Free weekly newsletter ✓ Unsubscribe anytime ✓ No spam</div>
+                  <a href="/pricing" className="text-xs text-coffee-accent hover:underline mt-2 inline-block">
+                    Pro version coming January 2025 →
+                  </a>
                 </div>
               </div>
               

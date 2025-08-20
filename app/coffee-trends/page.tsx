@@ -181,9 +181,10 @@ export default function CoffeeTrendsPage() {
                       setSelectedTrend(trend)
                       setDetailsOpen(true)
                     }}
-                    className="w-full py-2 md:py-3 bg-coffee-primary text-white rounded-lg hover:bg-coffee-roast transition-colors text-sm md:text-base font-medium"
+                    className="w-full py-2 md:py-3 bg-coffee-primary text-white rounded-lg hover:bg-coffee-roast transition-colors text-sm md:text-base font-medium relative"
                   >
-                    📊 View Details
+                    <span>📊 View Details</span>
+                    <span className="absolute -top-2 -right-2 bg-coffee-accent text-white text-xs px-2 py-1 rounded-full">Pro</span>
                   </button>
                 </div>
               </div>
@@ -310,19 +311,30 @@ export default function CoffeeTrendsPage() {
                     </div>
 
                     <div>
-                      <h4 className="font-medium mb-3 md:mb-4 text-coffee-primary">Pricing Strategy</h4>
-                      <div className="space-y-3">
+                      <h4 className="font-medium mb-3 md:mb-4 text-coffee-primary">
+                        Pricing Strategy
+                        <span className="ml-2 bg-coffee-accent text-white text-xs px-2 py-1 rounded-full">Pro</span>
+                      </h4>
+                      <div className="space-y-3 relative">
+                        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm z-10 flex items-center justify-center rounded-lg">
+                          <div className="text-center">
+                            <p className="text-coffee-primary font-medium mb-2">🔒 Pro Members Only</p>
+                            <a href="/pricing" className="text-coffee-accent hover:underline text-sm">
+                              Unlock Full Details →
+                            </a>
+                          </div>
+                        </div>
                         <div className="flex justify-between text-sm">
                           <span className="text-coffee-earth">Cost per Serving:</span>
-                          <span className="font-medium text-coffee-primary">{selectedTrend.pricing.costPerServing}</span>
+                          <span className="font-medium text-coffee-primary blur-sm">$X.XX</span>
                         </div>
                         <div className="flex justify-between text-sm">
                           <span className="text-coffee-earth">Suggested Retail:</span>
-                          <span className="font-medium text-coffee-primary">{selectedTrend.pricing.suggestedRetail}</span>
+                          <span className="font-medium text-coffee-primary blur-sm">$X.XX</span>
                         </div>
                         <div className="flex justify-between text-sm">
                           <span className="text-coffee-earth">Profit Margin:</span>
-                          <span className="font-medium text-green-600">{selectedTrend.pricing.margin}</span>
+                          <span className="font-medium text-green-600 blur-sm">XX%</span>
                         </div>
                       </div>
                     </div>
