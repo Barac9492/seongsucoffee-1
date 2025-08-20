@@ -24,7 +24,7 @@ export default function SimpleLanding() {
     try {
       console.log('Submitting signup...', signupData)
       
-      const response = await fetch('/api/newsletter/subscribe', {
+      const response = await fetch('/api/test-signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
