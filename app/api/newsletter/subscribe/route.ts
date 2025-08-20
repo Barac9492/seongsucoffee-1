@@ -32,8 +32,8 @@ export async function POST(request: Request) {
     return NextResponse.json(
       { 
         success: false, 
-        message: 'Subscription failed: ' + error.message,
-        error: error.toString() 
+        message: 'Subscription failed: ' + (error instanceof Error ? error.message : 'Unknown error'),
+        error: String(error)
       },
       { status: 500 }
     )
