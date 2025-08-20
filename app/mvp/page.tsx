@@ -22,7 +22,7 @@ export default function MVPPage() {
             🚀 LIVE IN 24 HOURS - Pieter Levels Mode
           </div>
           
-          <div className="bg-coffee-accent text-coffee-foam px-4 py-2 rounded-lg inline-block mb-4 font-craft text-sm">
+          <div className="bg-coffee-accent text-white px-4 py-2 rounded-lg inline-block mb-4 font-craft text-sm font-medium">
             🌐 Now Live: CoffeeTrendsWeekly.com
           </div>
           
@@ -71,7 +71,7 @@ export default function MVPPage() {
             
             <button 
               onClick={handleLaunch}
-              className="w-full py-3 bg-coffee-primary text-coffee-foam rounded-lg hover:scale-105 transition-transform font-craft font-medium"
+              className="w-full py-3 bg-coffee-primary text-white rounded-lg hover:scale-105 transition-transform font-craft font-medium"
             >
               🚀 Start Making Money Today
             </button>
@@ -171,7 +171,7 @@ export default function MVPPage() {
       </section>
 
       {/* Levels' Urgency & Scarcity */}
-      <section className="py-16 px-8 bg-coffee-primary text-coffee-foam">
+      <section className="py-16 px-8 bg-coffee-primary text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-light mb-6">Why You Need to Start Today</h2>
           
@@ -220,7 +220,7 @@ export default function MVPPage() {
               Less than 2 coffee sales per day. Makes you $2,000-8,000/month extra.
             </div>
             
-            <button className="w-full py-4 bg-coffee-accent text-coffee-foam rounded-lg hover:scale-105 transition-transform font-craft font-medium text-lg mb-4">
+            <button className="w-full py-4 bg-coffee-accent text-white rounded-lg hover:scale-105 transition-transform font-craft font-medium text-lg mb-4">
               🚀 Start 7-Day Free Trial
             </button>
             

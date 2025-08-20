@@ -69,17 +69,21 @@ body {
   box-shadow: 0 2px 8px rgba(52, 31, 19, 0.2), inset 0 1px 0 rgba(245, 237, 225, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
+  color: white !important;
+  font-weight: 500;
 }
 
 .btn-primary:hover {
   background: linear-gradient(135deg, rgb(var(--coffee-bean)) 0%, rgb(var(--coffee-roast)) 100%);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(52, 31, 19, 0.25), inset 0 1px 0 rgba(245, 237, 225, 0.15);
+  color: white !important;
 }
 
 .btn-primary:active {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(52, 31, 19, 0.2), inset 0 1px 0 rgba(245, 237, 225, 0.1);
+  color: white !important;
 }
 
 /* Coffee-inspired glass effect */
@@ -188,6 +192,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-coffee-foam {
   color: rgb(var(--coffee-foam));
+}
+
+/* High contrast text for coffee backgrounds */
+.text-coffee-contrast {
+  color: white;
+  font-weight: 500;
 }
 
 p {

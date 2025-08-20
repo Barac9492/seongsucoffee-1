@@ -53,13 +53,13 @@ export default function LaunchPage() {
 
               {/* Hour 2-6 */}
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-coffee-accent text-coffee-foam rounded-full flex items-center justify-center font-craft font-medium">
+                <div className="w-12 h-12 bg-coffee-accent text-white rounded-full flex items-center justify-center font-craft font-medium">
                   2-6
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
                     <h3 className="font-craft text-coffee-primary">Hour 2-6: Payment & Content</h3>
-                    <span className="bg-coffee-accent text-coffee-foam px-2 py-1 rounded text-xs">IN PROGRESS</span>
+                    <span className="bg-coffee-accent text-white px-2 py-1 rounded text-xs">IN PROGRESS</span>
                   </div>
                   <ul className="text-coffee-earth text-sm space-y-1">
                     <li>• Integrate Stripe for $47/month subscriptions</li>
@@ -177,7 +177,7 @@ export default function LaunchPage() {
               
               <button 
                 onClick={() => setLaunched(true)}
-                className="w-full py-4 bg-coffee-accent text-coffee-foam rounded-lg hover:scale-105 transition-transform font-craft font-medium text-lg mb-4"
+                className="w-full py-4 bg-coffee-accent text-white rounded-lg hover:scale-105 transition-transform font-craft font-medium text-lg mb-4"
               >
                 🚀 LAUNCH CoffeeTrendsWeekly.com
               </button>
