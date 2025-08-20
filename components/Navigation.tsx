@@ -44,10 +44,10 @@ export default function Navigation({ currentPage }: NavigationProps) {
               Pricing
             </a>
             <a 
-              href="/mvp" 
+              href="/pricing" 
               className="btn-primary text-white text-sm px-6 py-3 rounded-full hover:scale-105 transition-transform font-craft font-medium"
             >
-              MVP Launch
+              Start Trial
             </a>
             <a 
               href="/admin" 

@@ -3,6 +3,15 @@
 import { useState, useEffect } from 'react'
 import Navigation from '../../components/Navigation'
 
+interface RevenueMetrics {
+  mrr: number
+  customers: number
+  growthRate: number
+  trialToConversion: number
+  churnRate: number
+  avgRevenuePerCustomer: number
+}
+
 
 interface VideoProof {
   youtubeId: string
@@ -270,7 +279,7 @@ export default function AdminPage() {
     setMessage('🤖 AI is generating complete business intelligence for your new coffee trend...')
 
     try {
-      const response = await fetch('/api/admin/add-trend', {
+      const response = await fetch('/api/admin/add-trend-simple', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
