@@ -70,8 +70,8 @@ export default function AboutPage() {
             <div className="bg-white p-8 rounded-lg shadow-soft">
               <h2 className="text-2xl font-craft text-coffee-primary mb-6">Our Team</h2>
               <p className="text-coffee-earth leading-relaxed">
-                We're a dedicated team of coffee industry professionals and trend researchers 
-                with deep connections in Seoul's cafe scene. Our experts combine years of 
+                We&apos;re a dedicated team of coffee industry professionals and trend researchers 
+                with deep connections in Seoul&apos;s cafe scene. Our experts combine years of 
                 experience in coffee innovation, market analysis, and cross-cultural business 
                 to bring you the most profitable Korean trends every week.
               </p>
