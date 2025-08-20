@@ -9,49 +9,55 @@ export default function Navigation({ currentPage }: NavigationProps) {
     <header className="fixed top-0 w-full z-50 glass">
       <div className="max-w-7xl mx-auto px-8 py-6">
         <div className="flex items-center justify-between">
-          <a href="/" className="font-semibold text-sm tracking-wide hover:opacity-70 transition-opacity">
+          <a href="/" className="font-ritual text-sm tracking-wide text-coffee-primary hover:text-coffee-accent transition-colors">
             FIRST LAUNCH
           </a>
           <nav className="flex items-center gap-8">
             <a 
               href="/" 
-              className={`text-sm transition-colors ${
+              className={`text-sm font-craft transition-colors ${
                 currentPage === 'home' 
-                  ? 'text-black font-medium' 
-                  : 'text-gray-600 hover:text-black'
+                  ? 'text-coffee-primary font-medium' 
+                  : 'text-coffee-earth hover:text-coffee-primary'
               }`}
             >
               Home
             </a>
             <a 
               href="/coffee-trends" 
-              className={`text-sm transition-colors ${
+              className={`text-sm font-craft transition-colors ${
                 currentPage === 'trends' 
-                  ? 'text-black font-medium' 
-                  : 'text-gray-600 hover:text-black'
+                  ? 'text-coffee-primary font-medium' 
+                  : 'text-coffee-earth hover:text-coffee-primary'
               }`}
             >
               Trends
             </a>
             <a 
               href="/pricing" 
-              className={`text-sm transition-colors ${
+              className={`text-sm font-craft transition-colors ${
                 currentPage === 'pricing' 
-                  ? 'text-black font-medium' 
-                  : 'text-gray-600 hover:text-black'
+                  ? 'text-coffee-primary font-medium' 
+                  : 'text-coffee-earth hover:text-coffee-primary'
               }`}
             >
               Pricing
             </a>
             <a 
-              href="/coffee-trends" 
-              className="btn-primary text-white text-sm px-6 py-2 rounded-full hover:scale-105 transition-transform"
+              href="/mvp" 
+              className="btn-primary text-coffee-foam text-sm px-6 py-3 rounded-full hover:scale-105 transition-transform font-craft"
             >
-              Get Started
+              MVP Launch
+            </a>
+            <a 
+              href="/launch" 
+              className="text-sm text-coffee-earth hover:text-coffee-primary transition-colors"
+            >
+              Launch Plan
             </a>
             <a 
               href="/admin" 
-              className="text-sm text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-sm text-coffee-earth opacity-60 hover:opacity-100 hover:text-coffee-secondary transition-all"
             >
               Admin
             </a>
