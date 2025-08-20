@@ -83,43 +83,43 @@ export default function PricingPage() {
             </div>
 
             {/* Pro Tier - Highlighted */}
-            <div className="bg-gradient-to-b from-coffee-accent to-coffee-primary text-white p-8 rounded-lg shadow-large transform scale-105 relative border-2 border-coffee-accent">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-white text-coffee-accent px-4 py-1 rounded-full text-sm font-medium">
+            <div className="bg-white p-8 rounded-lg shadow-large transform scale-105 relative border-2 border-coffee-accent">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-coffee-accent text-white px-4 py-1 rounded-full text-sm font-medium">
                 Most Popular
               </div>
               
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-craft text-white mb-2">Pro</h3>
-                <div className="text-4xl font-light text-white mb-2">
+                <h3 className="text-2xl font-craft text-coffee-primary mb-2">Pro</h3>
+                <div className="text-4xl font-light text-coffee-primary mb-2">
                   $47<span className="text-xl">/month</span>
                 </div>
-                <p className="text-white/90 text-sm font-medium">Launch price: $29/month</p>
+                <p className="text-coffee-earth text-sm font-medium">Launch price: $29/month</p>
               </div>
               
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
-                  <span className="text-white mr-2 mt-1 font-bold">✓</span>
-                  <span className="text-white">All 4 weekly trends</span>
+                  <span className="text-coffee-accent mr-2 mt-1 font-bold">✓</span>
+                  <span className="text-coffee-primary">All 4 weekly trends</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-white mr-2 mt-1 font-bold">✓</span>
-                  <span className="text-white">Complete recipes & instructions</span>
+                  <span className="text-coffee-accent mr-2 mt-1 font-bold">✓</span>
+                  <span className="text-coffee-primary">Complete recipes & instructions</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-white mr-2 mt-1 font-bold">✓</span>
-                  <span className="text-white">Supplier contacts & pricing</span>
+                  <span className="text-coffee-accent mr-2 mt-1 font-bold">✓</span>
+                  <span className="text-coffee-primary">Supplier contacts & pricing</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-white mr-2 mt-1 font-bold">✓</span>
-                  <span className="text-white">Community Slack access</span>
+                  <span className="text-coffee-accent mr-2 mt-1 font-bold">✓</span>
+                  <span className="text-coffee-primary">Community Slack access</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-white mr-2 mt-1 font-bold">✓</span>
-                  <span className="text-white">ROI tracking dashboard</span>
+                  <span className="text-coffee-accent mr-2 mt-1 font-bold">✓</span>
+                  <span className="text-coffee-primary">ROI tracking dashboard</span>
                 </li>
               </ul>
               
-              <button className="w-full py-3 bg-white text-coffee-accent rounded-lg hover:scale-105 transition-transform font-bold">
+              <button className="w-full py-3 bg-coffee-accent text-white rounded-lg hover:bg-coffee-primary transition-colors font-bold">
                 Get Early Access
               </button>
             </div>
@@ -287,15 +287,15 @@ export default function PricingPage() {
                 </p>
               </div>
               <div>
-                <h3 className="font-medium text-coffee-primary mb-2">What&apos;s the satisfaction guarantee?</h3>
+                <h3 className="font-medium text-coffee-primary mb-2">Can I cancel anytime?</h3>
                 <p className="text-coffee-earth text-sm">
-                  Cancel anytime. If you&apos;re not satisfied in your first month, we&apos;ll refund your payment.
+                  Yes, cancel anytime. No contracts, no questions asked.
                 </p>
               </div>
               <div>
                 <h3 className="font-medium text-coffee-primary mb-2">Can I change tiers anytime?</h3>
                 <p className="text-coffee-earth text-sm">
-                  Yes, upgrade or downgrade anytime. No contracts or cancellation fees.
+                  Yes, upgrade or downgrade anytime. Changes take effect next billing cycle.
                 </p>
               </div>
               <div>
