@@ -49,5 +49,11 @@ export async function POST(request: Request) {
   }
 }
 
-// Export the subscribers array for the list endpoint
-export { subscribers }
+// Export GET method for listing subscribers
+export async function GET() {
+  return NextResponse.json({ 
+    success: true, 
+    count: subscribers.length,
+    subscribers: subscribers
+  })
+}
