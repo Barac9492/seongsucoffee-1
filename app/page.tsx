@@ -36,9 +36,14 @@ export default function SimpleLanding() {
         setSubmitted(true)
         // Track conversion if analytics is loaded
         if (typeof window !== 'undefined' && (window as any).gtag) {
-          (window as any).gtag('event', 'conversion', {
-            'event_category': 'Newsletter',
-            'event_label': 'Homepage Signup',
+          (window as any).gtag('event', 'sign_up', {
+            'method': 'Newsletter',
+            'value': 1
+          })
+          // Also track custom event
+          (window as any).gtag('event', 'newsletter_signup', {
+            'event_category': 'engagement',
+            'event_label': 'Homepage',
             'value': 1
           })
         }
