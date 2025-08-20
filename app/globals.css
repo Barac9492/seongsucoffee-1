@@ -178,6 +178,18 @@ h1, h2, h3, h4, h5, h6 {
   color: rgb(var(--coffee-amber));
 }
 
+.text-coffee-earth {
+  color: rgb(var(--coffee-earth));
+}
+
+.text-coffee-cream {
+  color: rgb(var(--coffee-cream));
+}
+
+.text-coffee-foam {
+  color: rgb(var(--coffee-foam));
+}
+
 p {
   line-height: 1.75;
   letter-spacing: -0.011em;
