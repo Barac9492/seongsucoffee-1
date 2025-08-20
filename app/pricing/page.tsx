@@ -67,7 +67,7 @@ export default function PricingPage() {
                 </li>
               </ul>
               
-              <a href="/coffee-trends" className="block w-full py-3 bg-green-600 text-white text-center rounded-lg hover:bg-green-700 transition-colors">
+              <a href="/trial" className="block w-full py-3 bg-green-600 text-white text-center rounded-lg hover:bg-green-700 transition-colors">
                 Start Free Today
               </a>
             </div>
@@ -100,8 +100,8 @@ export default function PricingPage() {
                 </li>
               </ul>
               
-              <a href="/coffee-trends" className="block w-full py-3 bg-gray-100 text-center rounded-lg hover:bg-gray-200 transition-colors">
-                Start Starter Plan
+              <a href="/trial" className="block w-full py-3 bg-gray-100 text-center rounded-lg hover:bg-gray-200 transition-colors">
+                Start 7-Day Trial
               </a>
             </div>
             
@@ -145,8 +145,8 @@ export default function PricingPage() {
                 </li>
               </ul>
               
-              <a href="/coffee-trends" className="block w-full py-3 bg-black text-white text-center rounded-lg hover:scale-105 transition-transform">
-                Start Professional Plan
+              <a href="/trial" className="block w-full py-3 bg-black text-white text-center rounded-lg hover:scale-105 transition-transform">
+                Start 7-Day Trial
               </a>
             </div>
             
@@ -186,7 +186,7 @@ export default function PricingPage() {
                 </li>
               </ul>
               
-              <a href="/coffee-trends" className="block w-full py-3 bg-gray-900 text-white text-center rounded-lg hover:bg-black transition-colors">
+              <a href="/trial" className="block w-full py-3 bg-gray-900 text-white text-center rounded-lg hover:bg-black transition-colors">
                 Contact Sales
               </a>
             </div>
@@ -226,11 +226,11 @@ export default function PricingPage() {
       <section className="py-24 px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-gray-500">Trusted by 240+ coffee professionals</p>
+            <p className="text-gray-500">Trusted by 231+ coffee professionals</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {[
-              { metric: '$2.1M', context: 'Revenue generated' },
+              { metric: '$2.94M', context: 'Revenue generated' },
               { metric: '89%', context: 'Success rate' },
               { metric: '4 months', context: 'Average head start' }
             ].map((item, i) => (
@@ -280,13 +280,13 @@ export default function PricingPage() {
             
             <div className="pt-8">
               <a 
-                href="/coffee-trends" 
+                href="/trial" 
                 className="inline-block bg-white text-black px-12 py-4 rounded-full text-lg hover:scale-105 transition-transform"
               >
                 Start your advantage today
               </a>
             </div>
-            <p className="text-sm text-gray-500">Join 240+ coffee professionals launching first</p>
+            <p className="text-sm text-gray-500">Join 231+ coffee professionals launching first</p>
           </div>
         </div>
       </section>

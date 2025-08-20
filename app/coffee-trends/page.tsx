@@ -49,6 +49,8 @@ interface CoffeeTrend {
 export default function CoffeeTrendsPage() {
   const [trends, setTrends] = useState<CoffeeTrend[]>([])
   const [loading, setLoading] = useState(true)
+  const [selectedTrend, setSelectedTrend] = useState<CoffeeTrend | null>(null)
+  const [detailsOpen, setDetailsOpen] = useState(false)
 
   useEffect(() => {
     fetchTrends()
@@ -98,18 +100,18 @@ export default function CoffeeTrendsPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-8 md:mb-12">
             <div className="text-center bg-white p-4 md:p-6 rounded-lg shadow-soft">
               <div className="text-2xl md:text-4xl font-light mb-1 md:mb-2 text-coffee-accent">{trends.length}</div>
-              <div className="text-xs md:text-sm text-coffee-earth">Active Trends</div>
+              <div className="text-xs md:text-sm text-coffee-earth">Verified Trends</div>
             </div>
             <div className="text-center bg-white p-4 md:p-6 rounded-lg shadow-soft">
               <div className="text-2xl md:text-4xl font-light mb-1 md:mb-2 text-green-600">89%</div>
               <div className="text-xs md:text-sm text-coffee-earth">Success Rate</div>
             </div>
             <div className="text-center bg-white p-4 md:p-6 rounded-lg shadow-soft">
-              <div className="text-2xl md:text-4xl font-light mb-1 md:mb-2 text-coffee-primary">$2.1M</div>
+              <div className="text-2xl md:text-4xl font-light mb-1 md:mb-2 text-coffee-primary">$2.94M</div>
               <div className="text-xs md:text-sm text-coffee-earth">Revenue Generated</div>
             </div>
             <div className="text-center bg-white p-4 md:p-6 rounded-lg shadow-soft">
-              <div className="text-2xl md:text-4xl font-light mb-1 md:mb-2 text-coffee-accent">240</div>
+              <div className="text-2xl md:text-4xl font-light mb-1 md:mb-2 text-coffee-accent">231</div>
               <div className="text-xs md:text-sm text-coffee-earth">Coffee Shops</div>
             </div>
           </div>
@@ -167,7 +169,13 @@ export default function CoffeeTrendsPage() {
                   </div>
 
                   {/* Mobile-Optimized Action Button */}
-                  <button className="w-full py-2 md:py-3 bg-coffee-primary text-white rounded-lg hover:bg-coffee-roast transition-colors text-sm md:text-base font-medium">
+                  <button 
+                    onClick={() => {
+                      setSelectedTrend(trend)
+                      setDetailsOpen(true)
+                    }}
+                    className="w-full py-2 md:py-3 bg-coffee-primary text-white rounded-lg hover:bg-coffee-roast transition-colors text-sm md:text-base font-medium"
+                  >
                     📊 View Details
                   </button>
                 </div>
@@ -176,6 +184,162 @@ export default function CoffeeTrendsPage() {
           </div>
         </div>
       </section>
+
+      {/* Recipe Modal */}
+      {selectedTrend && detailsOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black bg-opacity-30 backdrop-blur-sm">
+          <div className="bg-white max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-large rounded-lg">
+            <div className="p-6 md:p-12">
+              <div className="flex items-center justify-between mb-8 md:mb-12">
+                <div>
+                  <h2 className="text-2xl md:text-4xl font-light tracking-tight text-coffee-primary">{selectedTrend.name}</h2>
+                  <p className="text-coffee-earth text-sm md:text-base mt-1">{selectedTrend.nameKr}</p>
+                </div>
+                <button 
+                  onClick={() => setDetailsOpen(false)}
+                  className="text-coffee-earth hover:text-coffee-primary text-2xl"
+                >
+                  ✕
+                </button>
+              </div>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
+                {/* Recipe */}
+                <div>
+                  <h3 className="text-xl md:text-2xl font-light mb-6 md:mb-8 text-coffee-primary">Recipe</h3>
+                  <div className="space-y-6 md:space-y-8">
+                    <div>
+                      <h4 className="font-medium mb-3 md:mb-4 text-coffee-primary">Ingredients</h4>
+                      <ul className="text-coffee-earth space-y-2">
+                        {selectedTrend.recipe.ingredients.map((ingredient, idx) => (
+                          <li key={idx} className="flex items-start text-sm md:text-base">
+                            <span className="text-coffee-accent mr-3">•</span>
+                            <span>{ingredient}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-medium mb-3 md:mb-4 text-coffee-primary">Instructions</h4>
+                      <ol className="text-coffee-earth space-y-3">
+                        {selectedTrend.recipe.instructions.map((step, idx) => (
+                          <li key={idx} className="flex items-start text-sm md:text-base">
+                            <span className="text-coffee-accent mr-3 font-mono text-sm">{idx + 1}.</span>
+                            <span>{step}</span>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                    
+                    <div className="grid grid-cols-3 gap-4 p-4 bg-coffee-cream rounded-lg">
+                      <div className="text-center">
+                        <div className="text-sm text-coffee-earth">Difficulty</div>
+                        <div className="font-medium text-coffee-primary">{selectedTrend.recipe.difficulty}</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-sm text-coffee-earth">Prep Time</div>
+                        <div className="font-medium text-coffee-primary">{selectedTrend.recipe.prepTime}</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-sm text-coffee-earth">Success Rate</div>
+                        <div className="font-medium text-green-600">{selectedTrend.successProbability}%</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Business Details */}
+                <div>
+                  <h3 className="text-xl md:text-2xl font-light mb-6 md:mb-8 text-coffee-primary">Business Intel</h3>
+                  <div className="space-y-6 md:space-y-8">
+                    <div>
+                      <h4 className="font-medium mb-3 md:mb-4 text-coffee-primary">Market Analysis</h4>
+                      <div className="space-y-3">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-coffee-earth">Market Readiness:</span>
+                          <span className="font-medium text-coffee-primary">{selectedTrend.marketReadiness}</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-coffee-earth">Competitor Risk:</span>
+                          <span className="font-medium text-coffee-primary">{selectedTrend.competitorRisk}</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-coffee-earth">Time to Global:</span>
+                          <span className="font-medium text-coffee-primary">{selectedTrend.timeToGlobal}</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-coffee-earth">Current Stage:</span>
+                          <span className="font-medium capitalize text-coffee-primary">{selectedTrend.stage}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-medium mb-3 md:mb-4 text-coffee-primary">Pricing Strategy</h4>
+                      <div className="space-y-3">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-coffee-earth">Cost per Serving:</span>
+                          <span className="font-medium text-coffee-primary">{selectedTrend.pricing.costPerServing}</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-coffee-earth">Suggested Retail:</span>
+                          <span className="font-medium text-coffee-primary">{selectedTrend.pricing.suggestedRetail}</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-coffee-earth">Profit Margin:</span>
+                          <span className="font-medium text-green-600">{selectedTrend.pricing.margin}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-medium mb-3 md:mb-4 text-coffee-primary">Key Training Points</h4>
+                      <div className="space-y-4">
+                        <div>
+                          <p className="font-medium text-coffee-primary mb-2 text-sm">Critical Techniques:</p>
+                          <ul className="text-coffee-earth space-y-1">
+                            {selectedTrend.training.keyTechniques.map((technique, idx) => (
+                              <li key={idx} className="flex items-start text-sm">
+                                <span className="text-green-500 mr-2">✓</span>
+                                <span>{technique}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <p className="font-medium text-coffee-primary mb-2 text-sm">Avoid These Mistakes:</p>
+                          <ul className="text-coffee-earth space-y-1">
+                            {selectedTrend.training.commonMistakes.map((mistake, idx) => (
+                              <li key={idx} className="flex items-start text-sm">
+                                <span className="text-red-500 mr-2">✗</span>
+                                <span>{mistake}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-coffee-accent text-white p-4 rounded-lg">
+                      <h4 className="font-medium mb-2">Ready to Launch?</h4>
+                      <p className="text-sm text-coffee-cream mb-3">
+                        Get complete supplier contacts, training videos, and launch support
+                      </p>
+                      <a 
+                        href="/trial"
+                        className="inline-block bg-white text-coffee-accent px-4 py-2 rounded text-sm font-medium hover:scale-105 transition-transform"
+                      >
+                        Start 7-Day Trial
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

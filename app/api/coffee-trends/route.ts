@@ -92,79 +92,80 @@ export async function GET() {
       },
       {
         id: '2',
-        name: 'Black Sesame Einspänner',
-        nameKr: '흑임자 아인슈페너',
+        name: 'Rice Cake Affogato',
+        nameKr: '떡 아포가토',
         
         // THE WHY - Market Analysis
-        successProbability: 73,
-        marketReadiness: 'Medium',
-        competitorRisk: 'Medium',
-        historicalPrecedent: 'Matcha trend (2018) - health-conscious adaptation',
-        timeToGlobal: '4-6 months',
+        successProbability: 84,
+        marketReadiness: 'High',
+        competitorRisk: 'Low',
+        historicalPrecedent: 'Korean dessert fusion (2023) - traditional meets modern',
+        timeToGlobal: '3-4 months',
         
         // THE HOW - Business Execution
         recipe: {
           ingredients: [
-            '200ml hot espresso or strong coffee',
-            '45ml black sesame paste (heuksimja)',
-            '30ml condensed milk',
-            '100ml heavy whipping cream',
-            '1 tbsp sugar',
-            '1/2 tsp vanilla extract'
+            '2 shots hot espresso (60ml)',
+            '2 small Korean rice cakes (tteok)',
+            '1 scoop vanilla ice cream',
+            '1 tbsp sweet red bean paste (optional)',
+            '1 tsp roasted sesame seeds',
+            'Pinch of sea salt'
           ],
           instructions: [
-            'Mix black sesame paste with small amount of hot coffee until smooth',
-            'Add remaining coffee and condensed milk, stir well',
-            'Whip cream with sugar and vanilla to soft peaks',
-            'Pour coffee mixture into tall glass',
-            'Top generously with whipped cream',
-            'Dust with additional sesame powder if desired'
+            'Steam rice cakes until soft and chewy (2-3 minutes)',
+            'Place warm rice cakes in serving bowl',
+            'Add scoop of vanilla ice cream on top',
+            'Pour hot espresso over ice cream immediately',
+            'Drizzle red bean paste if using',
+            'Sprinkle sesame seeds and sea salt',
+            'Serve immediately with spoon'
           ],
-          difficulty: 'Easy',
-          prepTime: '4 minutes',
-          shelfLife: 'Best consumed within 20 minutes'
+          difficulty: 'Medium',
+          prepTime: '5 minutes',
+          shelfLife: 'Serve immediately - rice cakes best when warm'
         },
         suppliers: [
           {
-            ingredient: 'Black Sesame Paste',
-            source: 'H Mart, 99 Ranch, online Korean grocers',
-            cost: '$8.50/jar (500g)',
-            notes: 'Look for pure paste without added sugar'
+            ingredient: 'Korean Rice Cakes (Tteok)',
+            source: 'H Mart, Korean grocers, online',
+            cost: '$4.50/package',
+            notes: 'Use plain white rice cakes, keep refrigerated'
           },
           {
-            ingredient: 'Korean Condensed Milk',
+            ingredient: 'Sweet Red Bean Paste',
             source: 'Asian grocers, Amazon',
-            cost: '$3.20/can',
-            notes: 'Slightly less sweet than Western brands'
+            cost: '$3.80/can',
+            notes: 'Traditional Korean sweetened adzuki beans'
           }
         ],
         pricing: {
-          costPerServing: '$2.10',
-          suggestedRetail: '$7.00-$8.50',
-          margin: '70%',
-          premiumPosition: 'Position as health-conscious indulgence'
+          costPerServing: '$2.85',
+          suggestedRetail: '$9.50-$11.00',
+          margin: '74%',
+          premiumPosition: 'Unique Korean dessert experience'
         },
         training: {
           keyTechniques: [
-            'Sesame paste must be fully dissolved (no lumps)',
-            'Whipped cream should be airy but stable',
-            'Present as health-forward alternative to regular lattes'
+            'Rice cakes must be soft but maintain chew',
+            'Pour espresso quickly to create proper melt',
+            'Balance traditional and modern presentation'
           ],
           commonMistakes: [
-            'Under-mixing sesame paste creates grainy texture',
-            'Over-sweetening masks nutty flavor',
-            'Insufficient cream topping reduces visual appeal'
+            'Over-steaming rice cakes (becomes mushy)',
+            'Cold espresso reduces ice cream interaction',
+            'Too much red bean paste overpowers coffee'
           ],
-          qualityControl: 'Should have rich, nutty aroma and creamy mouthfeel'
+          qualityControl: 'Perfect balance of hot, cold, chewy, and creamy textures'
         },
         
         // Tracking data
-        growth: 267,
-        stage: 'early',
-        cafesServing: 34,
-        firstDetected: '2024-12-03',
-        lastUpdated: '2024-12-18',
-        districts: ['Hongdae', 'Sinchon', 'Seongsu'],
+        growth: 312,
+        stage: 'growth',
+        cafesServing: 67,
+        firstDetected: '2024-12-15',
+        lastUpdated: '2024-12-20',
+        districts: ['Insadong', 'Bukchon', 'Myeongdong'],
         videoProof: [],
         signals: []
       },
@@ -242,73 +243,81 @@ export async function GET() {
       },
       {
         id: '4',
-        name: 'Ssireum Coffee',
-        nameKr: '씨름 커피',
+        name: 'Honey Butter Coffee',
+        nameKr: '허니버터 커피',
         
         // THE WHY - Market Analysis
-        successProbability: 68,
-        marketReadiness: 'Medium',
-        competitorRisk: 'High',
-        historicalPrecedent: 'Protein coffee trends (2021) - niche but profitable',
-        timeToGlobal: '4-6 months',
+        successProbability: 89,
+        marketReadiness: 'High',
+        competitorRisk: 'Low',
+        historicalPrecedent: 'Honey Butter Chip success (2014) - Korean flavor profile global adoption',
+        timeToGlobal: '2-3 months',
         
         // THE HOW - Business Execution
         recipe: {
           ingredients: [
-            '200ml cold brew coffee',
-            '30g Korean rice protein powder',
-            '50ml oat milk',
-            '1 tbsp honey',
-            '1/2 tsp vanilla extract',
-            'Ice cubes'
+            '200ml hot espresso or strong coffee',
+            '2 tbsp Korean acacia honey',
+            '15g unsalted butter (room temperature)',
+            '50ml warm milk',
+            '1/4 tsp sea salt',
+            '1 tsp vanilla extract',
+            'Whipped cream for topping'
           ],
           instructions: [
-            'Blend cold brew with rice protein powder until smooth',
-            'Add oat milk, honey, and vanilla',
-            'Blend with ice until frothy',
-            'Serve in tall glass',
-            'Garnish with protein powder dusting',
-            'Provide straw for mixing'
+            'Blend hot coffee with butter until fully emulsified',
+            'Add honey, salt, and vanilla, blend 30 seconds',
+            'Steam milk to 65°C and add to coffee mixture',
+            'Pour into mug leaving space for cream',
+            'Top with whipped cream',
+            'Drizzle additional honey on top',
+            'Serve immediately with spoon for stirring'
           ],
-          difficulty: 'Medium',
-          prepTime: '3 minutes',
-          shelfLife: 'Consume within 30 minutes'
+          difficulty: 'Easy',
+          prepTime: '4 minutes',
+          shelfLife: 'Best consumed within 15 minutes'
         },
         suppliers: [
           {
-            ingredient: 'Korean Rice Protein',
-            source: 'Asian health stores, iHerb',
-            cost: '$18.00/container (500g)',
-            notes: 'Plant-based protein popular in Korean fitness culture'
+            ingredient: 'Korean Acacia Honey',
+            source: 'H Mart, Korean grocers, online',
+            cost: '$8.50/bottle (500g)',
+            notes: 'Premium Korean honey with distinctive floral notes'
+          },
+          {
+            ingredient: 'European Butter',
+            source: 'Restaurant supply, grocery stores',
+            cost: '$4.20/lb',
+            notes: 'High-fat content butter for proper emulsification'
           }
         ],
         pricing: {
-          costPerServing: '$2.25',
-          suggestedRetail: '$8.50-$9.50',
-          margin: '74%',
-          premiumPosition: 'Target fitness enthusiasts and gym-adjacent locations'
+          costPerServing: '$1.95',
+          suggestedRetail: '$7.50-$8.50',
+          margin: '77%',
+          premiumPosition: 'Korean comfort drink with global appeal'
         },
         training: {
           keyTechniques: [
-            'Blend protein powder thoroughly to avoid clumps',
-            'Use cold brew to prevent protein denaturation',
-            'Market to fitness community'
+            'Butter must be room temperature for smooth blend',
+            'Proper emulsification prevents oil separation',
+            'Balance sweetness with salt for Korean taste profile'
           ],
           commonMistakes: [
-            'Using hot coffee which clumps protein',
-            'Under-blending leaving chalky texture',
-            'Wrong target demographic (general vs fitness)'
+            'Cold butter creates lumpy texture',
+            'Over-blending can break emulsion',
+            'Too much honey masks coffee flavor'
           ],
-          qualityControl: 'Should be smooth and frothy with no protein clumps'
+          qualityControl: 'Should be creamy, well-integrated with no oil separation'
         },
         
         // Tracking data
-        growth: 189,
-        stage: 'discovery',
-        cafesServing: 23,
-        firstDetected: '2024-12-12',
-        lastUpdated: '2024-12-19',
-        districts: ['Gangnam', 'Jamsil', 'Olympic Park'],
+        growth: 456,
+        stage: 'growth',
+        cafesServing: 89,
+        firstDetected: '2024-12-10',
+        lastUpdated: '2024-12-20',
+        districts: ['Gangnam', 'Hongdae', 'Itaewon'],
         videoProof: [],
         signals: []
       }
