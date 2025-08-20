@@ -1,59 +1,51 @@
 import { NextResponse } from 'next/server'
 
-// In-memory storage for Vercel (resets on redeploy)
-// For production, use a database like Vercel KV or Supabase
-let subscribers: any[] = []
+// Simple counter for testing
+let signupCount = 0
+let lastSignup: any = null
 
 export async function POST(request: Request) {
   try {
     const data = await request.json()
     
-    // Add subscriber to memory
-    const newSubscriber = {
+    // Increment counter
+    signupCount++
+    
+    // Store last signup
+    lastSignup = {
       ...data,
       subscribedAt: new Date().toISOString(),
-      id: Date.now().toString()
+      id: signupCount
     }
     
-    subscribers.push(newSubscriber)
-    
-    // Log for Vercel Functions logs
-    console.log('New subscriber:', newSubscriber)
-    
-    // Send to webhook if configured (Zapier, Make, etc.)
-    const WEBHOOK_URL = process.env.WEBHOOK_URL || ''
-    if (WEBHOOK_URL) {
-      try {
-        await fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(newSubscriber)
-        })
-      } catch (webhookError) {
-        console.error('Webhook failed:', webhookError)
-        // Don't fail the signup if webhook fails
-      }
-    }
+    // Log for debugging
+    console.log('Signup #' + signupCount, lastSignup)
     
     return NextResponse.json({ 
       success: true, 
       message: 'Successfully subscribed!',
-      subscriber: newSubscriber
+      id: signupCount,
+      data: lastSignup
     })
   } catch (error) {
     console.error('Subscription error:', error)
     return NextResponse.json(
-      { success: false, message: 'Failed to subscribe' },
+      { 
+        success: false, 
+        message: 'Subscription failed: ' + error.message,
+        error: error.toString() 
+      },
       { status: 500 }
     )
   }
 }
 
-// Export GET method for listing subscribers
+// Export GET method for checking status
 export async function GET() {
   return NextResponse.json({ 
     success: true, 
-    count: subscribers.length,
-    subscribers: subscribers
+    signupCount: signupCount,
+    lastSignup: lastSignup,
+    message: 'Newsletter API is working!'
   })
 }

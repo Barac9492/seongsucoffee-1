@@ -22,6 +22,8 @@ export default function SimpleLanding() {
     e.preventDefault()
     
     try {
+      console.log('Submitting signup...', signupData)
+      
       const response = await fetch('/api/newsletter/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -32,31 +34,26 @@ export default function SimpleLanding() {
         })
       })
       
-      if (response.ok) {
+      console.log('Response status:', response.status)
+      const result = await response.json()
+      console.log('Response data:', result)
+      
+      if (response.ok && result.success) {
         setSubmitted(true)
-        // Track conversion if analytics is loaded
+        // Track conversion
         if (typeof window !== 'undefined' && (window as any).gtag) {
           (window as any).gtag('event', 'sign_up', {
             'method': 'Newsletter',
             'value': 1
           })
-          // Also track custom event
-          (window as any).gtag('event', 'newsletter_signup', {
-            'event_category': 'engagement',
-            'event_label': 'Homepage',
-            'value': 1
-          })
         }
-        if (typeof window !== 'undefined' && (window as any).fbq) {
-          (window as any).fbq('track', 'Lead', {
-            content_name: 'Newsletter Signup',
-            content_category: 'Homepage'
-          })
-        }
+      } else {
+        console.error('Signup failed:', result)
+        alert('Signup failed: ' + (result.message || 'Unknown error'))
       }
     } catch (error) {
-      console.error('Signup failed:', error)
-      alert('Signup failed. Please try again.')
+      console.error('Signup error:', error)
+      alert('Network error: ' + error.message)
     }
   }
 
