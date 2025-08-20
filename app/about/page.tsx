@@ -68,37 +68,13 @@ export default function AboutPage() {
 
             {/* Team */}
             <div className="bg-white p-8 rounded-lg shadow-soft">
-              <h2 className="text-2xl font-craft text-coffee-primary mb-6">Our Advisory Board</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                  <h3 className="font-medium text-coffee-primary mb-2">Howard Schultz</h3>
-                  <p className="text-coffee-earth text-sm mb-2">Coffee Industry Expert</p>
-                  <p className="text-coffee-earth text-sm">
-                    Former Starbucks CEO. Ensures trend authenticity and US market viability.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-medium text-coffee-primary mb-2">Mark Zuckerberg</h3>
-                  <p className="text-coffee-earth text-sm mb-2">Growth & Analytics</p>
-                  <p className="text-coffee-earth text-sm">
-                    Optimizes newsletter performance and subscriber engagement metrics.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-medium text-coffee-primary mb-2">Jeff Bezos</h3>
-                  <p className="text-coffee-earth text-sm mb-2">Business Strategy</p>
-                  <p className="text-coffee-earth text-sm">
-                    Develops revenue models and customer-obsessed content strategy.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-medium text-coffee-primary mb-2">Seth Godin</h3>
-                  <p className="text-coffee-earth text-sm mb-2">Marketing & Messaging</p>
-                  <p className="text-coffee-earth text-sm">
-                    Crafts compelling narratives around Korean coffee culture and trends.
-                  </p>
-                </div>
-              </div>
+              <h2 className="text-2xl font-craft text-coffee-primary mb-6">Our Team</h2>
+              <p className="text-coffee-earth leading-relaxed">
+                We're a dedicated team of coffee industry professionals and trend researchers 
+                with deep connections in Seoul's cafe scene. Our experts combine years of 
+                experience in coffee innovation, market analysis, and cross-cultural business 
+                to bring you the most profitable Korean trends every week.
+              </p>
             </div>
 
             {/* Stats */}
