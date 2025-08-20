@@ -66,12 +66,6 @@ export default function Navigation({ currentPage }: NavigationProps) {
                 <span className="bg-coffee-accent text-white text-xs px-2 py-0.5 rounded-full">Soon</span>
               </span>
             </a>
-            <a 
-              href="/admin" 
-              className="text-sm text-coffee-earth opacity-60 hover:opacity-100 hover:text-coffee-secondary transition-all"
-            >
-              Admin
-            </a>
           </nav>
         </div>
       </div>

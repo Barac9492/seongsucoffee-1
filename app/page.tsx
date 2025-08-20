@@ -5,6 +5,7 @@ import Navigation from '../components/Navigation'
 
 export default function SimpleLanding() {
   const [mounted, setMounted] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
   const [signupData, setSignupData] = useState({
     name: '',
     shopName: '',
@@ -22,7 +23,7 @@ export default function SimpleLanding() {
     // Track for monetization validation
     console.log('Newsletter signup with monetization data:', signupData)
     // TODO: Send to analytics/database
-    alert('Welcome! Check your email for this week\'s trends.')
+    setSubmitted(true)
   }
 
   return (
@@ -49,6 +50,17 @@ export default function SimpleLanding() {
               
               {/* Newsletter Signup */}
               <div className="bg-white p-8 rounded-xl shadow-coffee border border-coffee mb-12 max-w-2xl mx-auto">
+                {submitted ? (
+                  <div className="text-center py-8">
+                    <div className="text-4xl mb-4">🎉</div>
+                    <h3 className="text-2xl font-craft text-coffee-primary mb-2">You&apos;re In!</h3>
+                    <p className="text-coffee-earth">
+                      Check your email for this week&apos;s Korean coffee trends.<br/>
+                      Next issue: Tuesday 9 AM PST
+                    </p>
+                  </div>
+                ) : (
+                  <>
                 <h3 className="text-2xl font-craft text-coffee-primary mb-4">Get This Week&apos;s Trends</h3>
                 <p className="text-coffee-earth mb-6">4 verified Korean trends making $8K-12K monthly. Next issue Tuesday.</p>
                 
@@ -114,9 +126,11 @@ export default function SimpleLanding() {
                 <div className="text-center mt-4">
                   <div className="text-xs text-coffee-earth">✓ Free weekly newsletter ✓ Unsubscribe anytime ✓ No spam</div>
                   <a href="/pricing" className="text-xs text-coffee-accent hover:underline mt-2 inline-block">
-                    Pro version coming January 2025 →
+                    Pro version coming soon →
                   </a>
                 </div>
+                </>
+                )}
               </div>
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

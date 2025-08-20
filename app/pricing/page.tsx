@@ -8,18 +8,19 @@ export default function PricingPage() {
   const [shopName, setShopName] = useState('')
   const [shopSize, setShopSize] = useState('')
   const [pricePoint, setPricePoint] = useState('')
+  const [submitted, setSubmitted] = useState(false)
 
   const handleEarlyAccess = async (e: React.FormEvent) => {
     e.preventDefault()
     // Track interest for monetization validation
     console.log('Early access signup:', { email, shopName, shopSize, pricePoint })
     // TODO: Send to analytics/database
-    alert('Thanks! We\'ll notify you when Pro launches in January 2025')
+    setSubmitted(true)
   }
 
   return (
     <div className="min-h-screen bg-coffee-foam">
-      <Navigation currentPage="home" />
+      <Navigation currentPage="pricing" />
       
       <section className="pt-32 pb-16 px-4 md:px-8">
         <div className="max-w-7xl mx-auto">
@@ -27,7 +28,7 @@ export default function PricingPage() {
           {/* Header */}
           <div className="text-center mb-16">
             <span className="inline-block bg-coffee-accent text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
-              Coming January 2025
+              Coming Soon
             </span>
             <h1 className="text-4xl md:text-6xl font-light leading-tight tracking-tight mb-6 text-coffee-primary">
               Coffee Trends Pro<br/>
@@ -37,6 +38,9 @@ export default function PricingPage() {
               Get complete trend intelligence that generates $8K-12K monthly per trend.<br/>
               <span className="font-medium">First 100 members get 50% off forever.</span>
             </p>
+            <div className="mt-4 text-sm text-coffee-secondary">
+              🔥 47 coffee shops already on the waitlist
+            </div>
           </div>
 
           {/* Pricing Tiers */}
@@ -193,9 +197,20 @@ export default function PricingPage() {
           <div className="bg-coffee-primary p-8 rounded-lg text-center">
             <h2 className="text-3xl font-light text-coffee-foam mb-4">Be First to Get Pro Access</h2>
             <p className="text-coffee-cream mb-6">
-              First 100 members get 50% off forever. Launching January 2025.
+              First 100 members get 50% off forever.
             </p>
             
+            {submitted ? (
+              <div className="bg-white p-6 rounded-lg max-w-md mx-auto">
+                <div className="text-center">
+                  <div className="text-3xl mb-3">✅</div>
+                  <h3 className="text-xl font-medium text-coffee-primary mb-2">You&apos;re on the list!</h3>
+                  <p className="text-coffee-earth text-sm">
+                    We&apos;ll email you when Pro launches with your 50% discount code.
+                  </p>
+                </div>
+              </div>
+            ) : (
             <form onSubmit={handleEarlyAccess} className="bg-white p-6 rounded-lg max-w-md mx-auto">
               <input
                 type="email"
@@ -246,6 +261,18 @@ export default function PricingPage() {
               </button>
               <p className="text-xs text-coffee-earth mt-3">No payment required. We&apos;ll email you when Pro launches.</p>
             </form>
+            )}
+          </div>
+
+          {/* Why Charge Section */}
+          <div className="mt-16 bg-white p-8 rounded-lg shadow-soft">
+            <h2 className="text-2xl font-craft text-coffee-primary mb-4 text-center">Why Charge for Pro?</h2>
+            <p className="text-coffee-earth text-center max-w-2xl mx-auto">
+              We&apos;re building a sustainable business to serve you for years, not a VC-funded burnout. 
+              Charging ensures we can maintain quality research, pay our Seoul scouts, and continuously 
+              improve our trend verification process. Free users still get valuable previews, but Pro 
+              members get the complete implementation details that generate real revenue.
+            </p>
           </div>
 
           {/* FAQ */}
@@ -256,7 +283,7 @@ export default function PricingPage() {
               <div>
                 <h3 className="font-medium text-coffee-primary mb-2">When will Pro launch?</h3>
                 <p className="text-coffee-earth text-sm">
-                  January 2025. Early access members will be notified first and get lifetime 50% discount.
+                  Soon. Early access members will be notified first and get lifetime 50% discount.
                 </p>
               </div>
               <div>
