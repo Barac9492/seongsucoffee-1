@@ -44,7 +44,7 @@ export default function Navigation({ currentPage }: NavigationProps) {
               Pricing
             </a>
             <a 
-              href="/pricing" 
+              href="/trial" 
               className="btn-primary text-white text-sm px-6 py-3 rounded-full hover:scale-105 transition-transform font-craft font-medium"
             >
               Start Trial
