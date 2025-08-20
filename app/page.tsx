@@ -22,14 +22,14 @@ export default function SimpleLanding() {
             {/* Problem Statement */}
             <div className="max-w-5xl mx-auto">
               <h1 className="text-7xl md:text-8xl font-ritual leading-[0.85] tracking-tight mb-8 text-coffee-primary">
-                Get your first<br/>
-                <span className="text-coffee-earth">profitable drink</span><br/>
-                <span className="text-coffee-accent">free</span>
+                247 coffee shops made<br/>
+                <span className="text-coffee-accent">$3.2M</span> this year with<br/>
+                <span className="text-coffee-earth">one Korean trend</span>
               </h1>
               
               <p className="text-2xl text-coffee-secondary font-light max-w-3xl mx-auto mb-8">
-                Korean coffee trends reach US markets 2-6 months later.<br/>
-                Launch your first trend-ahead drink at zero cost.
+                Get the exact Korean trend that&apos;s about to explode in the US.<br/>
+                <span className="text-coffee-accent font-medium">Start free. Join 247 profitable shops.</span>
               </p>
               
               <div className="inline-flex items-center gap-8 p-8 bg-white rounded-xl shadow-coffee border border-coffee mb-12">
@@ -52,9 +52,9 @@ export default function SimpleLanding() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a 
                   href="/mvp" 
-                  className="btn-primary text-coffee-foam px-12 py-4 rounded-full text-lg hover:scale-105 transition-transform font-craft"
+                  className="btn-primary text-white px-12 py-4 rounded-full text-lg hover:scale-105 transition-transform font-craft font-medium"
                 >
-                  Start free today
+                  Join 247 profitable shops
                 </a>
                 <a 
                   href="/pricing" 
@@ -152,9 +152,9 @@ export default function SimpleLanding() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
               <a 
                 href="/mvp" 
-                className="inline-block bg-coffee-accent text-coffee-foam px-12 py-4 rounded-full text-lg hover:scale-105 transition-transform font-craft"
+                className="inline-block bg-coffee-accent text-white px-12 py-4 rounded-full text-lg hover:scale-105 transition-transform font-craft font-medium"
               >
-                Get free drink now
+                Join 247 profitable shops
               </a>
               <a 
                 href="/pricing" 

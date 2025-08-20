@@ -45,7 +45,7 @@ export default function Navigation({ currentPage }: NavigationProps) {
             </a>
             <a 
               href="/mvp" 
-              className="btn-primary text-coffee-foam text-sm px-6 py-3 rounded-full hover:scale-105 transition-transform font-craft"
+              className="btn-primary text-white text-sm px-6 py-3 rounded-full hover:scale-105 transition-transform font-craft font-medium"
             >
               MVP Launch
             </a>
