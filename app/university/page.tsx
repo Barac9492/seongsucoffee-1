@@ -68,24 +68,24 @@ export default function UniversityPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-page-primary">
       <Navigation currentPage="home" />
       
       {/* Hero */}
-      <section className="pt-32 pb-16 px-8 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <section className="section-padding bg-page-secondary coffee-texture">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-light leading-tight tracking-tight mb-6">
-            First Launch<br/>
-            <span className="text-blue-600">Coffee University</span>
+            Coffee Trends Weekly<br/>
+            <span className="text-accent">University</span>
           </h1>
-          <p className="text-xl text-gray-600 font-light max-w-3xl mx-auto mb-8">
+          <p className="body-large max-w-3xl mx-auto mb-8">
             Master the art and business of coffee with world-class education from Seoul to Seattle
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-12">
             <div className="text-center">
-              <div className="text-3xl font-light mb-2">4,995</div>
-              <div className="text-sm text-gray-600">Active Students</div>
+              <div className="text-3xl font-ritual text-accent mb-2">4,995</div>
+              <div className="body-small">Active Students</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-light mb-2">127</div>

@@ -77,23 +77,23 @@ export default function InnovationPage() {
   const currentInnovations = innovations[selectedCategory as keyof typeof innovations]
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-page-primary">
       <Navigation currentPage="home" />
       
       {/* Hero */}
-      <section className="pt-32 pb-16 px-8 bg-gradient-to-r from-purple-50 to-pink-50">
+      <section className="section-padding bg-page-secondary coffee-texture">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-light leading-tight tracking-tight mb-6">
             Coffee Innovation<br/>
-            <span className="text-purple-600">Lab</span>
+            <span className="text-accent">Lab</span>
           </h1>
-          <p className="text-xl text-gray-600 font-light max-w-3xl mx-auto mb-8">
+          <p className="body-large max-w-3xl mx-auto mb-8">
             Where the future of coffee is imagined, tested, and brought to life by our global community
           </p>
           
-          <div className="flex items-center justify-center gap-8 text-sm text-gray-600">
+          <div className="flex items-center justify-center gap-8 body-small">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-coffee-accent rounded-full"></div>
               <span>47 active projects</span>
             </div>
             <div>•</div>
