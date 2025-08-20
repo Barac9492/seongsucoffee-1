@@ -22,7 +22,7 @@ export default function MVPPage() {
             ✨ Coffee Trends Weekly - Now Live
           </div>
           
-          <h1 className="heading-hero mb-6">
+          <h1 className="heading-hero mb-6 text-center leading-tight">
             Korean Coffee Trends<br/>
             <span className="text-accent">That Actually Make Money</span>
           </h1>
@@ -50,30 +50,163 @@ export default function MVPPage() {
             </div>
           </div>
 
-          {/* Clean CTA */}
-          <div className="bg-card card-padding text-center max-w-xl mx-auto">
-            <div className="mb-6">
-              <div className="text-3xl font-ritual text-accent mb-2">$47/month</div>
-              <div className="body-small text-muted">Cancel anytime. Start making money this week.</div>
+          {/* Clear Pricing Tiers */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <div className="text-center mb-8">
+              <h2 className="heading-section mb-4">Choose Your Plan</h2>
+              <p className="body-large text-secondary">Start with 7 days free, then pick what works for your business</p>
+              <div className="bg-coffee-accent text-white p-4 rounded-lg mt-6 max-w-2xl mx-auto">
+                <div className="font-craft font-medium mb-2">💡 Jeff&apos;s Guarantee:</div>
+                <div className="text-sm">If our trends don&apos;t generate at least $500 in your first month, we&apos;ll refund your entire subscription + give you the next month free.</div>
+              </div>
             </div>
             
-            <input
-              type="email"
-              placeholder="Enter your email to start"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-4 rounded-lg mb-4 border border-coffee-neutral-200 focus:border-coffee-accent outline-none"
-            />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              
+              {/* Free Tier */}
+              <div className="bg-card card-padding text-center relative">
+                <div className="bg-coffee-accent text-white px-3 py-1 rounded-full text-sm font-medium mb-4 inline-block">
+                  7-Day Free Trial
+                </div>
+                <h3 className="heading-card mb-3">Free</h3>
+                <div className="text-4xl font-ritual text-accent mb-2">$0</div>
+                <div className="body-small text-muted mb-2">Forever</div>
+                <div className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded mb-4">
+                  Avg. $800/month extra revenue
+                </div>
+                <div className="text-left space-y-3 mb-6">
+                  <div className="flex items-center gap-2">
+                    <span className="text-coffee-accent">✓</span>
+                    <span className="body-regular">1 Korean trend per month</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-coffee-accent">✓</span>
+                    <span className="body-regular">Basic implementation guide</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-coffee-accent">✓</span>
+                    <span className="body-regular">Community access</span>
+                  </div>
+                </div>
+                <button className="btn-coffee-secondary w-full">
+                  Start Free Trial
+                </button>
+              </div>
+
+              {/* Starter Tier */}
+              <div className="bg-card card-padding text-center relative border-2 border-coffee-accent">
+                <div className="bg-coffee-accent text-white px-3 py-1 rounded-full text-sm font-medium mb-4 inline-block">
+                  Most Popular
+                </div>
+                <h3 className="heading-card mb-3">Starter</h3>
+                <div className="text-4xl font-ritual text-accent mb-2">$47</div>
+                <div className="body-small text-muted mb-2">per month</div>
+                <div className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded mb-4">
+                  Avg. $3,200/month extra revenue
+                </div>
+                <div className="text-left space-y-3 mb-6">
+                  <div className="flex items-center gap-2">
+                    <span className="text-coffee-accent">✓</span>
+                    <span className="body-regular">4 Korean trends per month</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-coffee-accent">✓</span>
+                    <span className="body-regular">Complete recipes & suppliers</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-coffee-accent">✓</span>
+                    <span className="body-regular">Profit calculations</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-coffee-accent">✓</span>
+                    <span className="body-regular">2-6 month head start</span>
+                  </div>
+                </div>
+                <button className="btn-coffee-primary w-full">
+                  Start 7-Day Free Trial
+                </button>
+              </div>
+
+              {/* Professional Tier */}
+              <div className="bg-card card-padding text-center relative">
+                <div className="bg-coffee-primary text-white px-3 py-1 rounded-full text-sm font-medium mb-4 inline-block">
+                  For Serious Growth
+                </div>
+                <h3 className="heading-card mb-3">Professional</h3>
+                <div className="text-4xl font-ritual text-accent mb-2">$97</div>
+                <div className="body-small text-muted mb-2">per month</div>
+                <div className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded mb-4">
+                  Avg. $6,800/month extra revenue
+                </div>
+                <div className="text-left space-y-3 mb-6">
+                  <div className="flex items-center gap-2">
+                    <span className="text-coffee-accent">✓</span>
+                    <span className="body-regular">Everything in Starter</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-coffee-accent">✓</span>
+                    <span className="body-regular">AI trend predictions</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-coffee-accent">✓</span>
+                    <span className="body-regular">Market analysis tools</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-coffee-accent">✓</span>
+                    <span className="body-regular">Priority support</span>
+                  </div>
+                </div>
+                <button className="btn-coffee-secondary w-full">
+                  Start 7-Day Free Trial
+                </button>
+              </div>
+            </div>
             
-            <button 
-              onClick={handleLaunch}
-              className="btn-coffee-primary w-full py-4 text-lg mb-3"
-            >
-              Start Making Money Today
-            </button>
+            {/* Jeff's ROI Calculator */}
+            <div className="text-center mt-8 bg-section-neutral p-6 rounded-lg">
+              <h3 className="heading-card mb-6">📊 Your ROI Calculator</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="bg-white p-4 rounded-lg">
+                  <div className="text-lg font-craft text-coffee-primary mb-2">Starter Plan</div>
+                  <div className="text-sm text-muted mb-3">$47/month investment</div>
+                  <div className="text-2xl font-ritual text-green-600 mb-1">+$3,200</div>
+                  <div className="text-xs text-muted">avg monthly revenue</div>
+                  <div className="text-lg font-medium text-coffee-accent mt-2">6,700% ROI</div>
+                </div>
+                <div className="bg-white p-4 rounded-lg border-2 border-coffee-accent">
+                  <div className="text-lg font-craft text-coffee-primary mb-2">Professional Plan</div>
+                  <div className="text-sm text-muted mb-3">$97/month investment</div>
+                  <div className="text-2xl font-ritual text-green-600 mb-1">+$6,800</div>
+                  <div className="text-xs text-muted">avg monthly revenue</div>
+                  <div className="text-lg font-medium text-coffee-accent mt-2">7,000% ROI</div>
+                </div>
+                <div className="bg-white p-4 rounded-lg">
+                  <div className="text-lg font-craft text-coffee-primary mb-2">Your Current Method</div>
+                  <div className="text-sm text-muted mb-3">Guessing trends</div>
+                  <div className="text-2xl font-ritual text-red-600 mb-1">-$2,400</div>
+                  <div className="text-xs text-muted">avg monthly loss</div>
+                  <div className="text-lg font-medium text-red-600 mt-2">Failed launches</div>
+                </div>
+              </div>
+            </div>
             
-            <div className="body-small text-muted">
-              7-day free trial • No setup fees • Instant access
+            {/* Free Trial Clarity */}
+            <div className="text-center mt-6 bg-coffee-primary text-white p-6 rounded-lg">
+              <h3 className="text-xl font-craft mb-3">🎁 Start Your 7-Day Free Trial</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center text-sm">
+                <div>
+                  <div className="text-2xl mb-1">📊</div>
+                  <div>Full access to any plan</div>
+                </div>
+                <div>
+                  <div className="text-2xl mb-1">💰</div>
+                  <div>Zero payment required</div>
+                </div>
+                <div>
+                  <div className="text-2xl mb-1">⚡</div>
+                  <div>Cancel anytime, keep results</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
