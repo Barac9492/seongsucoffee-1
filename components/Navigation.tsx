@@ -10,7 +10,7 @@ export default function Navigation({ currentPage }: NavigationProps) {
       <div className="max-w-7xl mx-auto px-8 py-6">
         <div className="flex items-center justify-between">
           <a href="/" className="font-ritual text-sm tracking-wide text-coffee-primary hover:text-coffee-accent transition-colors">
-            FIRST LAUNCH
+            COFFEE TRENDS WEEKLY
           </a>
           <nav className="flex items-center gap-8">
             <a 
