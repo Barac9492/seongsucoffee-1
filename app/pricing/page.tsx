@@ -244,7 +244,7 @@ export default function PricingPage() {
               >
                 Reserve My Spot (50% Off)
               </button>
-              <p className="text-xs text-coffee-earth mt-3">No payment required. We'll email you when Pro launches.</p>
+              <p className="text-xs text-coffee-earth mt-3">No payment required. We&apos;ll email you when Pro launches.</p>
             </form>
           </div>
 
@@ -260,9 +260,9 @@ export default function PricingPage() {
                 </p>
               </div>
               <div>
-                <h3 className="font-medium text-coffee-primary mb-2">What's the ROI guarantee?</h3>
+                <h3 className="font-medium text-coffee-primary mb-2">What&apos;s the ROI guarantee?</h3>
                 <p className="text-coffee-earth text-sm">
-                  If a trend doesn't generate 10x your subscription cost, your next month is free.
+                  If a trend doesn&apos;t generate 10x your subscription cost, your next month is free.
                 </p>
               </div>
               <div>
