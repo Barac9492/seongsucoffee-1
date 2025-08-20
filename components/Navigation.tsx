@@ -50,12 +50,6 @@ export default function Navigation({ currentPage }: NavigationProps) {
               MVP Launch
             </a>
             <a 
-              href="/launch" 
-              className="text-sm text-coffee-earth hover:text-coffee-primary transition-colors"
-            >
-              Launch Plan
-            </a>
-            <a 
               href="/admin" 
               className="text-sm text-coffee-earth opacity-60 hover:opacity-100 hover:text-coffee-secondary transition-all"
             >
