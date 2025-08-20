@@ -31,12 +31,20 @@ export default function SimpleLanding() {
                 Get the exact recipes and launch first.
               </p>
               
-              <a 
-                href="/coffee-trends" 
-                className="inline-block bg-black text-white px-12 py-4 rounded-full text-lg hover:scale-105 transition-transform"
-              >
-                View current trends
-              </a>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a 
+                  href="/coffee-trends" 
+                  className="inline-block bg-black text-white px-8 py-3 rounded-full hover:scale-105 transition-transform"
+                >
+                  View current trends
+                </a>
+                <a 
+                  href="/pricing" 
+                  className="inline-block border border-gray-300 text-gray-900 px-8 py-3 rounded-full hover:border-gray-900 transition-colors"
+                >
+                  See pricing
+                </a>
+              </div>
             </div>
 
             {/* Proof Point */}
@@ -118,20 +126,26 @@ export default function SimpleLanding() {
         <div className="max-w-7xl mx-auto text-center">
           <div className="max-w-3xl mx-auto space-y-8">
             <h2 className="text-5xl md:text-6xl font-light leading-tight">
-              Start launching<br/>profitable drinks
+              Choose your<br/>advantage level
             </h2>
             <p className="text-xl text-gray-400 font-light">
-              $97/month for complete trend intelligence
+              From $47/month - plans for every business size
             </p>
-            <div className="pt-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
               <a 
-                href="/coffee-trends" 
+                href="/pricing" 
                 className="inline-block bg-white text-black px-12 py-4 rounded-full text-lg hover:scale-105 transition-transform"
               >
-                View current trends
+                View pricing plans
+              </a>
+              <a 
+                href="/coffee-trends" 
+                className="inline-block border border-gray-600 text-white px-12 py-4 rounded-full hover:border-white transition-colors"
+              >
+                See current trends
               </a>
             </div>
-            <p className="text-sm text-gray-500">Cancel anytime. ROI guaranteed or full refund.</p>
+            <p className="text-sm text-gray-500">All plans: Cancel anytime. ROI guaranteed or full refund.</p>
           </div>
         </div>
       </section>

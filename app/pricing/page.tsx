@@ -20,87 +20,160 @@ export default function PricingPage() {
           <div className={`text-center space-y-12 ${mounted ? 'animate-fade-in-up' : 'opacity-0'}`}>
             <div className="max-w-4xl mx-auto">
               <h1 className="text-5xl md:text-6xl font-light leading-tight tracking-tight mb-8">
-                Launch 4 profitable drinks<br/>
-                <span className="text-gray-400">for $97/month</span>
+                Choose your competitive advantage
               </h1>
-              <p className="text-xl text-gray-600 font-light mb-8">
-                Complete business packages. 2-6 month market advantage.<br/>
-                Average customer generates $18K additional revenue in first month.
+              <p className="text-xl text-gray-600 font-light mb-12">
+                Three ways to launch profitable Korean coffee trends before your competition
               </p>
-              
-              <div className="inline-flex items-center gap-8 p-6 bg-gray-50 rounded-lg">
-                <div className="text-center">
-                  <div className="text-3xl font-light">$97</div>
-                  <div className="text-sm text-gray-500">monthly cost</div>
-                </div>
-                <div className="text-gray-300">→</div>
-                <div className="text-center">
-                  <div className="text-3xl font-light text-green-600">$18K</div>
-                  <div className="text-sm text-gray-500">avg. first month revenue</div>
-                </div>
-                <div className="text-gray-300">=</div>
-                <div className="text-center">
-                  <div className="text-3xl font-light">185x</div>
-                  <div className="text-sm text-gray-500">return on investment</div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Value Breakdown */}
+      {/* Tiered Pricing Strategy */}
       <section className="py-24 px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-light tracking-tight mb-6">Everything included</h2>
-            <p className="text-xl text-gray-600 font-light">Complete launch packages for 4 trending drinks</p>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            {/* Starter Plan */}
+            <div className="border border-gray-200 rounded-lg p-8">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-light mb-2">Starter</h3>
+                <p className="text-gray-600 mb-6">Single location coffee shops</p>
+                <div className="text-4xl font-light mb-2">$47</div>
+                <div className="text-sm text-gray-500">per month</div>
+              </div>
+              
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">2 trending drinks per month</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">Complete recipes & measurements</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">Basic supplier contacts</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">Email support</span>
+                </li>
+              </ul>
+              
+              <a href="/coffee-trends" className="block w-full py-3 bg-gray-100 text-center rounded-lg hover:bg-gray-200 transition-colors">
+                Start Starter Plan
+              </a>
+            </div>
+            
+            {/* Professional Plan - Featured */}
+            <div className="border-2 border-black rounded-lg p-8 relative">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <span className="bg-black text-white px-4 py-1 text-xs rounded-full">MOST POPULAR</span>
+              </div>
+              
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-light mb-2">Professional</h3>
+                <p className="text-gray-600 mb-6">Growing coffee businesses</p>
+                <div className="text-4xl font-light mb-2">$97</div>
+                <div className="text-sm text-gray-500">per month</div>
+              </div>
+              
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">4 trending drinks per month</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">Complete business packages</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">Verified supplier network</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">Staff training materials</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">Pricing strategy guide</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">Priority support</span>
+                </li>
+              </ul>
+              
+              <a href="/coffee-trends" className="block w-full py-3 bg-black text-white text-center rounded-lg hover:scale-105 transition-transform">
+                Start Professional Plan
+              </a>
+            </div>
+            
+            {/* Enterprise Plan */}
+            <div className="border border-gray-200 rounded-lg p-8">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-light mb-2">Enterprise</h3>
+                <p className="text-gray-600 mb-6">Multi-location chains</p>
+                <div className="text-4xl font-light mb-2">$297</div>
+                <div className="text-sm text-gray-500">per month</div>
+              </div>
+              
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">Everything in Professional</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">Custom market analysis</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">Regional trend forecasting</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">Dedicated account manager</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">Bulk supplier negotiations</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 mr-3">✓</span>
+                  <span className="text-sm">Monthly strategy calls</span>
+                </li>
+              </ul>
+              
+              <a href="/coffee-trends" className="block w-full py-3 bg-gray-900 text-white text-center rounded-lg hover:bg-black transition-colors">
+                Contact Sales
+              </a>
+            </div>
+            
           </div>
           
-          <div className="max-w-4xl mx-auto space-y-8">
-            {[
-              { 
-                item: 'Complete recipes with exact measurements',
-                value: 'Worth $500',
-                detail: 'Tested formulations with precise ingredient ratios and preparation methods'
-              },
-              { 
-                item: 'Verified supplier contacts and pricing',
-                value: 'Worth $300', 
-                detail: 'Pre-negotiated supplier relationships with quality specifications'
-              },
-              { 
-                item: 'Staff training scripts and quality control',
-                value: 'Worth $400',
-                detail: 'Complete training materials and consistency protocols'
-              },
-              { 
-                item: 'Competitive pricing strategy and positioning',
-                value: 'Worth $200',
-                detail: 'Market analysis and optimal pricing for maximum profit margins'
-              },
-              { 
-                item: 'Monthly trend updates and new launches',
-                value: 'Worth $300',
-                detail: 'Continuous intelligence on emerging trends before they hit mainstream'
-              }
-            ].map((item, i) => (
-              <div key={i} className="flex items-start justify-between p-6 border border-gray-100 rounded-lg">
-                <div className="flex-1">
-                  <h3 className="text-lg font-medium mb-2">{item.item}</h3>
-                  <p className="text-gray-600 text-sm">{item.detail}</p>
-                </div>
-                <div className="text-right ml-8">
-                  <div className="text-gray-400 line-through text-sm">{item.value}</div>
-                  <div className="text-green-600 font-medium">Included</div>
-                </div>
+          {/* ROI Comparison */}
+          <div className="mt-16 bg-gray-50 p-8 rounded-lg">
+            <h3 className="text-2xl font-light text-center mb-8">Average ROI by Plan</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="text-3xl font-light mb-2">$8K</div>
+                <div className="text-sm text-gray-600">Starter avg. first month</div>
+                <div className="text-xs text-gray-500">170x ROI</div>
               </div>
-            ))}
-            
-            <div className="border-t border-gray-200 pt-6">
-              <div className="flex items-center justify-between text-xl">
-                <div className="font-medium">Total value: <span className="line-through text-gray-400">$1,700/month</span></div>
-                <div className="font-light">You pay: $97/month</div>
+              <div className="text-center">
+                <div className="text-3xl font-light mb-2 text-green-600">$18K</div>
+                <div className="text-sm text-gray-600">Professional avg. first month</div>
+                <div className="text-xs text-gray-500">185x ROI</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-light mb-2">$45K</div>
+                <div className="text-sm text-gray-600">Enterprise avg. first month</div>
+                <div className="text-xs text-gray-500">151x ROI</div>
               </div>
             </div>
           </div>
