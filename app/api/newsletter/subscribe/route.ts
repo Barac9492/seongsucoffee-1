@@ -1,56 +1,44 @@
 import { NextResponse } from 'next/server'
 
-// Simple email storage - in production, use a database or email service
-const WEBHOOK_URL = process.env.WEBHOOK_URL || ''
+// In-memory storage for Vercel (resets on redeploy)
+// For production, use a database like Vercel KV or Supabase
+let subscribers: any[] = []
 
 export async function POST(request: Request) {
   try {
     const data = await request.json()
     
-    // Log for now - replace with actual email service
-    console.log('Newsletter signup:', data)
-    
-    // Send to webhook if configured (Zapier, Make, etc.)
-    if (WEBHOOK_URL) {
-      await fetch(WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...data,
-          timestamp: new Date().toISOString(),
-          source: data.source || 'website'
-        })
-      })
+    // Add subscriber to memory
+    const newSubscriber = {
+      ...data,
+      subscribedAt: new Date().toISOString(),
+      id: Date.now().toString()
     }
     
-    // Store in local JSON file as backup (temporary solution)
-    const fs = require('fs').promises
-    const path = require('path')
-    const filePath = path.join(process.cwd(), 'subscribers.json')
+    subscribers.push(newSubscriber)
     
-    try {
-      let subscribers = []
+    // Log for Vercel Functions logs
+    console.log('New subscriber:', newSubscriber)
+    
+    // Send to webhook if configured (Zapier, Make, etc.)
+    const WEBHOOK_URL = process.env.WEBHOOK_URL || ''
+    if (WEBHOOK_URL) {
       try {
-        const fileContent = await fs.readFile(filePath, 'utf-8')
-        subscribers = JSON.parse(fileContent)
-      } catch (e) {
-        // File doesn't exist yet
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newSubscriber)
+        })
+      } catch (webhookError) {
+        console.error('Webhook failed:', webhookError)
+        // Don't fail the signup if webhook fails
       }
-      
-      subscribers.push({
-        ...data,
-        subscribedAt: new Date().toISOString(),
-        id: Date.now().toString()
-      })
-      
-      await fs.writeFile(filePath, JSON.stringify(subscribers, null, 2))
-    } catch (e) {
-      console.error('Failed to save locally:', e)
     }
     
     return NextResponse.json({ 
       success: true, 
-      message: 'Successfully subscribed!' 
+      message: 'Successfully subscribed!',
+      subscriber: newSubscriber
     })
   } catch (error) {
     console.error('Subscription error:', error)
@@ -60,3 +48,6 @@ export async function POST(request: Request) {
     )
   }
 }
+
+// Export the subscribers array for the list endpoint
+export { subscribers }
