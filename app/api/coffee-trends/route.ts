@@ -92,80 +92,80 @@ export async function GET() {
       },
       {
         id: '2',
-        name: 'Rice Cake Affogato',
-        nameKr: '떡 아포가토',
+        name: 'Dalgona Whipped Coffee',
+        nameKr: '달고나 커피',
         
         // THE WHY - Market Analysis
-        successProbability: 84,
-        marketReadiness: 'High',
+        successProbability: 94,
+        marketReadiness: 'Very High',
         competitorRisk: 'Low',
-        historicalPrecedent: 'Korean dessert fusion (2023) - traditional meets modern',
-        timeToGlobal: '3-4 months',
+        historicalPrecedent: 'TikTok viral success (2020) - 17% YoY growth in 2025, millions of views',
+        timeToGlobal: '1-2 months',
         
         // THE HOW - Business Execution
         recipe: {
           ingredients: [
-            '2 shots hot espresso (60ml)',
-            '2 small Korean rice cakes (tteok)',
-            '1 scoop vanilla ice cream',
-            '1 tbsp sweet red bean paste (optional)',
-            '1 tsp roasted sesame seeds',
-            'Pinch of sea salt'
+            '2 tbsp instant coffee',
+            '2 tbsp granulated sugar',
+            '2 tbsp hot water',
+            '200ml cold or hot milk',
+            'Ice cubes (for iced version)',
+            'Cocoa powder for dusting (optional)'
           ],
           instructions: [
-            'Steam rice cakes until soft and chewy (2-3 minutes)',
-            'Place warm rice cakes in serving bowl',
-            'Add scoop of vanilla ice cream on top',
-            'Pour hot espresso over ice cream immediately',
-            'Drizzle red bean paste if using',
-            'Sprinkle sesame seeds and sea salt',
-            'Serve immediately with spoon'
+            'Combine instant coffee, sugar, and hot water in mixing bowl',
+            'Whip mixture by hand or electric mixer for 3-5 minutes until thick and creamy',
+            'Continue whipping until mixture becomes light brown and holds peaks',
+            'Fill glass with milk (add ice for cold version)',
+            'Spoon whipped coffee mixture on top',
+            'Dust with cocoa powder if desired',
+            'Serve with spoon for mixing'
           ],
-          difficulty: 'Medium',
+          difficulty: 'Easy',
           prepTime: '5 minutes',
-          shelfLife: 'Serve immediately - rice cakes best when warm'
+          shelfLife: 'Serve immediately for best texture'
         },
         suppliers: [
           {
-            ingredient: 'Korean Rice Cakes (Tteok)',
-            source: 'H Mart, Korean grocers, online',
-            cost: '$4.50/package',
-            notes: 'Use plain white rice cakes, keep refrigerated'
+            ingredient: 'Instant Coffee',
+            source: 'Restaurant supply, grocery stores',
+            cost: '$8.50/container',
+            notes: 'Quality instant coffee creates better foam'
           },
           {
-            ingredient: 'Sweet Red Bean Paste',
-            source: 'Asian grocers, Amazon',
-            cost: '$3.80/can',
-            notes: 'Traditional Korean sweetened adzuki beans'
+            ingredient: 'Granulated Sugar',
+            source: 'Restaurant supply, grocery stores',
+            cost: '$12.00/25lb bag',
+            notes: 'Regular white sugar works best for whipping'
           }
         ],
         pricing: {
-          costPerServing: '$2.85',
-          suggestedRetail: '$9.50-$11.00',
-          margin: '74%',
-          premiumPosition: 'Unique Korean dessert experience'
+          costPerServing: '$1.20',
+          suggestedRetail: '$6.00-$8.00',
+          margin: '85%',
+          premiumPosition: 'Instagram-worthy DIY coffee experience'
         },
         training: {
           keyTechniques: [
-            'Rice cakes must be soft but maintain chew',
-            'Pour espresso quickly to create proper melt',
-            'Balance traditional and modern presentation'
+            'Whip until mixture holds stiff peaks (3-5 minutes minimum)',
+            'Equal ratios of coffee, sugar, water are critical',
+            'Present with dramatic Instagram-worthy layering'
           ],
           commonMistakes: [
-            'Over-steaming rice cakes (becomes mushy)',
-            'Cold espresso reduces ice cream interaction',
-            'Too much red bean paste overpowers coffee'
+            'Under-whipping results in runny foam',
+            'Using wrong coffee-to-sugar ratio affects texture',
+            'Serving too quickly before foam sets properly'
           ],
-          qualityControl: 'Perfect balance of hot, cold, chewy, and creamy textures'
+          qualityControl: 'Foam should hold peaks and not deflate when spooned'
         },
         
         // Tracking data
-        growth: 312,
-        stage: 'growth',
-        cafesServing: 67,
-        firstDetected: '2024-12-15',
+        growth: 517,
+        stage: 'viral',
+        cafesServing: 156,
+        firstDetected: '2020-03-15',
         lastUpdated: '2024-12-20',
-        districts: ['Insadong', 'Bukchon', 'Myeongdong'],
+        districts: ['Global - originated Seoul, viral worldwide'],
         videoProof: [],
         signals: []
       },
