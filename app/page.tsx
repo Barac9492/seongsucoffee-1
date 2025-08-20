@@ -238,7 +238,7 @@ export default function SimpleLanding() {
                 <div className="w-2 h-2 bg-coffee-accent rounded-full mt-2"></div>
                 <div>
                   <h4 className="font-medium text-coffee-primary">Black Pepper Latte</h4>
-                  <p className="text-sm text-coffee-earth">87% success rate • 82% margin • Seoul's signature spiced coffee trend</p>
+                  <p className="text-sm text-coffee-earth">87% success rate • 82% margin • Seoul&apos;s signature spiced coffee trend</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
