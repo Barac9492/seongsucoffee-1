@@ -92,10 +92,10 @@ export default function CoffeeTrendsPage() {
               <span className="text-coffee-accent">Dashboard</span>
             </h1>
             <p className="text-lg md:text-xl text-coffee-earth font-light max-w-3xl mx-auto px-4">
-              Seoul-verified trends generating $8K-12K monthly for coffee shops
+              Preview of this Tuesday&apos;s newsletter • Get all trends free via email
             </p>
             <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-full mt-4">
-              <span className="text-sm font-medium">✓ All trends verified by Seoul cafe visits</span>
+              <span className="text-sm font-medium">✓ Subscribe below to get weekly trends</span>
             </div>
           </div>
 
@@ -188,6 +188,33 @@ export default function CoffeeTrendsPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter CTA */}
+      <section className="py-16 px-4 md:px-8 bg-coffee-primary">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-light text-coffee-foam mb-4">Get These Trends in Your Inbox</h2>
+          <p className="text-coffee-cream mb-8">Free weekly newsletter every Tuesday. Korean coffee trends before your competition.</p>
+          
+          <div className="bg-white p-6 rounded-xl max-w-md mx-auto">
+            <div className="space-y-4">
+              <input
+                type="email"
+                placeholder="your@email.com"
+                className="w-full p-3 border border-coffee-neutral-200 rounded-lg focus:border-coffee-accent"
+              />
+              <input
+                type="text"
+                placeholder="Coffee shop name (optional)"
+                className="w-full p-3 border border-coffee-neutral-200 rounded-lg focus:border-coffee-accent"
+              />
+              <button className="w-full bg-coffee-accent text-white py-3 rounded-lg font-medium hover:scale-105 transition-transform">
+                🚀 Subscribe Free
+              </button>
+            </div>
+            <p className="text-xs text-coffee-earth mt-3">231 coffee shops subscribed • Next issue Tuesday 9 AM PST</p>
           </div>
         </div>
       </section>
@@ -329,16 +356,16 @@ export default function CoffeeTrendsPage() {
                     </div>
 
                     <div className="bg-coffee-accent text-white p-4 rounded-lg">
-                      <h4 className="font-medium mb-2">Ready to Launch?</h4>
+                      <h4 className="font-medium mb-2">Want More Trends Like This?</h4>
                       <p className="text-sm text-coffee-cream mb-3">
-                        Get complete supplier contacts, training videos, and launch support
+                        Get 2-3 new Korean trends every Tuesday in your inbox
                       </p>
-                      <a 
-                        href="/trial"
+                      <button 
+                        onClick={() => setDetailsOpen(false)}
                         className="inline-block bg-white text-coffee-accent px-4 py-2 rounded text-sm font-medium hover:scale-105 transition-transform"
                       >
-                        Start 7-Day Trial
-                      </a>
+                        Subscribe to Newsletter
+                      </button>
                     </div>
                   </div>
                 </div>

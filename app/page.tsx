@@ -22,56 +22,65 @@ export default function SimpleLanding() {
             {/* Problem Statement */}
             <div className="max-w-5xl mx-auto">
               <h1 className="text-7xl md:text-8xl font-ritual leading-[0.85] tracking-tight mb-8 text-coffee-primary">
-                231 coffee shops made<br/>
-                <span className="text-coffee-accent">$2.94M</span> this year with<br/>
-                <span className="text-coffee-earth">one Korean trend</span>
+                Get Korean coffee trends<br/>
+                <span className="text-coffee-accent">before your competition</span><br/>
+                <span className="text-coffee-earth">every Tuesday</span>
               </h1>
               
               <p className="text-2xl text-coffee-secondary font-light max-w-3xl mx-auto mb-8">
-                Get the exact Korean trend that&apos;s about to explode in the US.<br/>
-                <span className="text-coffee-accent font-medium">Start free. Join 231 profitable shops.</span>
+                Weekly insider newsletter with profitable Korean trends.<br/>
+                <span className="text-coffee-accent font-medium">Free. 231 coffee shops already subscribed.</span>
               </p>
               
-              <div className="inline-flex items-center gap-8 p-8 bg-white rounded-xl shadow-coffee border border-coffee mb-12">
-                <div className="text-center">
-                  <div className="text-3xl font-ritual text-coffee-primary">$0</div>
-                  <div className="text-sm text-coffee-earth">to start</div>
+              {/* Newsletter Signup */}
+              <div className="bg-white p-8 rounded-xl shadow-coffee border border-coffee mb-12 max-w-2xl mx-auto">
+                <h3 className="text-2xl font-craft text-coffee-primary mb-4">Get This Week&apos;s Trends</h3>
+                <p className="text-coffee-earth mb-6">4 verified Korean trends making $8K-12K monthly. Next issue Tuesday.</p>
+                
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input
+                      type="text"
+                      placeholder="Your name"
+                      className="w-full p-3 border border-coffee-neutral-200 rounded-lg focus:border-coffee-accent"
+                    />
+                    <input
+                      type="text"
+                      placeholder="Coffee shop name"
+                      className="w-full p-3 border border-coffee-neutral-200 rounded-lg focus:border-coffee-accent"
+                    />
+                  </div>
+                  <input
+                    type="email"
+                    placeholder="your@email.com"
+                    className="w-full p-3 border border-coffee-neutral-200 rounded-lg focus:border-coffee-accent"
+                  />
+                  <button className="w-full btn-primary text-white py-3 rounded-lg text-lg font-craft font-medium">
+                    🚀 Get Korean Trends (Free)
+                  </button>
                 </div>
-                <div className="text-coffee-accent font-craft">→</div>
-                <div className="text-center">
-                  <div className="text-3xl font-ritual text-coffee-accent">$2.8K</div>
-                  <div className="text-sm text-coffee-earth">avg. first drink revenue</div>
-                </div>
-                <div className="text-coffee-accent font-craft">=</div>
-                <div className="text-center">
-                  <div className="text-3xl font-ritual text-coffee-primary">∞</div>
-                  <div className="text-sm text-coffee-earth">return on investment</div>
+                
+                <div className="text-center mt-4">
+                  <div className="text-xs text-coffee-earth">✓ Free weekly newsletter ✓ Unsubscribe anytime ✓ No spam</div>
                 </div>
               </div>
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a 
-                  href="/mvp" 
-                  className="btn-primary text-white px-12 py-4 rounded-full text-lg hover:scale-105 transition-transform font-craft font-medium"
-                >
-                  Join 231 profitable shops
-                </a>
-                <a 
-                  href="/pricing" 
+                  href="/coffee-trends" 
                   className="inline-block border border-coffee text-coffee-primary px-8 py-3 rounded-full hover:shadow-soft transition-all font-craft"
                 >
-                  See all plans
+                  Preview This Week&apos;s Trends
                 </a>
               </div>
             </div>
 
-            {/* Proof Point */}
+            {/* Social Proof */}
             <div className="pt-16">
-              <div className="inline-flex items-baseline gap-6">
-                <span className="text-6xl font-ritual text-coffee-accent">$2.94M</span>
-                <div className="text-left">
-                  <div className="text-lg text-coffee-secondary">generated by customers</div>
-                  <div className="text-sm text-coffee-earth">231 coffee shops</div>
+              <div className="text-center">
+                <p className="text-lg text-coffee-secondary mb-4">Trusted by coffee shop owners in:</p>
+                <div className="flex flex-wrap justify-center gap-4 text-coffee-earth">
+                  <span>Seattle</span> • <span>Portland</span> • <span>San Francisco</span> • <span>Los Angeles</span> • <span>Chicago</span> • <span>New York</span>
                 </div>
               </div>
             </div>
@@ -84,26 +93,26 @@ export default function SimpleLanding() {
       <section className="py-32 px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl font-light tracking-tight mb-6 text-coffee-primary">Complete launch package</h2>
-            <p className="text-xl text-coffee-secondary font-light">Everything you need to launch profitably</p>
+            <h2 className="text-4xl font-light tracking-tight mb-6 text-coffee-primary">How Coffee Trends Weekly works</h2>
+            <p className="text-xl text-coffee-secondary font-light">Get profitable Korean trends before your competition</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {[
               { 
                 step: '01',
-                title: 'Get trends', 
-                description: 'Four ready-to-launch drinks with complete recipes and exact measurements' 
+                title: 'Subscribe (Free)', 
+                description: 'Get weekly newsletter every Tuesday with 2-3 verified Korean coffee trends' 
               },
               { 
                 step: '02',
-                title: 'Source ingredients', 
-                description: 'Verified supplier contacts with pricing and quality specifications' 
+                title: 'Pick Your Favorite', 
+                description: 'Each trend includes recipe, supplier info, and profit projections' 
               },
               { 
                 step: '03',
-                title: 'Launch first', 
-                description: '2-6 month head start over competition with 70-80% margins' 
+                title: 'Launch & Profit', 
+                description: 'Beat competitors to market with 2-6 month head start' 
               }
             ].map((item, i) => (
               <div key={i} className="text-center">
@@ -116,26 +125,54 @@ export default function SimpleLanding() {
         </div>
       </section>
 
-      {/* Social Proof */}
+      {/* Newsletter Preview */}
       <section className="py-32 px-8 gradient-earth">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-light tracking-tight mb-16 text-coffee-primary">Proven results</h2>
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-light tracking-tight mb-8 text-coffee-primary">This Tuesday&apos;s Newsletter Preview</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-16">
-            {[
-              { metric: '89%', context: 'Success rate', detail: 'Profitable within 30 days' },
-              { metric: '4 months', context: 'Head start', detail: 'Average market advantage' },
-              { metric: '$18K', context: 'First month', detail: 'Average additional revenue' }
-            ].map((item, i) => (
-              <div key={i} className="">
-                <div className="text-5xl font-ritual text-coffee-accent mb-3">{item.metric}</div>
-                <div className="text-lg text-coffee-primary mb-1 font-craft">{item.context}</div>
-                <div className="text-sm text-coffee-earth">{item.detail}</div>
+          <div className="bg-white p-8 rounded-lg shadow-large text-left mb-8">
+            <div className="border-b border-gray-200 pb-4 mb-6">
+              <h3 className="text-xl font-craft text-coffee-primary">Coffee Trends Weekly #47</h3>
+              <p className="text-sm text-coffee-earth">4 Korean trends making $8K-12K monthly</p>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-coffee-accent rounded-full mt-2"></div>
+                <div>
+                  <h4 className="font-medium text-coffee-primary">Dalgona Whipped Coffee</h4>
+                  <p className="text-sm text-coffee-earth">94% success rate • 85% margin • TikTok viral with 17% YoY growth</p>
+                </div>
               </div>
-            ))}
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-coffee-accent rounded-full mt-2"></div>
+                <div>
+                  <h4 className="font-medium text-coffee-primary">Cream Cheese Foam Coffee</h4>
+                  <p className="text-sm text-coffee-earth">87% success rate • 75% margin • Seoul verified at Blue Bottle Seongsu</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-coffee-accent rounded-full mt-2"></div>
+                <div>
+                  <h4 className="font-medium text-coffee-primary">Jeju Hallabong Latte</h4>
+                  <p className="text-sm text-coffee-earth">91% success rate • 73% margin • Premium citrus positioning</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-coffee-accent rounded-full mt-2"></div>
+                <div>
+                  <h4 className="font-medium text-coffee-primary">Honey Butter Coffee</h4>
+                  <p className="text-sm text-coffee-earth">89% success rate • 77% margin • Korean comfort drink appeal</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="border-t border-gray-200 pt-4 mt-6">
+              <p className="text-xs text-coffee-earth">Each trend includes: Complete recipe, supplier contacts, pricing strategy, training tips</p>
+            </div>
           </div>
           
-          <p className="text-coffee-earth">Join 231+ coffee professionals launching first</p>
+          <p className="text-coffee-earth">Next issue: Tuesday 9 AM PST • Always free • Unsubscribe anytime</p>
         </div>
       </section>
 
@@ -144,26 +181,26 @@ export default function SimpleLanding() {
         <div className="max-w-7xl mx-auto text-center">
           <div className="max-w-3xl mx-auto space-y-8">
             <h2 className="text-5xl md:text-6xl font-ritual leading-tight">
-              Start free,<br/>upgrade when ready
+              Get Tuesday&apos;s trends<br/>in your inbox
             </h2>
             <p className="text-xl text-coffee-cream font-light">
-              No credit card required. Launch your first profitable drink today.
+              Free weekly newsletter. Korean coffee trends before your competition.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
-              <a 
-                href="/mvp" 
-                className="inline-block bg-coffee-accent text-white px-12 py-4 rounded-full text-lg hover:scale-105 transition-transform font-craft font-medium"
-              >
-                Join 231 profitable shops
-              </a>
-              <a 
-                href="/pricing" 
-                className="inline-block border border-coffee-cream text-coffee-cream px-12 py-4 rounded-full hover:border-coffee-accent hover:text-coffee-accent transition-colors font-craft"
-              >
-                View paid plans
-              </a>
+            
+            {/* Newsletter Signup - Simplified */}
+            <div className="bg-white p-6 rounded-xl max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="your@email.com"
+                className="w-full p-3 mb-4 border border-coffee-neutral-200 rounded-lg focus:border-coffee-accent text-coffee-primary"
+              />
+              <button className="w-full bg-coffee-accent text-white py-3 rounded-lg text-lg font-craft font-medium hover:scale-105 transition-transform">
+                Subscribe Free
+              </button>
+              <p className="text-xs text-coffee-earth mt-2">231 coffee shops subscribed • Unsubscribe anytime</p>
             </div>
-            <p className="text-sm text-coffee-cream">Join 12,000+ free users. 18 new shops joined this week.</p>
+            
+            <p className="text-sm text-coffee-cream">Next issue: This Tuesday 9 AM PST</p>
           </div>
         </div>
       </section>
