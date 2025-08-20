@@ -153,7 +153,7 @@ export default function PricingPage() {
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2 mt-1">✓</span>
-                  <span className="text-coffee-earth">ROI guarantee</span>
+                  <span className="text-coffee-earth">Priority support</span>
                 </li>
               </ul>
               
@@ -287,9 +287,9 @@ export default function PricingPage() {
                 </p>
               </div>
               <div>
-                <h3 className="font-medium text-coffee-primary mb-2">What&apos;s the ROI guarantee?</h3>
+                <h3 className="font-medium text-coffee-primary mb-2">What&apos;s the satisfaction guarantee?</h3>
                 <p className="text-coffee-earth text-sm">
-                  If a trend doesn&apos;t generate 10x your subscription cost, your next month is free.
+                  Cancel anytime. If you&apos;re not satisfied in your first month, we&apos;ll refund your payment.
                 </p>
               </div>
               <div>
