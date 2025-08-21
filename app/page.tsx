@@ -69,25 +69,25 @@ export default function SimpleLanding() {
       <Navigation currentPage="home" />
 
       {/* Hero - Strategic Focus */}
-      <section className="pt-40 pb-32 px-8">
+      <section className="pt-24 md:pt-40 pb-16 md:pb-32 px-4 md:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className={`text-center space-y-16 ${mounted ? 'animate-fade-in-up' : 'opacity-0'}`}>
+          <div className={`text-center space-y-8 md:space-y-16 ${mounted ? 'animate-fade-in-up' : 'opacity-0'}`}>
             
             {/* Problem Statement */}
             <div className="max-w-5xl mx-auto">
-              <h1 className="text-6xl md:text-7xl font-ritual leading-[0.9] tracking-tight mb-8 text-coffee-primary">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-ritual leading-[0.9] tracking-tight mb-4 md:mb-8 text-coffee-primary">
                 Your competition just added<br/>
                 <span className="text-coffee-accent">a $8K/month drink</span><br/>
                 <span className="text-coffee-earth">Here&apos;s how to get it first</span>
               </h1>
               
-              <p className="text-2xl text-coffee-secondary font-light max-w-3xl mx-auto mb-8">
+              <p className="text-lg md:text-2xl text-coffee-secondary font-light max-w-3xl mx-auto mb-6 md:mb-8">
                 Black Pepper Latte is making Seoul cafes $8K monthly.<br/>
                 <span className="text-coffee-accent font-medium">248 coffee shops subscribed in the last 30 days. Join before your competitors do.</span>
               </p>
               
               {/* Newsletter Signup */}
-              <div className="bg-white p-8 rounded-xl shadow-coffee border border-coffee mb-12 max-w-2xl mx-auto">
+              <div className="bg-white p-4 md:p-8 rounded-xl shadow-coffee border border-coffee mb-6 md:mb-12 max-w-2xl mx-auto">
                 {submitted ? (
                   <div className="text-center py-8">
                     <div className="text-4xl mb-4">🎉</div>
@@ -170,10 +170,10 @@ export default function SimpleLanding() {
             </div>
 
             {/* Social Proof */}
-            <div className="pt-16">
+            <div className="pt-6 md:pt-16">
               <div className="text-center">
-                <p className="text-lg text-coffee-secondary mb-4">Trusted by coffee shop owners in:</p>
-                <div className="flex flex-wrap justify-center gap-4 text-coffee-earth">
+                <p className="text-base md:text-lg text-coffee-secondary mb-3 md:mb-4">Trusted by coffee shop owners in:</p>
+                <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-sm md:text-base text-coffee-earth">
                   <span>Seattle</span> • <span>Portland</span> • <span>San Francisco</span> • <span>Los Angeles</span> • <span>Chicago</span> • <span>New York</span>
                 </div>
               </div>
@@ -184,14 +184,14 @@ export default function SimpleLanding() {
       </section>
 
       {/* How It Works */}
-      <section className="py-32 px-8 bg-white">
+      <section className="py-16 md:py-32 px-4 md:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl font-light tracking-tight mb-6 text-coffee-primary">How Coffee Trends Weekly works</h2>
-            <p className="text-xl text-coffee-secondary font-light">Get profitable Korean trends before your competition</p>
+          <div className="text-center mb-12 md:mb-20">
+            <h2 className="text-2xl md:text-4xl font-light tracking-tight mb-4 md:mb-6 text-coffee-primary">How Coffee Trends Weekly works</h2>
+            <p className="text-lg md:text-xl text-coffee-secondary font-light">Get profitable Korean trends before your competition</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
             {[
               { 
                 step: '01',
@@ -220,11 +220,11 @@ export default function SimpleLanding() {
       </section>
 
       {/* Newsletter Preview */}
-      <section className="py-32 px-8 gradient-earth">
+      <section className="py-16 md:py-32 px-4 md:px-8 gradient-earth">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-light tracking-tight mb-8 text-coffee-primary">The Secret Drinks Your Competition Doesn&apos;t Want You to See</h2>
+          <h2 className="text-2xl md:text-4xl font-light tracking-tight mb-6 md:mb-8 text-coffee-primary">The Secret Drinks Your Competition Doesn&apos;t Want You to See</h2>
           
-          <div className="bg-white p-8 rounded-lg shadow-large text-left mb-8">
+          <div className="bg-white p-4 md:p-8 rounded-lg shadow-large text-left mb-6 md:mb-8">
             <div className="border-b border-gray-200 pb-4 mb-6">
               <h3 className="text-xl font-craft text-coffee-primary">Secret Intelligence Report #47</h3>
               <p className="text-sm text-coffee-earth">4 drinks already making competitors $8K-12K monthly</p>
@@ -271,13 +271,13 @@ export default function SimpleLanding() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-32 px-8 bg-coffee-primary text-coffee-foam">
+      <section className="py-16 md:py-32 px-4 md:px-8 bg-coffee-primary text-coffee-foam">
         <div className="max-w-7xl mx-auto text-center">
           <div className="max-w-3xl mx-auto space-y-8">
-            <h2 className="text-5xl md:text-6xl font-ritual leading-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-ritual leading-tight">
               Get Tuesday&apos;s trends<br/>in your inbox
             </h2>
-            <p className="text-xl text-coffee-cream font-light">
+            <p className="text-lg md:text-xl text-coffee-cream font-light">
               Free weekly newsletter. Korean coffee trends before your competition.
             </p>
             
