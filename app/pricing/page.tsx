@@ -78,14 +78,14 @@ export default function PricingPage() {
           </div>
 
           {/* Pricing Tiers */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
             
             {/* Free Tier */}
             <div className="bg-white p-8 rounded-lg shadow-soft border border-coffee-neutral-200">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-craft text-coffee-primary mb-2">Preview Edition</h3>
-                <div className="text-4xl font-light text-coffee-primary mb-2">Free</div>
-                <p className="text-coffee-earth text-sm">Perfect for exploring</p>
+                <h3 className="text-2xl font-craft text-coffee-primary mb-2">Free Intelligence</h3>
+                <div className="text-4xl font-light text-coffee-primary mb-2">$0</div>
+                <p className="text-coffee-earth text-sm">Get started today</p>
               </div>
               
               <ul className="space-y-3 mb-8">
@@ -119,15 +119,15 @@ export default function PricingPage() {
             {/* Pro Tier - Highlighted */}
             <div className="bg-white p-8 rounded-lg shadow-large transform scale-105 relative border-2 border-coffee-accent">
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-coffee-accent text-white px-4 py-1 rounded-full text-sm font-medium">
-                Most Popular
+                Full Intelligence
               </div>
               
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-craft text-coffee-primary mb-2">Pro</h3>
+                <h3 className="text-2xl font-craft text-coffee-primary mb-2">Pro Intelligence</h3>
                 <div className="text-4xl font-light text-coffee-primary mb-2">
                   $47<span className="text-xl">/month</span>
                 </div>
-                <p className="text-coffee-earth text-sm font-medium">Launch price: $29/month</p>
+                <p className="text-coffee-earth text-sm font-medium">Beat your competition</p>
               </div>
               
               <ul className="space-y-3 mb-8">
@@ -158,43 +158,6 @@ export default function PricingPage() {
               </button>
             </div>
 
-            {/* Shop Tier */}
-            <div className="bg-white p-8 rounded-lg shadow-soft border border-coffee-neutral-200">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-craft text-coffee-primary mb-2">Shop</h3>
-                <div className="text-4xl font-light text-coffee-primary mb-2">
-                  $97<span className="text-xl">/month</span>
-                </div>
-                <p className="text-coffee-earth text-sm">For serious operators</p>
-              </div>
-              
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2 mt-1">✓</span>
-                  <span className="text-coffee-earth">Everything in Pro</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2 mt-1">✓</span>
-                  <span className="text-coffee-earth">72-hour early access</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2 mt-1">✓</span>
-                  <span className="text-coffee-earth">Monthly strategy calls</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2 mt-1">✓</span>
-                  <span className="text-coffee-earth">Implementation support</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2 mt-1">✓</span>
-                  <span className="text-coffee-earth">Priority support</span>
-                </li>
-              </ul>
-              
-              <button className="w-full py-3 bg-coffee-primary text-white rounded-lg hover:bg-coffee-roast transition-colors">
-                Get Early Access
-              </button>
-            </div>
           </div>
 
           {/* ROI Calculator */}

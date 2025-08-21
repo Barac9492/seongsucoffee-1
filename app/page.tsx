@@ -75,15 +75,15 @@ export default function SimpleLanding() {
             
             {/* Problem Statement */}
             <div className="max-w-5xl mx-auto">
-              <h1 className="text-7xl md:text-8xl font-ritual leading-[0.85] tracking-tight mb-8 text-coffee-primary">
-                Get Korean coffee trends<br/>
-                <span className="text-coffee-accent">before your competition</span><br/>
-                <span className="text-coffee-earth">every Tuesday</span>
+              <h1 className="text-6xl md:text-7xl font-ritual leading-[0.9] tracking-tight mb-8 text-coffee-primary">
+                Your competition just added<br/>
+                <span className="text-coffee-accent">a $8K/month drink</span><br/>
+                <span className="text-coffee-earth">Here&apos;s how to get it first</span>
               </h1>
               
               <p className="text-2xl text-coffee-secondary font-light max-w-3xl mx-auto mb-8">
-                Weekly insider newsletter with profitable Korean trends.<br/>
-                <span className="text-coffee-accent font-medium">Free. 231 coffee shops already subscribed.</span>
+                Black Pepper Latte is making Seoul cafes $8K monthly.<br/>
+                <span className="text-coffee-accent font-medium">248 coffee shops subscribed in the last 30 days. Join before your competitors do.</span>
               </p>
               
               {/* Newsletter Signup */}
@@ -234,12 +234,12 @@ export default function SimpleLanding() {
       {/* Newsletter Preview */}
       <section className="py-32 px-8 gradient-earth">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-light tracking-tight mb-8 text-coffee-primary">This Tuesday&apos;s Newsletter Preview</h2>
+          <h2 className="text-4xl font-light tracking-tight mb-8 text-coffee-primary">The Secret Drinks Your Competition Doesn&apos;t Want You to See</h2>
           
           <div className="bg-white p-8 rounded-lg shadow-large text-left mb-8">
             <div className="border-b border-gray-200 pb-4 mb-6">
-              <h3 className="text-xl font-craft text-coffee-primary">Coffee Trends Weekly #47</h3>
-              <p className="text-sm text-coffee-earth">4 Korean trends making $8K-12K monthly</p>
+              <h3 className="text-xl font-craft text-coffee-primary">Secret Intelligence Report #47</h3>
+              <p className="text-sm text-coffee-earth">4 drinks already making competitors $8K-12K monthly</p>
             </div>
             
             <div className="space-y-4">
