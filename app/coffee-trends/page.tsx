@@ -181,10 +181,10 @@ export default function CoffeeTrendsPage() {
                       setSelectedTrend(trend)
                       setDetailsOpen(true)
                     }}
-                    className="w-full py-2 md:py-3 bg-coffee-primary text-white rounded-lg hover:bg-coffee-roast transition-colors text-sm md:text-base font-medium relative"
+                    className="w-full py-2 md:py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors text-sm md:text-base font-bold relative"
                   >
                     <span>📊 View Details</span>
-                    <span className="absolute -top-2 -right-2 bg-coffee-accent text-white text-xs px-2 py-1 rounded-full">Pro</span>
+                    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium">Pro</span>
                   </button>
                 </div>
               </div>
