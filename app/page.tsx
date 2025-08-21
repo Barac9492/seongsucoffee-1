@@ -282,34 +282,6 @@ export default function SimpleLanding() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-16 md:py-32 px-4 md:px-8 bg-coffee-primary text-coffee-foam">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="max-w-3xl mx-auto space-y-8">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-ritual leading-tight">
-              Get Tuesday&apos;s trends<br/>in your inbox
-            </h2>
-            <p className="text-lg md:text-xl text-coffee-cream font-light">
-              Free weekly newsletter. Korean coffee trends before your competition.
-            </p>
-            
-            {/* Newsletter Signup - Simplified */}
-            <div className="bg-white p-6 rounded-xl max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="w-full p-3 mb-4 border border-coffee-neutral-200 rounded-lg focus:border-coffee-accent text-coffee-primary"
-              />
-              <button className="w-full bg-coffee-accent text-white py-3 rounded-lg text-lg font-craft font-medium hover:scale-105 transition-transform">
-                Subscribe Free
-              </button>
-              <p className="text-xs text-coffee-earth mt-2">231 coffee shops subscribed • Unsubscribe anytime</p>
-            </div>
-            
-            <p className="text-sm text-coffee-cream">Next issue: This Tuesday 9 AM PST</p>
-          </div>
-        </div>
-      </section>
 
       {/* Footer - Minimal */}
       <footer className="py-16 px-8 border-t border-gray-100">
