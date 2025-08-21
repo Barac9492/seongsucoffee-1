@@ -130,48 +130,48 @@ export default function CoffeeTrendsPage() {
                 <div className="p-4 md:p-8">
                   <div className="flex items-start justify-between mb-4 md:mb-6">
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-lg md:text-2xl font-light mb-1 md:mb-2 text-coffee-primary truncate">{trend.name}</h3>
-                      <p className="text-coffee-earth text-xs md:text-sm">{trend.nameKr}</p>
+                      <h3 className="text-lg md:text-2xl font-semibold mb-1 md:mb-2 text-gray-900 truncate">{trend.name}</h3>
+                      <p className="text-gray-600 text-xs md:text-sm font-medium">{trend.nameKr}</p>
                       <div className="flex items-center gap-2 mt-1">
-                        <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">✓ Seoul Verified</span>
-                        <span className="text-xs text-coffee-earth">$8K-12K monthly</span>
+                        <span className="text-xs bg-green-100 text-green-900 px-2 py-1 rounded font-medium">✓ Seoul Verified</span>
+                        <span className="text-xs text-gray-700 font-medium">$8K-12K monthly</span>
                       </div>
                     </div>
                     <div className="text-right ml-4 flex-shrink-0">
-                      <div className="text-xl md:text-3xl font-light text-green-600 mb-1">{trend.successProbability}%</div>
-                      <div className="text-xs text-coffee-earth">Success</div>
+                      <div className="text-xl md:text-3xl font-bold text-green-700 mb-1">{trend.successProbability}%</div>
+                      <div className="text-xs text-gray-600 font-medium">Success</div>
                     </div>
                   </div>
 
                   {/* Mobile-Optimized Key Metrics */}
                   <div className="grid grid-cols-3 gap-2 md:gap-4 mb-4 md:mb-6">
                     <div className="text-center bg-blue-50 p-2 md:p-3 rounded">
-                      <div className="text-sm md:text-2xl font-light text-blue-600 mb-1">+{trend.growth}%</div>
-                      <div className="text-xs text-coffee-earth">Growth</div>
+                      <div className="text-sm md:text-2xl font-semibold text-blue-900 mb-1">+{trend.growth}%</div>
+                      <div className="text-xs text-gray-700 font-medium">Growth</div>
                     </div>
                     <div className="text-center bg-coffee-cream p-2 md:p-3 rounded">
-                      <div className="text-sm md:text-2xl font-light mb-1 text-coffee-primary">{trend.cafesServing}</div>
-                      <div className="text-xs text-coffee-earth">Cafes</div>
+                      <div className="text-sm md:text-2xl font-semibold mb-1 text-coffee-primary">{trend.cafesServing}</div>
+                      <div className="text-xs text-gray-700 font-medium">Cafes</div>
                     </div>
                     <div className="text-center bg-orange-50 p-2 md:p-3 rounded">
-                      <div className="text-sm md:text-2xl font-light text-orange-600 mb-1">{trend.competitorRisk}</div>
-                      <div className="text-xs text-coffee-earth">Risk</div>
+                      <div className="text-sm md:text-2xl font-semibold text-orange-900 mb-1">{trend.competitorRisk}</div>
+                      <div className="text-xs text-gray-700 font-medium">Risk</div>
                     </div>
                   </div>
 
                   {/* Mobile-Optimized Market Info */}
                   <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
                     <div className="flex justify-between text-xs md:text-sm">
-                      <span className="text-coffee-earth">Market:</span>
-                      <span className="font-medium text-coffee-primary">{trend.marketReadiness}</span>
+                      <span className="text-gray-600 font-medium">Market:</span>
+                      <span className="font-semibold text-gray-900">{trend.marketReadiness}</span>
                     </div>
                     <div className="flex justify-between text-xs md:text-sm">
-                      <span className="text-coffee-earth">Global:</span>
-                      <span className="font-medium text-coffee-primary">{trend.timeToGlobal}</span>
+                      <span className="text-gray-600 font-medium">Global:</span>
+                      <span className="font-semibold text-gray-900">{trend.timeToGlobal}</span>
                     </div>
                     <div className="flex justify-between text-xs md:text-sm">
-                      <span className="text-coffee-earth">Stage:</span>
-                      <span className="font-medium capitalize text-coffee-primary">{trend.stage}</span>
+                      <span className="text-gray-600 font-medium">Stage:</span>
+                      <span className="font-semibold capitalize text-gray-900">{trend.stage}</span>
                     </div>
                   </div>
 
