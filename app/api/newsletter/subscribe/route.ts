@@ -25,6 +25,7 @@ export async function POST(request: Request) {
     
     // Send to all backup webhooks
     webhookUrls.forEach(async (webhookUrl) => {
+      if (!webhookUrl) return
       try {
         await fetch(webhookUrl, {
           method: 'POST',
