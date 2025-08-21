@@ -15,6 +15,32 @@ export async function POST(request: Request) {
     
     subscribers.push(newSubscriber)
     
+    // Send to webhook for permanent storage (Google Sheets, etc.)
+    const webhookUrls = [
+      `${process.env.VERCEL_URL || 'http://localhost:3003'}/api/backup`, // Local backup
+      process.env.ZAPIER_WEBHOOK_1, // Primary Zapier backup
+      process.env.ZAPIER_WEBHOOK_2, // Secondary Zapier backup
+      process.env.BACKUP_WEBHOOK_URL // Custom webhook if configured
+    ].filter(Boolean)
+    
+    // Send to all backup webhooks
+    webhookUrls.forEach(async (webhookUrl) => {
+      try {
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            ...newSubscriber,
+            source: 'coffee-trends-weekly',
+            timestamp: new Date().toISOString()
+          })
+        })
+        console.log('Data backed up to webhook:', webhookUrl.substring(0, 50) + '...')
+      } catch (backupError) {
+        console.error('Webhook backup failed:', backupError)
+      }
+    })
+    
     console.log('New subscriber:', newSubscriber)
     
     return NextResponse.json({ 
