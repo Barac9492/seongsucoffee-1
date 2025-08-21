@@ -99,8 +99,8 @@ export default function SimpleLanding() {
                   </div>
                 ) : (
                   <>
-                <h3 className="text-2xl font-craft text-coffee-primary mb-4">Get This Week&apos;s Trends</h3>
-                <p className="text-coffee-earth mb-6">4 verified Korean trends making $8K-12K monthly. Next issue Tuesday.</p>
+                <h3 className="text-2xl font-craft text-coffee-primary mb-4">Quick Question: Which trend will you try first?</h3>
+                <p className="text-coffee-earth mb-6">Vote and get the winning recipe FREE when Pro launches ($29 value)</p>
                 
                 <form onSubmit={handleSignup} className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -130,34 +130,22 @@ export default function SimpleLanding() {
                     required
                   />
                   
-                  {/* Hidden monetization tracking fields */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <select
-                      value={signupData.shopSize}
-                      onChange={(e) => setSignupData({...signupData, shopSize: e.target.value})}
-                      className="w-full p-3 border border-coffee-neutral-200 rounded-lg focus:border-coffee-accent text-coffee-earth"
-                    >
-                      <option value="">Daily customers (optional)</option>
-                      <option value="<50">Less than 50</option>
-                      <option value="50-100">50-100</option>
-                      <option value="100-200">100-200</option>
-                      <option value="200+">200+</option>
-                    </select>
-                    <select
-                      value={signupData.willingness}
-                      onChange={(e) => setSignupData({...signupData, willingness: e.target.value})}
-                      className="w-full p-3 border border-coffee-neutral-200 rounded-lg focus:border-coffee-accent text-coffee-earth"
-                    >
-                      <option value="">Would pay for trends? (optional)</option>
-                      <option value="0">No, free only</option>
-                      <option value="<20">Under $20/month</option>
-                      <option value="20-50">$20-50/month</option>
-                      <option value="50+">$50+/month</option>
-                    </select>
-                  </div>
+                  {/* Poll Question */}
+                  <select
+                    value={signupData.willingness}
+                    onChange={(e) => setSignupData({...signupData, willingness: e.target.value})}
+                    className="w-full p-3 border border-coffee-neutral-200 rounded-lg focus:border-coffee-accent text-coffee-earth font-medium"
+                    required
+                  >
+                    <option value="">Which trend will you try first? (Pick one)</option>
+                    <option value="black-pepper">Black Pepper Latte - Spicy & bold</option>
+                    <option value="dutch-einspanner">Dutch Einspanner - Creamy cloud coffee</option>
+                    <option value="honey-butter">Honey Butter Coffee - Sweet comfort</option>
+                    <option value="hallabong">Jeju Hallabong Latte - Citrus twist</option>
+                  </select>
                   
                   <button type="submit" className="w-full btn-primary text-white py-3 rounded-lg text-lg font-craft font-medium">
-                    🚀 Get Korean Trends (Free)
+                    Vote & Get Free Recipe ($29 value)
                   </button>
                 </form>
                 

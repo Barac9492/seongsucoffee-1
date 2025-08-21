@@ -62,18 +62,18 @@ export default function PricingPage() {
           {/* Header */}
           <div className="text-center mb-16">
             <span className="inline-block bg-coffee-accent text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
-              Coming Soon
+              Launching Feb 15, 2025
             </span>
             <h1 className="text-4xl md:text-6xl font-light leading-tight tracking-tight mb-6 text-coffee-primary">
-              Coffee Trends Pro<br/>
-              <span className="text-coffee-accent">Full Access. Real ROI.</span>
+              Get Complete Recipes<br/>
+              <span className="text-coffee-accent">$29/month (50% off = $14.50)</span>
             </h1>
             <p className="text-xl text-coffee-earth font-light max-w-3xl mx-auto">
-              Get complete trend intelligence that generates $8K-12K monthly per trend.<br/>
-              <span className="font-medium">First 100 members get 50% off forever.</span>
+              Black Pepper Latte recipe + suppliers + training guide.<br/>
+              <span className="font-medium text-coffee-accent">First 100 members lock in $14.50/month forever.</span>
             </p>
             <div className="mt-4 text-sm text-coffee-secondary">
-              🔥 47 coffee shops already on the waitlist
+              🔥 68 spots remaining at 50% off
             </div>
           </div>
 
@@ -91,19 +91,19 @@ export default function PricingPage() {
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2 mt-1">✓</span>
-                  <span className="text-coffee-earth">1 trend per month</span>
+                  <span className="text-coffee-earth">4 Korean trends weekly</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2 mt-1">✓</span>
-                  <span className="text-coffee-earth">Basic trend description</span>
+                  <span className="text-coffee-earth">Success rate data</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2 mt-1">✓</span>
-                  <span className="text-coffee-earth">Success probability score</span>
+                  <span className="text-coffee-earth">Basic profit estimates</span>
                 </li>
                 <li className="flex items-start text-gray-400">
                   <span className="mr-2 mt-1">✗</span>
-                  <span>Recipe & instructions</span>
+                  <span>Complete recipes</span>
                 </li>
                 <li className="flex items-start text-gray-400">
                   <span className="mr-2 mt-1">✗</span>
@@ -125,9 +125,9 @@ export default function PricingPage() {
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-craft text-coffee-primary mb-2">Pro Intelligence</h3>
                 <div className="text-4xl font-light text-coffee-primary mb-2">
-                  $47<span className="text-xl">/month</span>
+                  $29<span className="text-xl">/month</span>
                 </div>
-                <p className="text-coffee-earth text-sm font-medium">Beat your competition</p>
+                <p className="text-coffee-earth text-sm font-medium">Complete recipes & suppliers</p>
               </div>
               
               <ul className="space-y-3 mb-8">
@@ -172,15 +172,15 @@ export default function PricingPage() {
                 <div className="text-sm text-coffee-earth">Average revenue</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-light text-coffee-accent mb-2">- $47</div>
+                <div className="text-3xl font-light text-coffee-accent mb-2">- $29</div>
                 <div className="text-coffee-earth">Pro subscription</div>
-                <div className="text-2xl font-medium text-green-600 mt-2">$7,953</div>
+                <div className="text-2xl font-medium text-green-600 mt-2">$7,971</div>
                 <div className="text-sm text-coffee-earth">Net profit</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-light text-coffee-accent mb-2">169x</div>
+                <div className="text-3xl font-light text-coffee-accent mb-2">275x</div>
                 <div className="text-coffee-earth">Return on investment</div>
-                <div className="text-2xl font-medium text-coffee-primary mt-2">$95,436</div>
+                <div className="text-2xl font-medium text-coffee-primary mt-2">$95,652</div>
                 <div className="text-sm text-coffee-earth">Annual profit</div>
               </div>
             </div>
