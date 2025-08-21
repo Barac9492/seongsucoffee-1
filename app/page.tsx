@@ -69,7 +69,7 @@ export default function SimpleLanding() {
       <Navigation currentPage="home" />
 
       {/* Hero - Strategic Focus */}
-      <section className="pt-24 md:pt-40 pb-16 md:pb-32 px-4 md:px-8">
+      <section className="pt-32 md:pt-40 pb-16 md:pb-32 px-4 md:px-8">
         <div className="max-w-7xl mx-auto">
           <div className={`text-center space-y-8 md:space-y-16 ${mounted ? 'animate-fade-in-up' : 'opacity-0'}`}>
             
