@@ -42,9 +42,16 @@ export default function SimpleLanding() {
         setSubmitted(true)
         // Track conversion
         if (typeof window !== 'undefined' && (window as any).gtag) {
+          // Google Analytics event
           (window as any).gtag('event', 'sign_up', {
             'method': 'Newsletter',
             'value': 1
+          })
+          // Google Ads conversion tracking
+          (window as any).gtag('event', 'conversion', {
+            'send_to': 'AW-16816808281/YOUR_CONVERSION_LABEL',
+            'value': 1.0,
+            'currency': 'USD'
           })
         }
       } else {

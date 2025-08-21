@@ -18,6 +18,9 @@ export default function Analytics() {
           gtag('config', 'G-DDZW4C7RP7', {
             page_path: window.location.pathname,
           });
+          
+          // Google Ads Conversion Tracking
+          gtag('config', 'AW-16816808281');
         `}
       </Script>
 
