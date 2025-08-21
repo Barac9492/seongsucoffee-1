@@ -40,7 +40,7 @@ export default function PricingPage() {
           })
           // Google Ads conversion tracking
           (window as any).gtag('event', 'conversion', {
-            'send_to': 'AW-16816808281/PRICING_SIGNUP', // Replace with your actual conversion label
+            'send_to': 'AW-16816808281/jiwjCL2gmIsbENnC8NI-',
             'value': 2.0, // Higher value for pricing interest
             'currency': 'USD'
           })
