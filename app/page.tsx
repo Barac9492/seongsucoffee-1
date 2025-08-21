@@ -49,7 +49,7 @@ export default function SimpleLanding() {
           })
           // Google Ads conversion tracking
           (window as any).gtag('event', 'conversion', {
-            'send_to': 'AW-16816808281/YOUR_CONVERSION_LABEL',
+            'send_to': 'AW-16816808281/NEWSLETTER_SIGNUP', // Replace with your actual conversion label
             'value': 1.0,
             'currency': 'USD'
           })

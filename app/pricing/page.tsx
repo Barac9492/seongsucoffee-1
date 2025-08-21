@@ -32,10 +32,17 @@ export default function PricingPage() {
         setSubmitted(true)
         // Track conversion
         if (typeof window !== 'undefined' && (window as any).gtag) {
-          (window as any).gtag('event', 'conversion', {
+          // Google Analytics event
+          (window as any).gtag('event', 'sign_up', {
             'event_category': 'Early Access',
             'event_label': 'Pricing Page Signup',
             'value': 2  // Higher value for pricing interest
+          })
+          // Google Ads conversion tracking
+          (window as any).gtag('event', 'conversion', {
+            'send_to': 'AW-16816808281/PRICING_SIGNUP', // Replace with your actual conversion label
+            'value': 2.0, // Higher value for pricing interest
+            'currency': 'USD'
           })
         }
         if (typeof window !== 'undefined' && (window as any).fbq) {
