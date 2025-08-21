@@ -40,20 +40,32 @@ export default function SimpleLanding() {
       
       if (response.ok && result.success) {
         setSubmitted(true)
-        // Track conversion
-        if (typeof window !== 'undefined' && (window as any).gtag) {
-          // Google Analytics event
-          (window as any).gtag('event', 'sign_up', {
-            'method': 'Newsletter',
-            'value': 1
-          })
-          // Google Ads conversion tracking
-          (window as any).gtag('event', 'conversion', {
-            'send_to': 'AW-16816808281/jiwjCL2gmIsbENnC8NI-',
-            'value': 1.0,
-            'currency': 'USD'
-          })
+        // Track conversion with retry mechanism
+        const trackConversion = () => {
+          if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+            try {
+              // Google Analytics event
+              (window as any).gtag('event', 'sign_up', {
+                'method': 'Newsletter',
+                'value': 1
+              })
+              // Google Ads conversion tracking
+              (window as any).gtag('event', 'conversion', {
+                'send_to': 'AW-16816808281/jiwjCL2gmIsbENnC8NI-',
+                'value': 1.0,
+                'currency': 'USD'
+              })
+              console.log('Conversion tracked successfully')
+            } catch (error) {
+              console.error('Error tracking conversion:', error)
+            }
+          } else {
+            console.log('gtag not ready, retrying...')
+            // Retry after 1 second if gtag isn't loaded yet
+            setTimeout(trackConversion, 1000)
+          }
         }
+        trackConversion()
       } else {
         console.error('Signup failed:', result)
         alert('Signup failed: ' + (result.message || 'Unknown error'))

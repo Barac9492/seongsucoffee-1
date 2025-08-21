@@ -30,21 +30,33 @@ export default function PricingPage() {
       
       if (response.ok) {
         setSubmitted(true)
-        // Track conversion
-        if (typeof window !== 'undefined' && (window as any).gtag) {
-          // Google Analytics event
-          (window as any).gtag('event', 'sign_up', {
-            'event_category': 'Early Access',
-            'event_label': 'Pricing Page Signup',
-            'value': 2  // Higher value for pricing interest
-          })
-          // Google Ads conversion tracking
-          (window as any).gtag('event', 'conversion', {
-            'send_to': 'AW-16816808281/jiwjCL2gmIsbENnC8NI-',
-            'value': 2.0, // Higher value for pricing interest
-            'currency': 'USD'
-          })
+        // Track conversion with retry mechanism
+        const trackConversion = () => {
+          if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+            try {
+              // Google Analytics event
+              (window as any).gtag('event', 'sign_up', {
+                'event_category': 'Early Access',
+                'event_label': 'Pricing Page Signup',
+                'value': 2  // Higher value for pricing interest
+              })
+              // Google Ads conversion tracking
+              (window as any).gtag('event', 'conversion', {
+                'send_to': 'AW-16816808281/jiwjCL2gmIsbENnC8NI-',
+                'value': 2.0, // Higher value for pricing interest
+                'currency': 'USD'
+              })
+              console.log('Pricing conversion tracked successfully')
+            } catch (error) {
+              console.error('Error tracking pricing conversion:', error)
+            }
+          } else {
+            console.log('gtag not ready on pricing page, retrying...')
+            // Retry after 1 second if gtag isn't loaded yet
+            setTimeout(trackConversion, 1000)
+          }
         }
+        trackConversion()
         if (typeof window !== 'undefined' && (window as any).fbq) {
           (window as any).fbq('track', 'Lead', {
             content_name: 'Early Access Signup',
